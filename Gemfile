@@ -44,3 +44,5 @@ group :developement do
 end
 
 gem 'geocoder'
+
+gem 'typhoeus'
