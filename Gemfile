@@ -42,3 +42,5 @@ group :developement do
   gem 'pry'
   gem 'pry-rails'
 end
+
+gem 'geocoder'
