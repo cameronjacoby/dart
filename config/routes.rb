@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :jobs, only: [:index]
 
+  # templates
+  resources :job_templates, only: [:index]
+
   root 'jobs#index'
   match '*path', to: 'jobs#index', via: 'get'
 
