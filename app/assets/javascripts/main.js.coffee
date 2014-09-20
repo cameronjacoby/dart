@@ -1,4 +1,6 @@
 angular.module("DartApp", [
   "JobsRouter",
-  "JobsControllers"
+  "JobsControllers",
+  "CompaniesRouter",
+  "CompaniesControllers"
 ])

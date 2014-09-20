@@ -2,10 +2,13 @@ class Router
 
   constructor: (@routeProvider, @locationProvider) ->
 
-    @routeProvider.
-      when "/",
+    @routeProvider
+      .when "/",
         templateUrl: "/job_templates",
         controller: "JobsCtrl as jobs"
+      .when "/companies/:company_id/jobs/:id",
+        templateUrl: "/job_templates/show",
+        controller: "JobsShowCtrl as job"
 
     @locationProvider.html5Mode(true)
 
