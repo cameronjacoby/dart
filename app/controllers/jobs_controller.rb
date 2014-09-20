@@ -2,8 +2,10 @@ class JobsController < ApplicationController
 
   before_action :render_layout_if_html
 
+  respond_to :json, :html
+
   def index
-    render json: Job.all
+    respond_with @jobs = Job.all
   end
 
   private
@@ -13,7 +15,7 @@ class JobsController < ApplicationController
 
     def render_layout_if_html
       if request.format.symbol == :html
-        render "layouts/application"
+        render 'layouts/application'
       end
     end
 
