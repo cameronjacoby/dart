@@ -10,14 +10,14 @@ RSpec.describe Seeker, :type => :model do
 
   it 'should validate presence of first_name' do
     seeker = Seeker.create({
-      :last_name => 'Jacoby'
+      :last_name => Faker::Name.last_name
     })
     expect(seeker.errors.size).to eql(1)
   end
 
   it 'should validate presence of last_name' do
     seeker = Seeker.create({
-      :first_name => 'Cameron'
+      :first_name => Faker::Name.first_name
     })
     expect(seeker.errors.size).to eql(1)
   end

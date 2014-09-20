@@ -10,6 +10,7 @@ class Job < ActiveRecord::Base
     presence: :true
 
   validates :category,
+    presence: :true,
     :format => {:with => /Full Stack|Front End|Back End|Mobile - iOS|Mobile - Android|Other/}
 
   geocoded_by :location, :latitude => :latitude, :longitude => :longitude

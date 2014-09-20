@@ -9,55 +9,59 @@ RSpec.describe User, :type => :model do
   end
 
   it 'should validate presence of email' do
+    pswrd = Faker::Lorem.words(4).join('')
     user = User.create({
-      :password => '123456',
-      :password_confirmation => '123456'
+      :password => pswrd,
+      :password_confirmation => pswrd
     })
     expect(user.errors.size).to eql(2)
   end
 
   it 'should validate uniqueness of email' do
+    email = Faker::Internet.email
+    pswrd = Faker::Lorem.words(4).join('')
     User.create({
-      :email => 'cameron@gmail.com',
-      :password => '123456',
-      :password_confirmation => '123456'
+      :email => email,
+      :password => pswrd,
+      :password_confirmation => pswrd
     })
     user = User.create({
-      :email => 'cameron@gmail.com',
-      :password => '123456',
-      :password_confirmation => '123456'
+      :email => email,
+      :password => pswrd,
+      :password_confirmation => pswrd
     })
     expect(user.errors.size).to eql(1)
   end
 
   it 'should validate email format' do
+    pswrd = Faker::Lorem.words(4).join('')
     user = User.create({
       :email => 'cameron@gmail',
-      :password => '123456',
-      :password_confirmation => '123456'
+      :password => pswrd,
+      :password_confirmation => pswrd
     })
     expect(user.errors.size).to eql(1)
   end
 
   it 'should validate presence of password' do
     user = User.create({
-      :email => 'cameron@gmail.com'
+      :email => Faker::Internet.email
     })
     expect(user.errors.size).to eql(3)
   end
 
   it 'should require password confirmation' do
     user = User.create({
-      :email => 'cameron@gmail.com',
-      :password => '123456',
-      :password_confirmation => '12345678'
+      :email => Faker::Internet.email,
+      :password => Faker::Lorem.words(4).join(''),
+      :password_confirmation => Faker::Lorem.words(4).join('')
     })
     expect(user.errors.size).to eql(2)
   end
 
   it 'should validate password length' do
     user = User.create({
-      :email => 'cameron@gmail.com',
+      :email => Faker::Internet.email,
       :password => '123',
       :password_confirmation => '123'
     })
@@ -72,10 +76,11 @@ RSpec.describe User, :type => :model do
   end
 
   it 'should have one company' do
+    pswrd = Faker::Lorem.words(4).join('')
     user = User.create({
-      :email => 'cameron@company.com',
-      :password => '123456',
-      :password_confirmation => '123456',
+      :email => Faker::Internet.email,
+      :password => pswrd,
+      :password_confirmation => pswrd,
       :is_company? => true
     })
     example_company = FactoryGirl.create(:company)

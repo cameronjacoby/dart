@@ -30,15 +30,15 @@ RSpec.describe Company, :type => :model do
     expect(example_job.company).to eql(subject)
   end
 
-  it 'should get path from CrunchBase API' do
-    subject.get_crunchbase_path
-    expect(subject.crunchbase_path).to eql('organization/general-assembly')
-  end
+  # it 'should get path from CrunchBase API' do
+  #   subject.get_crunchbase_path
+  #   expect(subject.crunchbase_path).to eql('organization/general-assembly')
+  # end
 
-  it 'should get CrunchBase profile if crunchbase_path exists' do
-    expect(subject.get_crunchbase_profile).to be(nil)
-    subject.get_crunchbase_path
-    expect(subject.get_crunchbase_profile).not_to be(nil)
-  end
+  # it 'should get CrunchBase profile if crunchbase_path exists' do
+  #   expect(subject.get_crunchbase_profile).to be(nil)
+  #   subject.get_crunchbase_path
+  #   expect(subject.get_crunchbase_profile).not_to be(nil)
+  # end
 
 end
