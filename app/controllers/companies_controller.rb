@@ -8,10 +8,8 @@ class CompaniesController < ApplicationController
 
   def show
     @profile = @company.get_crunchbase_profile
-
     respond_to do |format|
-      format.json { render :json => {:company => @company, 
-                                    :profile => @profile }}
+      format.json {render :json => {:company => @company, :profile => @profile}}
     end
   end
 
