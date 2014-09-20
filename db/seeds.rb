@@ -31,7 +31,7 @@ mario = user_mario.seeker
 
 # create company & jobs
 user_thumbtack = User.create({email: "hello@thumbtack.com", password: "12341234", is_company?: true})
-user_thumbtack.company = Company.create({name: "Thumbtack", crunchbase_path: "/organization/thumbtack"})
+user_thumbtack.company = Company.create({name: "Thumbtack", crunchbase_path: "organization/thumbtack"})
 thumbtack = user_thumbtack.company
 
 thumbtack_frontend = Job.create({title: "Front-End Developer", location: "San Francisco, CA", category: "Front End",
@@ -92,7 +92,7 @@ thumbtack.jobs << [thumbtack_frontend, thumbtack_backend, thumbtack_ios, thumbta
 
 # create company & jobs
 user_ginger_io = User.create({email: "hello@ginger.io", password: "12341234", is_company?: true})
-user_ginger_io.company = Company.create({name: "Ginger.io", crunchbase_path: "/organization/ginger-io"})
+user_ginger_io.company = Company.create({name: "Ginger.io", crunchbase_path: "organization/ginger-io"})
 ginger_io = user_ginger_io.company
 
 ginger_io_android = Job.create({title: "Android Developer", location: "San Francisco, CA", category: "Mobile - Android",
@@ -112,7 +112,7 @@ ginger_io.jobs << [ginger_io_android]
 
 # create company & jobs
 user_heap = User.create({email: "hello@heapanalytics.com", password: "12341234", is_company?: true})
-user_heap.company = Company.create({name: "Heap", crunchbase_path: "/organization/heap"})
+user_heap.company = Company.create({name: "Heap", crunchbase_path: "organization/heap"})
 heap = user_heap.company
 
 heap_software_engineer = Job.create({title: "Software Engineer", location: "San Francisco, CA", category: "Full Stack",
