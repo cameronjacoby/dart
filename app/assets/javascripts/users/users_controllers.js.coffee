@@ -2,7 +2,7 @@ UsersControllers = angular.module("UsersControllers", [])
 
 class UsersNewCtrl
   
-  constructor: (@scope, @http, @routeParams) ->
+  constructor: (@scope, @http, @routeParams, @location) ->
     @greeting = "hello world"
 
   createSeeker: (newUser, newSeeker) ->
@@ -69,5 +69,6 @@ class UsersNewCtrl
         @scope.newCompany = {}
         @newCompany = data
         console.log "NEW COMPANY", @newCompany
+        @location.path("/companies/#{@newCompany.id}")
 
-UsersControllers.controller("UsersNewCtrl", ["$scope", "$http", "$routeParams", UsersNewCtrl])
+UsersControllers.controller("UsersNewCtrl", ["$scope", "$http", "$routeParams", "$location", UsersNewCtrl])
