@@ -72,13 +72,15 @@
         </span>
       </p>
     </div>
-    <button class="btn btn-primary">Edit Profile</button> <button class="btn btn-danger">Delete Profile</button>
+    <div class="edit-btns">
+      <button class="btn btn-primary">Edit Profile</button> <button class="btn btn-danger">Delete Profile</button>
+    </div>
   </div>
 
   <div class="col-sm-4">
     <h3 ng-show="company.profile.relationships.news.items">News</h3>
     <div ng-repeat="article in company.profile.relationships.news.items | orderBy : '-created_at'">
-      <p ng-show="article.posted_on"><a href="{{article.url}}" target="_blank">{{article.title}}</a></p>
+      <p><a href="{{article.url}}" target="_blank">{{article.title}}</a></p>
     </div>
   </div>
 </div>

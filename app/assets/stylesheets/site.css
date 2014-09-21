@@ -10,23 +10,25 @@
 
 .company-img {
   float: left;
-  width: 50px;
-  border-radius: 50px;
+  height: 50px;
   margin-top: 15px;
   margin-right: 20px;
 }
 
 .company-img-sm {
   float: left;
-  width: 40px;
-  border-radius: 50px;
-  margin-top: 8px;
+  height: 40px;
+  margin-top: 3px;
   margin-right: 15px;
 }
 
 .no-crunchbase {
   margin-top: 25px;
   color: rgba(0, 0, 0, .6);
+}
+
+.edit-btns {
+  margin-top: 20px;
 }
 
 .skill {
