@@ -58,7 +58,7 @@
     <h3 ng-hide="company.company.jobs">No Job Postings Yet</h3>
     <h3 ng-show="company.company.jobs">Current Job Openings</h3>
     <button class="btn btn-primary">Post a Job</button>
-    <div ng-repeat="job in company.company.jobs">
+    <div ng-repeat="job in company.company.jobs | orderBy: -'created_at'">
       <h5>
         <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
         <span class="glyphicon glyphicon-pencil"></span>
