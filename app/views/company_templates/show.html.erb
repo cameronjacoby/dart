@@ -2,10 +2,7 @@
   <div class="col-sm-12">
     <div class="clearfix">
       <img ng-show="company.profile.relationships.primary_image.items[0].path" class="company-img" src="http://a5.images.crunchbase.com/{{company.profile.relationships.primary_image.items[0].path}}">
-      <h1 class="company-name">{{company.company.name}}</h1>
-      <p class="edit-company">
-        Edit Profile | Delete Profile
-      </p>
+      <h1>{{company.company.name}}</h1>
     </div>
   </div>
 </div>
@@ -58,6 +55,7 @@
   </div>
 
   <div class="col-sm-4">
+    <h3 ng-hide="company.company.jobs">No Job Postings Yet</h3>
     <h3 ng-show="company.company.jobs">Current Job Openings</h3>
     <button class="btn btn-primary">Post a Job</button>
     <div ng-repeat="job in company.company.jobs">
@@ -74,6 +72,7 @@
         </span>
       </p>
     </div>
+    <button class="btn btn-primary">Edit Profile</button> <button class="btn btn-danger">Delete Profile</button>
   </div>
 
   <div class="col-sm-4">
