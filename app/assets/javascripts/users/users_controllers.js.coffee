@@ -60,6 +60,11 @@ class UsersNewCtrl
         newCompany.name = ""
         @nameMsgComp = true
         @http.delete("/users/#{data.user.id}.json").success (data) ->
+      else if data.error == "ERROR"
+        @scope.newUserComp = {}
+        @scope.newCompany = {}
+        @errorMsgComp = true
+        @http.delete("/users/#{data.user.id}.json").success (data) ->
       else if data == "ERROR"
         @scope.newUserComp = {}
         @scope.newCompany = {}

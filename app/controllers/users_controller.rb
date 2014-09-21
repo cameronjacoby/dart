@@ -25,6 +25,10 @@ class UsersController < ApplicationController
           respond_to do |format|
             format.json {render :json => {:user => @user, :error => 'NAME ERROR'}}
           end
+        else
+          respond_to do |format|
+            format.json {render :json => {:user => @user, :error => 'ERROR'}}
+          end
         end
       end
     else
