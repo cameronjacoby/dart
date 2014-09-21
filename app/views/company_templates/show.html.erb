@@ -64,15 +64,18 @@
         <span class="glyphicon glyphicon-trash"></span>
       </h5>
       <p>{{job.location}} | {{job.category}}</p>
-      <p ng-show="job.skills"><strong>Skills:</strong> <span ng-repeat="skill in job.skills">
-        <span>#{{skill.name}}</span>
-      </span></p>
+      <p ng-show="job.skills">
+        <strong>Skills:</strong> 
+        <span ng-repeat="skill in job.skills">
+          <span>#{{skill.name}}</span>
+        </span>
+      </p>
     </div>
   </div>
 
   <div class="col-sm-4">
     <h3 ng-show="company.profile.relationships.news.items">News</h3>
-    <div ng-repeat="article in company.profile.relationships.news.items | orderBy : -'created_at'">
+    <div ng-repeat="article in company.profile.relationships.news.items | orderBy : '-created_at'">
       <p ng-show="article.posted_on"><a href="{{article.url}}" target="_blank">{{article.title}}</a></p>
     </div>
   </div>

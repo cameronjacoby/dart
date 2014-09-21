@@ -1,9 +1,7 @@
 class JobsController < ApplicationController
 
   before_action :set_company, :set_job, only: [:show]
-
   before_action :render_layout_if_html
-
   respond_to :json, :html
 
   def index

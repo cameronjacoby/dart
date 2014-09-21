@@ -1,9 +1,7 @@
 class CompaniesController < ApplicationController
 
   before_action :set_company, only: [:show]
-
   before_action :render_layout_if_html
-
   respond_to :json, :html
 
   def show
