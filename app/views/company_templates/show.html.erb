@@ -2,7 +2,10 @@
   <div class="col-sm-12">
     <div class="clearfix">
       <img ng-show="company.profile.relationships.primary_image.items[0].path" class="company-img" src="http://a5.images.crunchbase.com/{{company.profile.relationships.primary_image.items[0].path}}">
-      <h1>{{company.company.name}}</h1>
+      <h1 class="company-name">{{company.company.name}}</h1>
+      <p class="edit-company">
+        Edit Profile | Delete Profile
+      </p>
     </div>
   </div>
 </div>
@@ -65,7 +68,7 @@
       </h5>
       <p>{{job.location}} | {{job.category}}</p>
       <p ng-show="job.skills">
-        <strong>Skills:</strong> 
+        <span class="skill"><strong>Skills:</strong></span>
         <span ng-repeat="skill in job.skills">
           <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
         </span>

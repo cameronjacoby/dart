@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-sm-3">
     <h3 ng-show="jobs.skills">Trending Skills</h3>
-    <div ng-repeat="skill in jobs.skills | orderBy: '-jobs.length' | limitTo: 20">
-      <p><a href="/skills/{{skill.id}}">#{{skill.name}}</a></p>
-    </div>
+    <span ng-repeat="skill in jobs.skills | orderBy: '-jobs.length' | limitTo: 20">
+      <span class="skill-spaced"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
+    </span>
   </div>
 
   <div class="col-sm-9">
@@ -16,7 +16,7 @@
       </p>
       <p>{{job.description}}</p>
       <p ng-show="job.skills">
-        <strong>Skills:</strong> 
+        <span class="skill"><strong>Skills:</strong></span>
         <span ng-repeat="skill in job.skills">
           <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
         </span>
