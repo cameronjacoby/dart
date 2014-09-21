@@ -1,19 +1,20 @@
-<div class="col-sm-3">
-  <h3>Trending Skills</h3>
-</div>
+<div class="row">
+  <div class="col-sm-3">
+    <h3>Trending Skills</h3>
+  </div>
 
-<div class="col-sm-9">
-  <h1>All Jobs</h1>
-
-  <div ng-repeat="job in jobs.jobs">
-    <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
-    <p>
-      <a href="/companies/{{job.company.id}}">{{job.company.name}}</a> | 
-      {{job.location}} | {{job.category}}
-    </p>
-    <p>{{job.description}}</p>
-    <p>Skills: <span ng-repeat="skill in job.skills">
-      <span>#{{skill.name}}</span>
-    </span></p>
+  <div class="col-sm-9">
+    <h1>All Jobs</h1>
+    <div ng-repeat="job in jobs.jobs">
+      <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
+      <p>
+        <a href="/companies/{{job.company.id}}">{{job.company.name}}</a> | 
+        {{job.location}} | {{job.category}}
+      </p>
+      <p>{{job.description}}</p>
+      <p>Skills: <span ng-repeat="skill in job.skills">
+        <span>#{{skill.name}}</span>
+      </span></p>
+    </div>
   </div>
 </div>

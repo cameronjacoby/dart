@@ -2,3 +2,21 @@
   margin-top: 60px;
   margin-bottom: 40px;
 }
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
+.company-img {
+  float: left;
+  width: 50px;
+  border-radius: 50px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+
+.no-crunchbase {
+  margin-top: 25px;
+  color: rgba(0, 0, 0, .6);
+}
