@@ -12,8 +12,8 @@ class JobsShowCtrl
   
   constructor: (@scope, @http, @routeParams, @location) ->
     @http.get("/companies/#{@routeParams.company_id}/jobs/#{@routeParams.id}.json").success (data) =>
-      if data == ''
-        @location.path('/')
+      if data == ""
+        @location.path("/")
       else
         @job = data
 

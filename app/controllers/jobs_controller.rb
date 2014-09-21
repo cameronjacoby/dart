@@ -7,12 +7,18 @@ class JobsController < ApplicationController
   respond_to :json, :html
 
   def index
-    respond_with @jobs = Job.all
+    @jobs = Job.all
+    respond_to do |format|
+      format.json {render :json => @jobs.to_json(:include => [:company, :skills])}
+    end
   end
 
   def show
     if @company.jobs.include? @job
-      respond_with @job
+      @profile = @company.get_crunchbase_profile
+      respond_to do |format|
+        format.json {render :json => @job.to_json(:include => [:company, :skills])}
+      end
     else
       respond_with ''
     end

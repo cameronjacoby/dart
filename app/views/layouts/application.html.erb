@@ -8,7 +8,34 @@
 </head>
 <body ng-app="DartApp">
 
-  <div ng-view></div>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-header">
+        <a id="navli" class ="navbar-brand" href="/">DART</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a id="navli" href="/companies/1">Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id="navli" href="/">Log In</a></li>
+          <li><a id="navli" href="/">Sign Up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container content">
+    <div class="row">
+      <div ng-view></div>
+    </div>
+  </div>
 
 </body>
 </html>
