@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-1"></div>
+
+  <div class="col-sm-5 signup-col">
+    <h3>Job Seekers</h3>
+    <p>Create a job seeker profile to save the jobs you discover.</p>
+    <form ng-submit="newUser.createSeeker(user, seeker)">
+      <p>
+        <input type="text" ng-model="seeker.first_name" class="form-control" placeholder="First Name" required autofocus>
+      </p>
+      <p>
+        <input type="text" ng-model="seeker.last_name" class="form-control" placeholder="Last Name" required>
+      </p>
+      <p>
+        <input type="text" ng-model="user.email" class="form-control" placeholder="Email" required>
+      </p>
+      <p>
+        <input type="password" ng-model="user.password" class="form-control" placeholder="Password" required>
+      </p>
+      <p>
+        <input type="password" ng-model="user.password_confirmation" class="form-control" placeholder="Password Confirmation" required>
+      </p>
+      <!-- <p>
+        <input type="hidden" ng-model="user.is_seeker" value="true">
+      </p> -->
+      <p>
+        <button class="btn btn-primary">Create Profile</button>
+      </p>
+    </form>
+  </div>
+
+  <div class="col-sm-5 signup-col">
+    <h3>Companies</h3>
+    <p>Create a company profile to add your current job postings. We use data from CrunchBase to populate your company page. If you don't have a CrunchBase account, you can sign up for one <a href="http://www.crunchbase.com/account/signup" target="_blank">here</a>.</p>
+  </div>
+
+  <div class="col-sm-1"></div>
+</div>
