@@ -48,18 +48,20 @@
       </div>
     </div>
 
-    <h3 ng-show="company.profile.relationships.news.items">News</h3>
-    <div ng-repeat="article in company.profile.relationships.news.items | orderBy : -'created_at'">
-      <p ng-show="article.posted_on"><a href="{{article.url}}" target="_blank">{{article.title}}</a></p>
-    </div>
-
     <div ng-hide="company.profile" class="no-crunchbase">
       <p>No company information from CrunchBase</p>
       <!-- if current user (company) provide a link to create CB profile-->
     </div>
   </div>
 
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <h3>Current Job Openings</h3>
+  </div>
+
+  <div class="col-sm-4">
+    <h3 ng-show="company.profile.relationships.news.items">News</h3>
+    <div ng-repeat="article in company.profile.relationships.news.items | orderBy : -'created_at'">
+      <p ng-show="article.posted_on"><a href="{{article.url}}" target="_blank">{{article.title}}</a></p>
+    </div>
   </div>
 </div>
