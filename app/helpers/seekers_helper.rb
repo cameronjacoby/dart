@@ -1,0 +1,2 @@
+module SeekersHelper
+end
