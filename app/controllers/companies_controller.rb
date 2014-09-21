@@ -7,15 +7,12 @@ class CompaniesController < ApplicationController
   respond_to :json, :html
 
   def show
-    @profile = @company.get_crunchbase_profile
+    # @company.profile = @company.get_crunchbase_profile
+    # @company.save
 
     respond_to do |format|
-      format.json {render :json => @company.to_json(:include => [:jobs])}
+      format.json {render :json => @company, :include => [:jobs => {:include => {:skills => {:only => [:id, :name]}}}]}
     end
-
-    # respond_to do |format|
-    #   format.json {render :json => {:company => @company, :profile => @profile}}
-    # end
   end
 
   private
