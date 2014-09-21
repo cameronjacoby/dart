@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:destroy]
   before_action :render_layout_if_html
   respond_to :json, :html
 
@@ -9,7 +10,23 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user
+      if @user.is_seeker
+        @seeker = Seeker.create(seeker_params)
+        @user.seeker = @seeker
+        render json: @seeker
+      elsif @user.is_company
+        @company = Company.new(company_params)
+        if @company.save
+          @company.get_crunchbase_path
+          @company.get_crunchbase_profile
+          @user.company = @company
+          render json: @company
+        elsif Company.find_by_name(@company.name)
+          respond_to do |format|
+            format.json {render :json => {:user => @user, :error => 'NAME ERROR'}}
+          end
+        end
+      end
     else
       if User.find_by_email(@user.email)
         render json: 'EMAIL ERROR'
@@ -23,7 +40,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    respond_with @user.destroy
+  end
+
   private
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :is_seeker, :is_company)
@@ -31,6 +56,10 @@ class UsersController < ApplicationController
 
     def seeker_params
       params.require(:seeker).permit(:first_name, :last_name)
+    end
+
+    def company_params
+      params.require(:company).permit(:name)
     end
 
     def render_layout_if_html

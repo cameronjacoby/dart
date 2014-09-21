@@ -20,8 +20,9 @@ class Company < ActiveRecord::Base
     response = JSON.parse(request.body)
     # choose 1st company in response
     # save path to self.crunchbase_path
-    if response
+    if response['data']['items'].length > 0
       self.crunchbase_path = response['data']['items'][0]['path']
+      self.save
     end
   end
 
@@ -35,8 +36,9 @@ class Company < ActiveRecord::Base
         }
       )
       response = JSON.parse(request.body)
-      # return CrunchBase profile
-      response['data']
+      # save CrunchBase profile
+      self.profile = response['data']
+      self.save
     end
   end
 

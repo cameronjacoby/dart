@@ -9,30 +9,65 @@ class UsersNewCtrl
     newUser.is_seeker = true
     console.log "USER", newUser
     console.log "SEEKER", newSeeker
-    @http.post("/users.json", {user: newUser}).success (data) =>
-      @emailMsg = false
-      @passLenMsg = false
-      @passConfMsg = false
-      @errorMsg = false
+    @http.post("/users.json", {user: newUser, seeker: newSeeker}).success (data) =>
+      @emailMsgSeek = false
+      @passLenMsgSeek = false
+      @passConfMsgSeek = false
+      @errorMsgSeek = false
       if data == "EMAIL ERROR"
         newUser.email = ""
-        @emailMsg = true
+        @emailMsgSeek = true
       else if data == "PASSWORD LENGTH ERROR"
         newUser.password = ""
         newUser.password_confirmation = ""
-        @passLenMsg = true
+        @passLenMsgSeek = true
       else if data == "PASSWORD CONF ERROR"
         newUser.password = ""
         newUser.password_confirmation = ""
-        @passConfMsg = true
+        @passConfMsgSeek = true
       else if data == "ERROR"
-        @scope.newUser = {}
+        @scope.newUserSeek = {}
         @scope.newSeeker = {}
-        @errorMsg = true
+        @errorMsgSeek = true
       else
-        @scope.newUser = {}
+        @scope.newUserSeek = {}
         @scope.newSeeker = {}
-        @newUser = data
-        console.log "NEW USER", @newUser
+        @newSeeker = data
+        console.log "NEW SEEKER", @newSeeker
+
+  createCompany: (newUser, newCompany) ->
+    newUser.is_company = true
+    console.log "USER", newUser
+    console.log "COMPANY", newCompany
+    @http.post("/users.json", {user: newUser, company: newCompany}).success (data) =>
+      @emailMsgComp = false
+      @passLenMsgComp = false
+      @passConfMsgComp = false
+      @nameMsgComp = false
+      @errorMsgComp = false
+      if data == "EMAIL ERROR"
+        newUser.email = ""
+        @emailMsgComp = true
+      else if data == "PASSWORD LENGTH ERROR"
+        newUser.password = ""
+        newUser.password_confirmation = ""
+        @passLenMsgComp = true
+      else if data == "PASSWORD CONF ERROR"
+        newUser.password = ""
+        newUser.password_confirmation = ""
+        @passConfMsgComp = true
+      else if data.error == "NAME ERROR"
+        newCompany.name = ""
+        @nameMsgComp = true
+        @http.delete("/users/#{data.user.id}.json").success (data) ->
+      else if data == "ERROR"
+        @scope.newUserComp = {}
+        @scope.newCompany = {}
+        @errorMsgComp = true
+      else
+        @scope.newUserComp = {}
+        @scope.newCompany = {}
+        @newCompany = data
+        console.log "NEW COMPANY", @newCompany
 
 UsersControllers.controller("UsersNewCtrl", ["$scope", "$http", "$routeParams", UsersNewCtrl])

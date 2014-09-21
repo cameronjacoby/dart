@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:create]
+  resources :users, only: [:create, :destroy]
 
   resources :companies, only: [:show] do
     resources :jobs, only: [:show]
