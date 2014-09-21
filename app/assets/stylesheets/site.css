@@ -41,3 +41,7 @@
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.error-msg {
+  color: rgba(255, 0, 0, 1);
+}

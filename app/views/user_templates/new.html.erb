@@ -5,15 +5,19 @@
     <h3>Job Seekers</h3>
     <p>Create a job seeker profile to save the jobs you discover.</p>
     <form ng-submit="userNew.createSeeker(newUser, newSeeker)">
+      <p ng-show="userNew.errorMsg" class="error-msg">We're sorry, and error has occured. Please try again.</p>
       <p>
         <input type="text" ng-model="newSeeker.first_name" class="form-control" placeholder="First Name" required autofocus>
       </p>
       <p>
         <input type="text" ng-model="newSeeker.last_name" class="form-control" placeholder="Last Name" required>
       </p>
+      <p ng-show="userNew.emailMsg" class="error-msg">An account with that email already exists.</p>
       <p>
         <input type="text" ng-model="newUser.email" class="form-control" placeholder="Email" required>
       </p>
+      <p ng-show="userNew.passLenMsg" class="error-msg">Password must be at least 6 characters.</p>
+      <p ng-show="userNew.passConfMsg" class="error-msg">Password must match password confirmation.</p>
       <p>
         <input type="password" ng-model="newUser.password" class="form-control" placeholder="Password" required>
       </p>

@@ -7,7 +7,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    render json: User.create(user_params)
+    @user = User.new(user_params)
+    if @user.save
+      render json: @user
+    else
+      if User.find_by_email(@user.email)
+        render json: 'EMAIL ERROR'
+      elsif @user.password.length < 6
+        render json: 'PASSWORD LENGTH ERROR'
+      elsif @user.password != @user.password_confirmation
+       render json: 'PASSWORD CONF ERROR'
+      else
+        render json: 'ERROR'
+      end
+    end
   end
 
   private
