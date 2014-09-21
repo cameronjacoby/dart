@@ -67,7 +67,7 @@
       <p ng-show="job.skills">
         <strong>Skills:</strong> 
         <span ng-repeat="skill in job.skills">
-          <span>#{{skill.name}}</span>
+          <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
         </span>
       </p>
     </div>

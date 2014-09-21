@@ -13,7 +13,7 @@ class SkillsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json {render :json => @skill.to_json(:include => [:jobs])}
+      format.json {render :json => @skill, :include => [:jobs => {:include => [:company, :skills]}]}
     end
   end
 

@@ -2,5 +2,7 @@ angular.module("DartApp", [
   "JobsRouter",
   "JobsControllers",
   "CompaniesRouter",
-  "CompaniesControllers"
+  "CompaniesControllers",
+  "SkillsRouter",
+  "SkillsControllers"
 ])
