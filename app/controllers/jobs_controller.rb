@@ -15,7 +15,6 @@ class JobsController < ApplicationController
 
   def show
     if @company.jobs.include? @job
-      # @profile = @company.get_crunchbase_profile
       respond_to do |format|
         format.json {render :json => @job.to_json(:include => [:company, :skills])}
       end

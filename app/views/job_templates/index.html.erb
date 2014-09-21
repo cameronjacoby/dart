@@ -12,7 +12,7 @@
         {{job.location}} | {{job.category}}
       </p>
       <p>{{job.description}}</p>
-      <p>Skills: <span ng-repeat="skill in job.skills">
+      <p ng-show="job.skills"><strong>Skills:</strong> <span ng-repeat="skill in job.skills">
         <span>#{{skill.name}}</span>
       </span></p>
     </div>

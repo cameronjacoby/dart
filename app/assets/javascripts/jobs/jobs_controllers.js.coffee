@@ -5,6 +5,8 @@ class JobsCtrl
   constructor: (@scope, @http) ->
     @http.get("/jobs.json").success (data) =>
       @jobs = data
+      @http.get("/skills.json").success (data) =>
+        @skills = data
 
 JobsControllers.controller("JobsCtrl", ["$scope", "$http", JobsCtrl])
 

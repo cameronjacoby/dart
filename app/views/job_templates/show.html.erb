@@ -1,3 +1,32 @@
-<h1>JobTemplates#show</h1>
+<div class="row">
+  <div class="col-sm-7">
+    <h2>{{job.job.title}}</h2>
+    <h5>
+      <a href="/companies/{{job.job.company.id}}">{{job.job.company.name}}</a> | 
+      {{job.job.location}} | {{job.job.category}}
+      <span class="glyphicon glyphicon-pencil"></span>
+      <span class="glyphicon glyphicon-trash"></span>
+    </h5>
+    <h5>Description</h5>
+    <p>{{job.job.description}}</p>
+    <h5 ng-show="job.job.skills">Skills</h5>
+    <p ng-show="job.job.skills"><span ng-repeat="skill in job.job.skills">
+      <span>#{{skill.name}}</span>
+    </span></p>
+    <h5>How to Apply</h5>
+    <p>{{job.job.how_to_apply}}</p>
+  </div>
 
-<h3>{{job.job}}</h3>
+  <div class="col-sm-5">
+
+    <h3 ng-show="job.job.company.profile">About {{job.job.company.name}}</h3>
+    <div class="clearfix">
+      <img ng-show="job.job.company.profile.relationships.primary_image.items[0].path" class="company-img-sm" src="http://a5.images.crunchbase.com/{{job.job.company.profile.relationships.primary_image.items[0].path}}">
+      <p>
+        {{job.job.company.profile.properties.short_description}} 
+        <a href="/companies/{{job.job.company.id}}">Learn More &#10172;</a>
+      </p>
+    </div>
+
+  </div>
+</div>
