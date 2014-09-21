@@ -4,21 +4,21 @@
   <div class="col-sm-5 signup-col">
     <h3>Job Seekers</h3>
     <p>Create a job seeker profile to save the jobs you discover.</p>
-    <form ng-submit="newUser.createSeeker(user, seeker)">
+    <form ng-submit="userNew.createSeeker(newUser, newSeeker)">
       <p>
-        <input type="text" ng-model="seeker.first_name" class="form-control" placeholder="First Name" required autofocus>
+        <input type="text" ng-model="newSeeker.first_name" class="form-control" placeholder="First Name" required autofocus>
       </p>
       <p>
-        <input type="text" ng-model="seeker.last_name" class="form-control" placeholder="Last Name" required>
+        <input type="text" ng-model="newSeeker.last_name" class="form-control" placeholder="Last Name" required>
       </p>
       <p>
-        <input type="text" ng-model="user.email" class="form-control" placeholder="Email" required>
+        <input type="text" ng-model="newUser.email" class="form-control" placeholder="Email" required>
       </p>
       <p>
-        <input type="password" ng-model="user.password" class="form-control" placeholder="Password" required>
+        <input type="password" ng-model="newUser.password" class="form-control" placeholder="Password" required>
       </p>
       <p>
-        <input type="password" ng-model="user.password_confirmation" class="form-control" placeholder="Password Confirmation" required>
+        <input type="password" ng-model="newUser.password_confirmation" class="form-control" placeholder="Password Confirmation" required>
       </p>
       <p>
         <button class="btn btn-primary">Create Profile</button>

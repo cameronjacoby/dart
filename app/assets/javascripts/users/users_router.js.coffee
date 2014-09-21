@@ -5,7 +5,7 @@ class Router
     @routeProvider
       .when "/register",
         templateUrl: "/user_templates/new",
-        controller: "UsersNewCtrl as newUser"
+        controller: "UsersNewCtrl as userNew"
 
     @locationProvider.html5Mode(true)
 
@@ -15,6 +15,6 @@ UsersRouter = angular.module("UsersRouter", [
 
 UsersRouter.config(["$routeProvider", "$locationProvider", Router])
 
-UsersRouter.config(["$httpProvider", ($httpProvider) ->
-  $httpProvider.defaults.headers.common["X-CSRF-Token"] = $('meta[name=csrf-token]').attr("content")
-])
+UsersRouter.config ["$httpProvider", ($httpProvider) ->
+  $httpProvider.defaults.headers.common["X-CSRF-Token"] = $("meta[name=csrf-token]").attr("content")
+]
