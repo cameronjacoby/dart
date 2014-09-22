@@ -1,0 +1,2 @@
+class SessionTemplatesController < ApplicationController
+end
