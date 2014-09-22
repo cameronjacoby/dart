@@ -1,19 +1,27 @@
+<!-- start top row -->
 <div class="row">
   <div class="col-sm-12">
+    <!-- hide company logo & name when editing company profile -->
     <div ng-hide="company.editForm" class="clearfix">
       <img ng-show="company.profile.relationships.primary_image.items[0].path" class="company-img" src="http://a5.images.crunchbase.com/{{company.profile.relationships.primary_image.items[0].path}}">
       <h1>{{company.company.name}}</h1>
     </div>
   </div>
 </div>
+<!-- end top row -->
+
 
 <div class="row">
+  <!-- start left column -->
   <div class="col-sm-4">
-
+    <!-- only show CrunchBase data if profile exists -->
     <div ng-show="company.profile">
+
+      <!-- about (short description) -->
       <h3 ng-show="company.profile.properties.short_description">About</h3>
       <p>{{company.profile.properties.short_description}}</p>
-
+      
+      <!-- company details -->
       <h3>Details</h3>
       <p ng-show="company.profile.relationships.offices.items[0].city || company.profile.relationships.offices.items[0].region">
         <strong>Location:</strong> 
@@ -37,6 +45,7 @@
         <a href="http://www.crunchbase.com/{{company.company.crunchbase_path}}" target="_blank">CrunchBase</a>
       </p>
 
+      <!-- current team -->
       <h3 ng-show="company.profile.relationships.current_team.items">Team</h3>
       <div ng-repeat="person in company.profile.relationships.current_team.items">
         <p>
@@ -48,24 +57,38 @@
       </div>
     </div>
 
+    <!-- show 'no CrunchBase' message if profile does not exist -->
     <div ng-hide="company.profile" class="no-crunchbase">
       <p>No company information from CrunchBase</p>
       <!-- if current user (company) provide a link to create CB profile-->
     </div>
   </div>
+  <!-- end left column -->
 
+  <!-- start center column -->
   <div class="col-sm-4">
+    <!-- start job section (hide when editing company profile)-->
     <div ng-hide="company.editForm">
+      <!-- hide when adding new job -->
       <div ng-hide="company.newJobForm">
+        <!-- hide when editing a job posting -->
         <div ng-hide="company.editJobHide">
+
+          <!-- show update message when company profile updated -->
           <p ng-show="company.updateMsg" class="success-msg">Profile updated successfully.</p>
+
+          <!-- toggle headers based on presence of job postings -->
+          <!-- jobsToggle handles situation when last job is deleted -->
           <h3 ng-hide="company.company.jobs" ng-show="company.jobsToggle">No Job Postings Yet</h3>
           <h3 ng-show="company.company.jobs" ng-hide="company.jobsToggle">Current Job Openings</h3>
 
-          <!-- click button to post new job -->
+          <!-- button to post new job (show form) -->
           <button ng-click="company.showNewJobForm()" class="btn btn-primary">Post a Job</button>
+
         </div>
+        <!-- end hide for editing a job posting -->
       </div>
+      <!-- end hide for adding new job-->
 
       <!-- form to add new job -->
       <h3 ng-show="company.newJobForm">Add a New Job</h3>
@@ -100,8 +123,13 @@
           <button class="btn btn-primary">Save Job</button>
         </p>
       </form>
+      <!-- end form to add new job -->
 
+      <!-- start list of current job postings -->
+      <!-- hide entire list when adding new job -->
       <div ng-hide="company.newJobForm" ng-repeat="job in company.company.jobs | orderBy: '-created_at'">
+        
+        <!-- hide job elements individually when editing a specific job -->
         <h5 ng-hide="company.editJobHide">
           <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
 
@@ -109,8 +137,12 @@
           <span ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil edit-job"></span>
           <span ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash delete-job"></span>
         </h5>
+
+        <!-- hide job elements individually when editing a specific job -->
         <p ng-hide="company.editJobHide">{{job.location}} | {{job.category}}</p>
         <div ng-hide="company.editJobHide">
+
+          <!-- list of skills related to a job -->
           <p ng-show="job.skills">
             <span class="skill"><strong>Skills:</strong></span>
             <span ng-repeat="skill in job.skills">
@@ -119,7 +151,7 @@
           </p>
         </div>
 
-        <!-- edit job form -->
+        <!-- form to edit a job -->
         <h3 ng-show="job.editJobForm">Edit Job</h3>
         <form ng-show="job.editJobForm" ng-submit="company.updateJob(job)" class="edit-form">
           <p>
@@ -149,10 +181,13 @@
             <button class="btn btn-primary">Save Job</button>
           </p>
         </form>
+        <!-- end form to edit a job -->
       </div>
+      <!-- end list of current job postings -->
     </div>
+    <!-- end job section -->
 
-    <!-- edit/delete buttons -->
+    <!-- buttons to edit/delete company profile -->
     <div ng-hide="company.editForm" class="edit-btns">
       <div ng-hide="company.newJobForm">
         <div ng-hide="company.editJobHide">
@@ -161,7 +196,7 @@
       </div>
     </div>
 
-    <!-- edit profile form -->
+    <!-- form to edit company profile -->
     <h3 ng-show="company.editForm">Edit Your Profile</h3>
     <form ng-show="company.editForm" ng-submit="company.updateCompany()" class="edit-form">
        <p ng-show="company.nameMsg" class="error-msg">A company with that name already exists.</p>
@@ -176,13 +211,17 @@
         <button class="btn btn-primary">Save Profile</button>
       </p>
     </form>
+    <!-- end form to edit company profile -->
   </div>
+  <!-- end center column -->
 
+  <!-- start right column -->
   <div class="col-sm-4">
-    <!-- news articles from CrunchBase -->
+    <!-- only show news if articles from CrunchBase exist -->
     <h3 ng-show="company.profile.relationships.news.items">News</h3>
     <div ng-repeat="article in company.profile.relationships.news.items | orderBy : '-created_at' | limitTo: 10">
       <p><a href="{{article.url}}" target="_blank">{{article.title}}</a></p>
     </div>
   </div>
+  <!-- end right column -->
 </div>
