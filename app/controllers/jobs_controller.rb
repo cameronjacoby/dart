@@ -33,7 +33,14 @@ class JobsController < ApplicationController
   end
 
   def update
-    respond_with @job.update(job_params)
+    @job.update(job_params)
+    @job.skills.clear
+    skill_params = params.require(:job).permit(:skill_names)[:skill_names].split(",").map(&:strip).map(&:downcase)
+    skill_params.each do |skill_str|
+      skill = Skill.find_or_create_by(name: skill_str)
+      @job.skills << skill
+    end
+    render json: @job
   end
 
   def destroy

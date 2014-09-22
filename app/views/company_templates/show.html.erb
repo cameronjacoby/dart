@@ -138,16 +138,25 @@
           <span ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash delete-job"></span>
         </h5>
 
+        <!-- show update message when a job is updated -->
+        <p ng-show="job.updateJobMsg" class="success-msg">Job updated successfully.</p>
+
         <!-- hide job elements individually when editing a specific job -->
         <p ng-hide="company.editJobHide">{{job.location}} | {{job.category}}</p>
         <div ng-hide="company.editJobHide">
 
           <!-- list of skills related to a job -->
-          <p ng-show="job.skills">
+          <!-- hide when just updated job (show skill names instead - not clickable) -->
+          <p ng-show="job.skills" ng-hide="job.skill_names">
             <span class="skill"><strong>Skills:</strong></span>
             <span ng-repeat="skill in job.skills">
               <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
             </span>
+          </p>
+
+          <!-- show string of skill names when just updated job -->
+          <p ng-show="job.skill_names" ng-hide="job.skills">
+            {{job.skill_names}}
           </p>
         </div>
 
@@ -176,6 +185,9 @@
           </p>
           <p>
             <textarea ng-model="job.how_to_apply" class="form-control" placeholder="How to Apply" required></textarea>
+          </p>
+          <p>
+            <input type="text" ng-model="job.skill_names" class="form-control" placeholder="Skills / Languages (separated by commas)" required>
           </p>
           <p>
             <button class="btn btn-primary">Save Job</button>
