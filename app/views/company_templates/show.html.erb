@@ -83,7 +83,7 @@
           <h3 ng-show="company.company.jobs" ng-hide="company.jobsToggle">Current Job Openings</h3>
 
           <!-- button to post new job (show form) -->
-          <button ng-click="company.showNewJobForm()" class="btn btn-primary">Post a Job</button>
+          <button ng-show="currentUser.company.id == company.company.id" ng-click="company.showNewJobForm()" class="btn btn-primary">Post a Job</button>
 
         </div>
         <!-- end hide for editing a job posting -->
@@ -134,8 +134,8 @@
           <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
 
           <!-- click icons to edit/delete jobs -->
-          <span ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil edit-job"></span>
-          <span ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash delete-job"></span>
+          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil edit-job"></span>
+          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash delete-job"></span>
         </h5>
 
         <!-- show update message when a job is updated -->
@@ -203,7 +203,7 @@
     <div ng-hide="company.editForm" class="edit-btns">
       <div ng-hide="company.newJobForm">
         <div ng-hide="company.hideWhenEditingJob">
-          <button ng-click="company.editCompany()" class="btn btn-primary">Edit Profile</button> <button ng-click="company.deleteCompany()" class="btn btn-danger">Delete Profile</button>
+          <button ng-show="currentUser.company.id == company.company.id" ng-click="company.editCompany()" class="btn btn-primary">Edit Profile</button> <button ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteCompany()" class="btn btn-danger">Delete Profile</button>
         </div>
       </div>
     </div>
