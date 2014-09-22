@@ -3,7 +3,6 @@ SessionControllers = angular.module("SessionControllers", [])
 class SessionCtrl extends MainCtrl
   
   constructor: (@scope, @http, @rootScope, @location) ->
-    @greeting = "hello world"
     super(@http, @rootScope, @location)
 
   createSession: (user) ->

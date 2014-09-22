@@ -7,7 +7,6 @@ class Router
         templateUrl: "/session_templates/new",
         controller: "SessionCtrl as session"
 
-
     @locationProvider.html5Mode(true)
 
 SessionRouter = angular.module("SessionRouter", [

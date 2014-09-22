@@ -10,8 +10,6 @@ class SessionController < AngularController
     @user = User.authenticate(params[:user][:email], params[:user][:password])
     if @user
       session[:user_id] = @user.id
-      # render json: @user, only: [:id, :email, :is_seeker, :is_company]
-
       respond_to do |format|
         format.json {render :json => @user, :only => [:id, :email, :is_seeker, :is_company], :include => [:seeker, :company]}
       end
@@ -31,7 +29,6 @@ class SessionController < AngularController
   end
 
   def destroy
-    puts "Destroying Session"
     session[:user_id] = nil
     respond_with nil
   end

@@ -9,15 +9,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    puts session[:user_id]
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
     end
-    # if @current_user.is_seeker
-    #   @current_seeker = @current_user.seeker
-    # elsif @current_user.is_company
-    #   @current_company = @current_user.company
-    # end
   end
 
 end
