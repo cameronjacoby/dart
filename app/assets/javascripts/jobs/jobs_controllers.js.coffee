@@ -19,4 +19,20 @@ class JobsShowCtrl
       else
         @job = data
 
+  editJob: () ->
+    skills = []
+    i = 0
+    while i < @job.skills.length
+      skills.push @job.skills[i].name
+      i += 1
+    @job.skill_names = skills.join(", ")
+    @updateMsg = false
+    @editForm = true
+
+  updateJob: () ->
+    @http.put("/companies/#{@job.company_id}/jobs/#{@job.id}.json", {job: @job}).success (data) =>
+      console.log "UPDATED!!!"
+      @updateMsg = true
+      @editForm = false
+
 JobsControllers.controller("JobsShowCtrl", ["$scope", "$http", "$routeParams", "$location", JobsShowCtrl])

@@ -2,7 +2,7 @@
   <div class="col-sm-3">
     <h3 ng-show="jobs.skills">Trending Skills</h3>
     <span ng-repeat="skill in jobs.skills | orderBy: '-jobs.length' | limitTo: 20">
-      <span class="skill-spaced"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
+      <span ng-show="skill.jobs.length" class="skill-spaced"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
     </span>
   </div>
 
