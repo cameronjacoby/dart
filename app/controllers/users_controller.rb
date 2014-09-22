@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       if found_user.id == @user.id
         respond_with @user.update_columns(user_params)
       else
-        render json: "EMAIL ERROR"
+        render json: 'EMAIL ERROR'
       end
     else
       respond_with @user.update_columns(user_params)

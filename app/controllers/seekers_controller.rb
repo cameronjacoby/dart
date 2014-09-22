@@ -6,7 +6,7 @@ class SeekersController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json {render :json => @seeker, :include => [:user => {:only => :email}, :jobs => {:include => {:company => {:only => [:id, :name]}}}]}
+      format.json {render :json => @seeker, :include => [:user, :jobs => {:include => {:company => {:only => [:id, :name]}}}]}
     end
   end
 

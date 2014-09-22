@@ -19,10 +19,12 @@
       </div>
     </div>
 
+    <!-- edit/delete buttons -->
     <div ng-hide="seeker.editForm" class="edit-btns">
       <button ng-click="seeker.editSeeker()" class="btn btn-primary">Edit Profile</button> <button ng-click="seeker.deleteSeeker()" class="btn btn-danger">Delete Profile</button>
     </div>
 
+    <!-- edit profile form -->
     <h2 ng-show="seeker.editForm">Edit Your Profile</h2>
     <form ng-show="seeker.editForm" ng-submit="seeker.updateSeeker()" class="edit-form">
       <p>
