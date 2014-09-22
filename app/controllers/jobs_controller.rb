@@ -14,6 +14,11 @@ class JobsController < ApplicationController
 
   def create
     @job = @company.jobs.create(job_params)
+    skill_params = params.require(:job).permit(:skills)[:skills].split(",").map(&:strip).map(&:downcase)
+    skill_params.each do |skill_str|
+      skill = Skill.find_or_create_by(name: skill_str)
+      @job.skills << skill
+    end
     render json: @job
   end
 
