@@ -72,7 +72,7 @@
       <!-- hide when adding new job -->
       <div ng-hide="company.newJobForm">
         <!-- hide when editing a job posting -->
-        <div ng-hide="company.editJobHide">
+        <div ng-hide="company.hideWhenEditingJob">
 
           <!-- show update message when company profile updated -->
           <p ng-show="company.updateMsg" class="success-msg">Profile updated successfully.</p>
@@ -130,7 +130,7 @@
       <div ng-hide="company.newJobForm" ng-repeat="job in company.company.jobs | orderBy: '-created_at'">
         
         <!-- hide job elements individually when editing a specific job -->
-        <h5 ng-hide="company.editJobHide">
+        <h5 ng-hide="company.hideWhenEditingJob">
           <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
 
           <!-- click icons to edit/delete jobs -->
@@ -142,8 +142,8 @@
         <p ng-show="job.updateJobMsg" class="success-msg">Job updated successfully.</p>
 
         <!-- hide job elements individually when editing a specific job -->
-        <p ng-hide="company.editJobHide">{{job.location}} | {{job.category}}</p>
-        <div ng-hide="company.editJobHide">
+        <p ng-hide="company.hideWhenEditingJob">{{job.location}} | {{job.category}}</p>
+        <div ng-hide="company.hideWhenEditingJob">
 
           <!-- list of skills related to a job -->
           <!-- hide when just updated job (show skill names instead - not clickable) -->
@@ -202,7 +202,7 @@
     <!-- buttons to edit/delete company profile -->
     <div ng-hide="company.editForm" class="edit-btns">
       <div ng-hide="company.newJobForm">
-        <div ng-hide="company.editJobHide">
+        <div ng-hide="company.hideWhenEditingJob">
           <button ng-click="company.editCompany()" class="btn btn-primary">Edit Profile</button> <button ng-click="company.deleteCompany()" class="btn btn-danger">Delete Profile</button>
         </div>
       </div>

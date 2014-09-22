@@ -10,6 +10,10 @@ class CompaniesShowCtrl
   editCompany: () ->
     @editForm = true
     @updateMsg = false
+    i = 0
+    while i < @company.jobs.length
+      @company.jobs[i].updateJobMsg = false
+      i += 1
 
   updateCompany: () ->
     @nameMsg = false
@@ -49,16 +53,17 @@ class CompaniesShowCtrl
       skills.push job.skills[i].name
       i += 1
     job.skill_names = skills.join(", ")
-    job.updateJobMsg = false
     job.editJobForm = true
-    @editJobHide = true
+    job.updateJobMsg = false
+    @hideWhenEditingJob = true
+    @updateMsg = false
 
   updateJob: (job) ->
     @http.put("/companies/#{@company.id}/jobs/#{job.id}.json", {job: job}).success (data) =>
       console.log "UPDATED!!!"
       job.updateJobMsg = true
       job.editJobForm = false
-      @editJobHide = false
+      @hideWhenEditingJob = false
 
   deleteJob: (job) ->
     conf = confirm "Are you sure you want to delete this job?"
