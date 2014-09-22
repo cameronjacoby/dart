@@ -34,7 +34,7 @@
 
     <!-- buttons to edit/delete job -->
     <div ng-hide="job.editForm" class="edit-btns">
-      <button ng-click="job.editJob()" class="btn btn-primary">Edit Job</button> <button ng-click="job.deleteJob()" class="btn btn-danger">Delete Job</button>
+      <button ng-show="currentUser.company.id == job.job.company.id" ng-click="job.editJob()" class="btn btn-primary">Edit Job</button> <button ng-show="currentUser.company.id == job.job.company.id" ng-click="job.deleteJob()" class="btn btn-danger">Delete Job</button>
     </div>
 
     <!-- form to edit a job -->
