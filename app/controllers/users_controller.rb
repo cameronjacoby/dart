@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:destroy]
+  before_action :set_user, only: [:update, :destroy]
   before_action :render_layout_if_html
   respond_to :json, :html
 
@@ -41,6 +41,19 @@ class UsersController < ApplicationController
       else
         render json: 'ERROR'
       end
+    end
+  end
+
+  def update
+    found_user = User.find_by_email(user_params[:email])
+    if found_user
+      if found_user.id == @user.id
+        respond_with @user.update_columns(user_params)
+      else
+        render json: "EMAIL ERROR"
+      end
+    else
+      respond_with @user.update_columns(user_params)
     end
   end
 

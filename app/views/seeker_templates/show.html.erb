@@ -1,1 +1,45 @@
-<h1>Seeker Show Page!!!</h1>
+<div class="row">
+  <div class="col-sm-3"></div>
+
+  <div class="col-sm-6">
+    <h1 ng-hide="seeker.editForm">{{seeker.seeker.first_name}}'s Profile Page</h1>
+    <p ng-show="seeker.updateMsg" class="success-msg">Profile updated successfully.</p>
+    <div ng-hide="seeker.editForm">
+      <h4 ng-hide="seeker.seeker.jobs">No saved jobs yet. Browse <a href="/">all jobs</a> to start saving favorites.</h4>
+      <h3 ng-show="seeker.seeker.jobs">Saved Jobs</h3>
+      <div ng-repeat="favorite in seeker.seeker.jobs">
+        <h5>
+          <a href="/companies/{{favorite.company.id}}/jobs/{{favorite.id}}">{{favorite.title}}</a>
+          <span class="glyphicon glyphicon-trash"></span>
+        </h5>
+        <p>
+          <a href="/companies/{{favorite.company.id}}">{{favorite.company.name}}</a> | 
+          {{favorite.location}} | {{favorite.category}}
+        </p>
+      </div>
+    </div>
+
+    <div ng-hide="seeker.editForm" class="edit-btns">
+      <button ng-click="seeker.editSeeker()" class="btn btn-primary">Edit Profile</button> <button ng-click="seeker.deleteSeeker()" class="btn btn-danger">Delete Profile</button>
+    </div>
+
+    <h2 ng-show="seeker.editForm">Edit Your Profile</h2>
+    <form ng-show="seeker.editForm" ng-submit="seeker.updateSeeker()" class="edit-form">
+      <p>
+        <input type="text" ng-model="seeker.seeker.first_name" class="form-control" placeholder="First Name" required autofocus>
+      </p>
+      <p>
+        <input type="text" ng-model="seeker.seeker.last_name" class="form-control" placeholder="Last Name" required>
+      </p>
+      <p ng-show="seeker.emailMsg" class="error-msg">An account with that email already exists.</p>
+      <p>
+        <input type="text" ng-model="seeker.seeker.user.email" class="form-control" placeholder="Email" required>
+      </p>
+      <p>
+        <button class="btn btn-primary">Save Profile</button>
+      </p>
+    </form>
+
+  </div>
+  <div class="col-sm-3"></div>
+</div>

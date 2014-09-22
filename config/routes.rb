@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:create, :destroy]
-  resources :seekers, only: [:show]
+  resources :users, only: [:create, :update, :destroy]
+  resources :seekers, only: [:show, :update]
 
   resources :companies, only: [:show] do
     resources :jobs, only: [:show]

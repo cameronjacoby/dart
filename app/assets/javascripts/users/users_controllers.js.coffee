@@ -34,6 +34,7 @@ class UsersNewCtrl
         @scope.newSeeker = {}
         @newSeeker = data
         console.log "NEW SEEKER", @newSeeker
+        @location.path("/seekers/#{@newSeeker.id}")
 
   createCompany: (newUser, newCompany) ->
     newUser.is_company = true
