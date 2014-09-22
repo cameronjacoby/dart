@@ -16,40 +16,45 @@ angular.module("DartApp", [
 
 class MainCtrl 
 
-  constructor: (@http, @rootScope)->
-    console.log "Checking Session", @signed_in()
+  constructor: (@http, @rootScope) ->
+    console.log "CHECKING SESSION", @signed_in()
     console.log @currentUser
     @rootScope.signed_in = @signed_in
-    @rootScope.sign_out = ()=>
+
+    @rootScope.sign_out = () =>
+      # destroy session
       @http.get("/logout.json")
-      .success ()=>
+      .success () =>
+        # set current user to null
         @set_user null
+        # 'redirect' to homepage
+
     if !@signed_in()
       @http.get("/users/current_user.json")
-      .success (userData) =>
-        console.log("userData", userData)
-        console.dir userData
-        if userData != "null"
-          @set_user userData
+      .success (data) =>
+        console.log("USER DATA", data)
+        if data != "null"
+          # set user to current user
+          @set_user data
         else
-          console.log "what??"
+          # make sure session is destroyed (since no current user)
           @rootScope.sign_out()
     return this
       
-  signed_in: ()->
+  signed_in: () ->
     !!@currentUser
 
-  set_user: (user)->
+  set_user: (user) ->
     @rootScope.currentUser = @currentUser = user
 
   sign_in: (user, success, fail)->
-    console.log "Signing In", user
+    console.log "SIGNING IN", user
     @http.post("/login.json", {user: user})
     .success (user) =>
       @set_user user
+      # callback function on success
       success()
-    .error fail
+    .error
+      # callback function on fail
 
-
-# angular.module("MainCtrl", MainCtrl)
 window.MainCtrl = MainCtrl

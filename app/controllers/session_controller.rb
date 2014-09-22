@@ -7,17 +7,18 @@ class SessionController < AngularController
   end
 
   def create
-    #@session = {}
     @user = User.authenticate(params[:user][:email], params[:user][:password])
     if @user
       session[:user_id] = @user.id
-      render json: @user, only: [:id, :email]
+      # render json: @user, only: [:id, :email, :is_seeker, :is_company]
+
+      respond_to do |format|
+        format.json {render :json => @user, :only => [:id, :email, :is_seeker, :is_company], :include => [:seeker, :company]}
+      end
+
     else
-      render json: 'NOT LOGGED IN', status: 400
+      render json: "NOT LOGGED IN", status: 400
     end
-    # if @user 
-    #   respond_with session[:user_id] = @user.id
-    #   # redirect_to user_path(@user.id), :notice => 'Logged in!'
     # else
     #   if User.find_by_email(params[:user][:email]) == nil
     #     # redirect_to login_path, :alert => 'Account with that email does not exist.'
@@ -33,7 +34,6 @@ class SessionController < AngularController
     puts "Destroying Session"
     session[:user_id] = nil
     respond_with nil
-    # redirect_to login_path, :notice => 'Logged out.'
   end
 
 end

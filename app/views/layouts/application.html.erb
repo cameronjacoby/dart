@@ -27,7 +27,6 @@
         <ul class="nav navbar-nav navbar-right">
           <li ng-show="!signed_in()"><a id="navli" href="/login">Log In</a></li>
           <li ng-show="!signed_in()"><a id="navli" href="/register">Register</a></li>
-          {{!!currentUser}}
           <li ng-show="signed_in()"><a id="navli" href="" ng-click="sign_out()">Log Out</a></li>
         </ul>
       </div>
