@@ -1,9 +1,9 @@
 UsersControllers = angular.module("UsersControllers", [])
 
-class UsersNewCtrl
+class UsersNewCtrl extends MainCtrl
   
-  constructor: (@scope, @http, @routeParams, @location) ->
-    @greeting = "hello world"
+  constructor: (@scope, @http, @routeParams, @rootScope, @location) ->
+    super(@http, @rootScope, @location)
 
   createSeeker: (newUser, newSeeker) ->
     newUser.is_seeker = true
@@ -77,4 +77,6 @@ class UsersNewCtrl
         console.log "NEW COMPANY", @newCompany
         @location.path("/companies/#{@newCompany.id}")
 
-UsersControllers.controller("UsersNewCtrl", ["$scope", "$http", "$routeParams", "$location", UsersNewCtrl])
+  @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
+
+UsersControllers.controller("UsersNewCtrl", UsersNewCtrl)

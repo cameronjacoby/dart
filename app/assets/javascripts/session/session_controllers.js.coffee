@@ -7,7 +7,7 @@ class SessionCtrl extends MainCtrl
 
   createSession: (user) ->
     console.log user
-    console.log("CREATE SESSION")
+    console.log "CREATE SESSION"
     @sign_in user, () =>
       if @rootScope.currentUser.is_seeker
         @location.path("/seekers/#{@rootScope.currentUser.seeker.id}")

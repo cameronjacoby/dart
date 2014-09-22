@@ -1,11 +1,14 @@
 SkillsControllers = angular.module("SkillsControllers", [])
 
-class SkillsShowCtrl
+class SkillsShowCtrl extends MainCtrl
   
-  constructor: (@scope, @http, @routeParams) ->
+  constructor: (@scope, @http, @routeParams, @rootScope, @location) ->
+    super(@http, @rootScope, @location)
     @http.get("/skills/#{@routeParams.id}.json").success (data) =>
       @skill = data
     @http.get("/skills.json").success (data) =>
       @skills = data
 
-SkillsControllers.controller("SkillsShowCtrl", ["$scope", "$http", "$routeParams", SkillsShowCtrl])
+  @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
+
+SkillsControllers.controller("SkillsShowCtrl", SkillsShowCtrl)

@@ -10,15 +10,14 @@ angular.module("DartApp", [
   "SkillsRouter",
   "SkillsControllers",
   "SessionRouter",
-  "SessionControllers",
-  "SessionProviders"
+  "SessionControllers"
 ])
 
-class MainCtrl 
+class MainCtrl
 
   constructor: (@http, @rootScope) ->
     console.log "CHECKING SESSION", @signed_in()
-    console.log @currentUser
+    console.log "CURRENT USER", @currentUser
     @rootScope.signed_in = @signed_in
 
     @rootScope.sign_out = () =>

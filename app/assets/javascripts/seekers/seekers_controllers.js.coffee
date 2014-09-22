@@ -1,8 +1,9 @@
 SeekersControllers = angular.module("SeekersControllers", [])
 
-class SeekersShowCtrl
+class SeekersShowCtrl extends MainCtrl
   
-  constructor: (@scope, @http, @routeParams, @location) ->
+  constructor: (@scope, @http, @routeParams, @rootScope, @location) ->
+    super(@http, @rootScope, @location)
     @http.get("/seekers/#{@routeParams.id}.json").success (data) =>
       @seeker = data
 
@@ -27,4 +28,6 @@ class SeekersShowCtrl
       @http.delete("/users/#{@seeker.user_id}.json").success (data) =>
         @location.path("/")
 
-SeekersControllers.controller("SeekersShowCtrl", ["$scope", "$http", "$routeParams", "$location", SeekersShowCtrl])
+  @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
+
+SeekersControllers.controller("SeekersShowCtrl", SeekersShowCtrl)
