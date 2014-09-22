@@ -61,6 +61,10 @@ class UsersController < ApplicationController
     respond_with @user.destroy
   end
 
+  def logged_in_user
+    render json: current_user, only: [:id, :email]  
+  end
+
   private
 
     def set_user
@@ -84,5 +88,4 @@ class UsersController < ApplicationController
         render 'layouts/application'
       end
     end
-
 end

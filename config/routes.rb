@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get "/users/current_user", to: "users#logged_in_user"
   resources :users, only: [:create, :update, :destroy]
   resources :seekers, only: [:show, :update]
 
@@ -16,8 +17,13 @@ Rails.application.routes.draw do
   resources :company_templates, only: [:show]
   resources :job_templates, only: [:index, :show]
   resources :skill_templates, only: [:show]
+  resources :session_templates, only: [:new]
 
   get '/register', to: 'users#new'
+  get '/login', to: 'session#new'
+  post '/login', to: 'session#create'
+  delete '/logout', to: 'session#destroy'
+  get '/logout', to: 'session#destroy'
 
   root 'jobs#index'
   match '*path', to: 'jobs#index', via: 'get'
