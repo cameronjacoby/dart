@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :seekers, only: [:show, :update]
 
   resources :companies, only: [:show, :update] do
-    resources :jobs, only: [:show]
+    resources :jobs, only: [:create, :show, :update, :destroy]
   end
 
   resources :jobs, only: [:index]

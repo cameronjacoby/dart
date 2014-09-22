@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
 
-  before_action :set_company, :set_job, only: [:show]
+  before_action :set_company, only: [:create, :show]
+  before_action :set_job, only: [:show, :update, :destroy]
   before_action :render_layout_if_html
   respond_to :json, :html
 
@@ -9,6 +10,11 @@ class JobsController < ApplicationController
     respond_to do |format|
       format.json {render :json => @jobs.to_json(:include => [:company, :skills])}
     end
+  end
+
+  def create
+    @job = @company.jobs.create(job_params)
+    render json: @job
   end
 
   def show
@@ -21,6 +27,14 @@ class JobsController < ApplicationController
     end
   end
 
+  def update
+    respond_with @job.update(job_params)
+  end
+
+  def destroy
+    respond_with @job.destroy
+  end
+
   private
 
     def set_company
@@ -29,6 +43,10 @@ class JobsController < ApplicationController
 
     def set_job
       @job = Job.find(params[:id])
+    end
+
+    def job_params
+      params.require(:job).permit(:title, :location, :category, :description, :how_to_apply)
     end
 
     def render_layout_if_html
