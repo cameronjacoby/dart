@@ -23,11 +23,11 @@ class MainCtrl
 
     @rootScope.sign_out = () =>
       # destroy session
-      @http.get("/logout.json")
-      .success () =>
+      @http.get("/logout.json").success () =>
         # set current user to null
         @set_user null
         # 'redirect' to homepage
+        @location.path("/")
 
     if !@signed_in()
       @http.get("/users/current_user.json")
@@ -38,7 +38,9 @@ class MainCtrl
           @set_user data
         else
           # make sure session is destroyed (since no current user)
-          @rootScope.sign_out()
+          @http.get("/logout.json").success () =>
+            # set current user to null
+            @set_user null
     return this
       
   signed_in: () ->

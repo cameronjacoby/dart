@@ -4,7 +4,7 @@ class SessionCtrl extends MainCtrl
   
   constructor: (@scope, @http, @rootScope, @location) ->
     @greeting = "hello world"
-    super(@http, @rootScope)
+    super(@http, @rootScope, @location)
 
   createSession: (user) ->
     console.log user
