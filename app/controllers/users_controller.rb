@@ -1,8 +1,6 @@
-class UsersController < ApplicationController
+class UsersController < AngularController
 
   before_action :set_user, only: [:update, :destroy]
-  before_action :render_layout_if_html
-  respond_to :json, :html
 
   def new
   end
@@ -83,9 +81,4 @@ class UsersController < ApplicationController
       params.require(:company).permit(:name)
     end
 
-    def render_layout_if_html
-      if request.format.symbol == :html
-        render 'layouts/application'
-      end
-    end
 end

@@ -1,8 +1,6 @@
-class SeekersController < ApplicationController
+class SeekersController < AngularController
 
   before_action :set_seeker, only: [:show, :update]
-  before_action :render_layout_if_html
-  respond_to :json, :html
 
   def show
     respond_to do |format|
@@ -22,12 +20,6 @@ class SeekersController < ApplicationController
 
     def set_seeker
       @seeker = Seeker.find(params[:id])
-    end
-
-    def render_layout_if_html
-      if request.format.symbol == :html
-        render 'layouts/application'
-      end
     end
 
 end

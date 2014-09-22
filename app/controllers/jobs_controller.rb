@@ -1,9 +1,7 @@
-class JobsController < ApplicationController
+class JobsController < AngularController
 
   before_action :set_company, only: [:create, :show]
   before_action :set_job, only: [:show, :update, :destroy]
-  before_action :render_layout_if_html
-  respond_to :json, :html
 
   def index
     @jobs = Job.all
@@ -59,12 +57,6 @@ class JobsController < ApplicationController
 
     def job_params
       params.require(:job).permit(:title, :location, :category, :description, :how_to_apply)
-    end
-
-    def render_layout_if_html
-      if request.format.symbol == :html
-        render 'layouts/application'
-      end
     end
 
 end

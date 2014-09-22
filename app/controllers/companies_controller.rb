@@ -1,8 +1,6 @@
-class CompaniesController < ApplicationController
+class CompaniesController < AngularController
 
   before_action :set_company, only: [:show, :update]
-  before_action :render_layout_if_html
-  respond_to :json, :html
 
   def show
     respond_to do |format|
@@ -31,12 +29,6 @@ class CompaniesController < ApplicationController
 
     def set_company
       @company = Company.find(params[:id])
-    end
-
-    def render_layout_if_html
-      if request.format.symbol == :html
-        render 'layouts/application'
-      end
     end
 
 end

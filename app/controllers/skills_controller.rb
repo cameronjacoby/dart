@@ -1,8 +1,6 @@
-class SkillsController < ApplicationController
+class SkillsController < AngularController
 
   before_action :set_skill, only: [:show]
-  before_action :render_layout_if_html
-  respond_to :json, :html
 
   def index
     @skills = Skill.all
@@ -21,12 +19,6 @@ class SkillsController < ApplicationController
 
     def set_skill
       @skill = Skill.find(params[:id])
-    end
-
-    def render_layout_if_html
-      if request.format.symbol == :html
-        render 'layouts/application'
-      end
     end
 
 end
