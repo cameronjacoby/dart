@@ -35,4 +35,10 @@ class JobsShowCtrl
       @updateMsg = true
       @editForm = false
 
+  deleteJob: () ->
+    conf = confirm "Are you sure you want to delete this job?"
+    if conf
+      @http.delete("/companies/#{@job.company_id}/jobs/#{@job.id}.json").success (data) =>
+        @location.path("/companies/#{@job.company_id}")
+
 JobsControllers.controller("JobsShowCtrl", ["$scope", "$http", "$routeParams", "$location", JobsShowCtrl])
