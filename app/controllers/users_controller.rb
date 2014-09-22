@@ -60,7 +60,9 @@ class UsersController < AngularController
   end
 
   def logged_in_user
-    render json: current_user, only: [:id, :email]  
+    respond_to do |format|
+      format.json {render :json => current_user, :only => [:id, :email, :is_seeker, :is_company], :include => [:seeker, :company]}
+    end
   end
 
   private

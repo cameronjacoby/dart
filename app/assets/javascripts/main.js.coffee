@@ -54,6 +54,7 @@ class MainCtrl
     @http.post("/login.json", {user: user})
     .success (user) =>
       @set_user user
+      console.log @rootScope.currentUser
       # callback function on success
       success()
     .error

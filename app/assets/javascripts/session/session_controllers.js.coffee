@@ -9,7 +9,6 @@ class SessionCtrl extends MainCtrl
     console.log user
     console.log("CREATE SESSION")
     @sign_in user, () =>
-      console.log @rootScope.currentUser
       if @rootScope.currentUser.is_seeker
         @location.path("/seekers/#{@rootScope.currentUser.seeker.id}")
       else if @rootScope.currentUser.is_company

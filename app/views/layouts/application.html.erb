@@ -21,8 +21,8 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a id="navli" href="/">Profile</a></li>
-          <li><a id="navli" href="/">Company Page</a></li>
+          <li ng-show="currentUser.is_seeker"><a id="navli" href="/seekers/{{currentUser.seeker.id}}">Profile</a></li>
+          <li ng-show="currentUser.is_company"><a id="navli" href="/companies/{{currentUser.company.id}}">Company Page</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li ng-show="!signed_in()"><a id="navli" href="/login">Log In</a></li>
