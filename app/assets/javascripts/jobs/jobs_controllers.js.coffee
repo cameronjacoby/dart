@@ -4,9 +4,11 @@ class JobsCtrl extends MainCtrl
   
   constructor: (@scope, @http, @rootScope, @location) ->
     super(@http, @rootScope, @location)
-    @http.get("/jobs.json").success (data) =>
+    @http.get("/jobs.json")
+    .success (data) =>
       @jobs = data
-    @http.get("/skills.json").success (data) =>
+    @http.get("/skills.json")
+    .success (data) =>
       @skills = data
 
   @$inject = ["$scope", "$http", "$rootScope", "$location"]
@@ -17,11 +19,11 @@ class JobsShowCtrl extends MainCtrl
   
   constructor: (@scope, @http, @routeParams, @rootScope, @location) ->
     super(@http, @rootScope, @location)
-    @http.get("/companies/#{@routeParams.company_id}/jobs/#{@routeParams.id}.json").success (data) =>
-      if data == ""
-        @location.path("/")
-      else
-        @job = data
+    @http.get("/companies/#{@routeParams.company_id}/jobs/#{@routeParams.id}.json")
+    .success (data) =>
+      @job = data
+    .error () =>
+      @location.path("/")
 
   editJob: () ->
     skills = []
@@ -34,16 +36,21 @@ class JobsShowCtrl extends MainCtrl
     @editForm = true
 
   updateJob: () ->
-    @http.put("/companies/#{@job.company_id}/jobs/#{@job.id}.json", {job: @job}).success (data) =>
-      console.log "UPDATED!!!"
+    @http.put("/companies/#{@job.company_id}/jobs/#{@job.id}.json", {job: @job})
+    .success (data) =>
       @updateMsg = true
       @editForm = false
+    .error () =>
+      @location.path("/")
 
   deleteJob: () ->
     conf = confirm "Are you sure you want to delete this job?"
     if conf
-      @http.delete("/companies/#{@job.company_id}/jobs/#{@job.id}.json").success (data) =>
+      @http.delete("/companies/#{@job.company_id}/jobs/#{@job.id}.json")
+      .success (data) =>
         @location.path("/companies/#{@job.company_id}")
+      .error () =>
+        @location.path("/")
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
 

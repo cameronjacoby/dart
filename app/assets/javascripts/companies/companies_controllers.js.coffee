@@ -53,6 +53,8 @@ class CompaniesShowCtrl extends MainCtrl
       @scope.newJob = {}
       @job = data
       @location.path("/companies/#{@company.id}/jobs/#{@job.id}")
+    .error () =>
+      @location.path("/")
 
   editJob: (job) ->
     skills = []
@@ -69,10 +71,11 @@ class CompaniesShowCtrl extends MainCtrl
   updateJob: (job) ->
     @http.put("/companies/#{@company.id}/jobs/#{job.id}.json", {job: job})
     .success (data) =>
-      console.log "UPDATED!!!"
       job.updateJobMsg = true
       job.editJobForm = false
       @hideWhenEditingJob = false
+    .error () =>
+      @location.path("/")
 
   deleteJob: (job) ->
     conf = confirm "Are you sure you want to delete this job?"
@@ -82,6 +85,8 @@ class CompaniesShowCtrl extends MainCtrl
         @company.jobs.splice(@company.jobs.indexOf(job), 1)
         if @company.jobs.length == 0
           @jobsToggle = true
+      .error () =>
+        @location.path("/")
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
 

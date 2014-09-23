@@ -10,7 +10,7 @@ class CompaniesController < AngularController
   end
 
   def update
-    if @current_user.seeker == @seeker
+    if @current_user.company == @company
       found_company = Company.find_by_name(company_params[:name])
       if found_company
         if found_company.id == @company.id

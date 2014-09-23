@@ -1,48 +1,65 @@
 class JobsController < AngularController
 
-  before_action :set_company, only: [:create, :show]
+  before_action :is_authenticated?
+  before_action :set_company, only: [:create, :show, :update]
   before_action :set_job, only: [:show, :update, :destroy]
 
   def index
     @jobs = Job.all
     respond_to do |format|
-      format.json {render :json => @jobs.to_json(:include => [:company, :skills])}
+      format.json {render :json => @jobs, :include => [:company, :skills]}
     end
   end
 
   def create
-    @job = @company.jobs.create(job_params)
-    skill_params = params.require(:job).permit(:skills)[:skills].split(",").map(&:strip).map(&:downcase)
-    skill_params.each do |skill_str|
-      skill = Skill.find_or_create_by(name: skill_str)
-      @job.skills << skill
+    if @current_user.company == @company
+      @job = @company.jobs.create(job_params)
+      skill_params = params.require(:job).permit(:skills)[:skills].split(",").map(&:strip).map(&:downcase)
+      skill_params.each do |skill_str|
+        skill = Skill.find_or_create_by(name: skill_str)
+        @job.skills << skill
+      end
+      respond_to do |format|
+        format.json {render :json => @job}
+      end
+    else
+      render json: {}, status: 403
     end
-    render json: @job
   end
 
   def show
     if @company.jobs.include? @job
       respond_to do |format|
-        format.json {render :json => @job.to_json(:include => [:company, :skills])}
+        format.json {render :json => @job, :include => [:company, :skills]}
       end
     else
-      respond_with ''
+      render json: {}, status: 404
     end
   end
 
   def update
-    @job.update(job_params)
-    @job.skills.clear
-    skill_params = params.require(:job).permit(:skill_names)[:skill_names].split(",").map(&:strip).map(&:downcase)
-    skill_params.each do |skill_str|
-      skill = Skill.find_or_create_by(name: skill_str)
-      @job.skills << skill
+    if @current_user.company == @company
+      @job.update(job_params)
+      @job.skills.clear
+      skill_params = params.require(:job).permit(:skill_names)[:skill_names].split(",").map(&:strip).map(&:downcase)
+      skill_params.each do |skill_str|
+        skill = Skill.find_or_create_by(name: skill_str)
+        @job.skills << skill
+      end
+      respond_to do |format|
+        format.json {render :json => @job, :include => [:skills]}
+      end
+    else
+      render json: {}, status: 403
     end
-    render json: @job
   end
 
   def destroy
-    respond_with @job.destroy
+    if @current_user.company == @company
+      respond_with @job.destroy
+    else
+      render json: {}, status: 403
+    end
   end
 
   private
