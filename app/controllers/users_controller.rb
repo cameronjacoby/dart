@@ -27,7 +27,9 @@ class UsersController < AngularController
           end
 
         elsif Company.find_by_name(@company.name)
-          render json: 'COMPANY NAME ERROR', status: 400
+          respond_to do |format|
+            format.json {render :json => {:user_id => @user.id, :error => 'COMPANY NAME ERROR'}, status: 400}
+          end
         else
           render json: 'COMPANY ERROR', status: 400
         end

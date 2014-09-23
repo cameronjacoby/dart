@@ -73,18 +73,7 @@ class UsersNewCtrl extends MainCtrl
 
     .error (data) =>
       console.log data
-      if data == "COMPANY NAME ERROR"
-        newCompany.name = ""
-        @nameMsgComp = true
-        @http.delete("/users/#{data.user.id}.json")
-        .success (data) ->
-      else if data == "COMPANY ERROR"
-        @scope.newUserComp = {}
-        @scope.newCompany = {}
-        @errorMsgComp = true
-        @http.delete("/users/#{data.user.id}.json")
-        .success (data) ->
-      else if data == "EMAIL ERROR"
+      if data == "EMAIL ERROR"
         newUser.email = ""
         @emailMsgComp = true
       else if data == "PASSWORD LENGTH ERROR"
@@ -99,6 +88,17 @@ class UsersNewCtrl extends MainCtrl
         @scope.newUserComp = {}
         @scope.newCompany = {}
         @errorMsgComp = true
+      else if data.error == "COMPANY NAME ERROR"
+        newCompany.name = ""
+        @nameMsgComp = true
+        @http.delete("/users/#{data.user_id}.json")
+        .success (data) ->
+      else if data.error == "COMPANY ERROR"
+        @scope.newUserComp = {}
+        @scope.newCompany = {}
+        @errorMsgComp = true
+        @http.delete("/users/#{data.user_id}.json")
+        .success (data) ->
 
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
