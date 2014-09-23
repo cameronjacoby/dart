@@ -38,6 +38,8 @@ class SeekersShowCtrl extends MainCtrl
       @http.delete("/users/#{@seeker.user_id}.json")
       .success (data) =>
         @location.path("/")
+      .error (data) =>
+        @location.path("/")
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
 

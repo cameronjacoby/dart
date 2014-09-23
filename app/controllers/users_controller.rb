@@ -1,10 +1,10 @@
 class UsersController < AngularController
 
+  before_action :is_authenticated?, only: [:update, :destroy]
   before_action :set_user, only: [:update, :destroy]
 
   def new
   end
-
 
   def create
     @user = User.new(user_params)
@@ -49,21 +49,29 @@ class UsersController < AngularController
 
 
   def update
-    found_user = User.find_by_email(user_params[:email])
-    if found_user
-      if found_user.id == @user.id
-        respond_with @user.update_columns(user_params)
+    if @current_user == @user
+      found_user = User.find_by_email(user_params[:email])
+      if found_user
+        if found_user.id == @user.id
+          respond_with @user.update_columns(user_params)
+        else
+          render json: 'EMAIL ERROR'
+        end
       else
-        render json: 'EMAIL ERROR'
+        respond_with @user.update_columns(user_params)
       end
     else
-      respond_with @user.update_columns(user_params)
+      render json: {}, status: 403
     end
   end
 
 
   def destroy
-    respond_with @user.destroy
+    if @current_user == @user
+      respond_with @user.destroy
+    else
+      render json: {}, status: 403
+    end
   end
 
 

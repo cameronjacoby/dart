@@ -43,6 +43,8 @@ class CompaniesShowCtrl extends MainCtrl
       @http.delete("/users/#{@company.user_id}.json")
       .success (data) =>
         @location.path("/")
+      .error (data) =>
+        @location.path("/")
 
   showNewJobForm: () ->
     @newJobForm = true
