@@ -26,12 +26,13 @@ class JobsShowCtrl extends MainCtrl
       @location.path("/")
 
   editJob: () ->
-    skills = []
-    i = 0
-    while i < @job.skills.length
-      skills.push @job.skills[i].name
-      i += 1
-    @job.skill_names = skills.join(", ")
+    if !@job.skill_names
+      skills = []
+      i = 0
+      while i < @job.skills.length
+        skills.push @job.skills[i].name
+        i += 1
+      @job.skill_names = skills.join(", ")
     @updateMsg = false
     @editForm = true
 

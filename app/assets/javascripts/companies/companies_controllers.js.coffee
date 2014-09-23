@@ -60,12 +60,13 @@ class CompaniesShowCtrl extends MainCtrl
       @location.path("/")
 
   editJob: (job) ->
-    skills = []
-    i = 0
-    while i < job.skills.length
-      skills.push job.skills[i].name
-      i += 1
-    job.skill_names = skills.join(", ")
+    if !job.skill_names
+      skills = []
+      i = 0
+      while i < job.skills.length
+        skills.push job.skills[i].name
+        i += 1
+      job.skill_names = skills.join(", ")
     job.editJobForm = true
     job.updateJobMsg = false
     @hideWhenEditingJob = true
