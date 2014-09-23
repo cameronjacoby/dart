@@ -29,6 +29,7 @@ class JobsController < AngularController
 
   def show
     if @company.jobs.include? @job
+      @job.increase_clicks
       respond_to do |format|
         format.json {render :json => @job, :include => [:company, :skills]}
       end
