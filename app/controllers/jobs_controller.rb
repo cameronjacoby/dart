@@ -1,7 +1,7 @@
 class JobsController < AngularController
 
   before_action :is_authenticated?
-  before_action :set_company, only: [:create, :show, :update]
+  before_action :set_company, only: [:create, :show, :update, :destroy]
   before_action :set_job, only: [:show, :update, :destroy]
 
   def index
