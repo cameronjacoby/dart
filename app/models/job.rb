@@ -16,4 +16,13 @@ class Job < ActiveRecord::Base
   geocoded_by :location, :latitude => :latitude, :longitude => :longitude
   after_validation :geocode
 
+  def increase_clicks
+    if self.clicks == nil
+      self.clicks = 1
+    else
+      self.clicks += 1
+    end
+    self.save
+  end
+
 end
