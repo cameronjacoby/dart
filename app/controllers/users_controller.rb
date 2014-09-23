@@ -83,7 +83,8 @@ class UsersController < AngularController
   def logged_in_user
     respond_to do |format|
       format.json {render :json => current_user,
-        :include => [:company, :seeker => {:include => {:jobs => {:only => [:id]}}}]}
+        :include => [:company, :seeker => {:include => {:jobs => {:only => [:id]}}}],
+        :only => [:id, :email, :is_seeker, :is_company]}
     end
   end
 
