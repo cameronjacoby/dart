@@ -4,8 +4,12 @@ class SeekersShowCtrl extends MainCtrl
   
   constructor: (@scope, @http, @routeParams, @rootScope, @location) ->
     super(@http, @rootScope, @location)
-    @http.get("/seekers/#{@routeParams.id}.json").success (data) =>
+    @http.get("/seekers/#{@routeParams.id}.json")
+    .success (data) =>
       @seeker = data
+    .error () =>
+      console.log "error!!!!"
+      @location.path("/")
 
   editSeeker: () ->
     @editForm = true

@@ -1,10 +1,15 @@
 class SeekersController < AngularController
 
+  before_action :is_authenticated?
   before_action :set_seeker, only: [:show, :update]
 
   def show
-    respond_to do |format|
-      format.json {render :json => @seeker, :include => [:user, :jobs => {:include => {:company => {:only => [:id, :name]}}}]}
+    if @current_user.seeker == @seeker
+      respond_to do |format|
+        format.json {render :json => @seeker, :include => [:user, :jobs => {:include => {:company => {:only => [:id, :name]}}}]}
+      end
+    else
+      render json: {}, status: 403
     end
   end
 

@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def is_authenticated?
-    # redirect_to login_url unless current_user
-    render json: 'ERROR' unless current_user
+    render json: {} unless current_user
   end
 
   def current_user

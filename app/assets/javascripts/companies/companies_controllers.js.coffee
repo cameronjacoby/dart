@@ -1,8 +1,9 @@
 CompaniesControllers = angular.module("CompaniesControllers", [])
 
-class CompaniesShowCtrl
+class CompaniesShowCtrl extends MainCtrl
   
-  constructor: (@scope, @http, @routeParams, @location) ->
+  constructor: (@scope, @http, @routeParams, @rootScope, @location) ->
+    super(@http, @rootScope, @location)
     @http.get("/companies/#{@routeParams.id}.json").success (data) =>
       @company = data
       @profile = data.profile
@@ -73,4 +74,6 @@ class CompaniesShowCtrl
         if @company.jobs.length == 0
           @jobsToggle = true
 
-CompaniesControllers.controller("CompaniesShowCtrl", ["$scope", "$http", "$routeParams", "$location", CompaniesShowCtrl])
+  @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
+
+CompaniesControllers.controller("CompaniesShowCtrl", CompaniesShowCtrl)

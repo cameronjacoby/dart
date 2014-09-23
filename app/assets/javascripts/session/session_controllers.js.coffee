@@ -3,6 +3,8 @@ SessionControllers = angular.module("SessionControllers", [])
 class SessionCtrl extends MainCtrl
   
   constructor: (@scope, @http, @rootScope, @location) ->
+    if @signed_in
+      @location.path("/")
     super(@http, @rootScope, @location)
 
   createSession: (user) ->
