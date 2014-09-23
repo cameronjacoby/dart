@@ -8,7 +8,10 @@ class SeekersShowCtrl extends MainCtrl
     .success (data) =>
       @seeker = data
     .error () =>
-      @location.path("/")
+      if @rootScope.currentUser.is_seeker
+        @location.path("/seekers/#{@rootScope.currentUser.seeker.id}")
+      else if @rootScope.currentUser.is_company
+        @location.path("/companies/#{@rootScope.currentUser.company.id}")
 
   editSeeker: () ->
     @editForm = true
