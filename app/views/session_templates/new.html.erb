@@ -3,11 +3,13 @@
 
   <div class="col-sm-6">
     <h2>Log In</h2>
-
+    <p ng-show="session.errorMsg" class="error-msg">Could not log you in. Please try again.</p>
     <form ng-submit="session.createSession(user)">
+      <p ng-show="session.emailMsg" class="error-msg">Account with that email does not exist.</p>
       <div class="form-group">
         <input type="email" ng-model="user.email" class="form-control" placeholder="Email" required autofocus>
       </div>
+      <p ng-show="session.passwordMsg" class="error-msg">Invalid password.</p>
       <div class="form-group">
         <input type="password" ng-model="user.password" class="form-control" placeholder="Password" required>
       </div>

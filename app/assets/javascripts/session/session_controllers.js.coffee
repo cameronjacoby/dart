@@ -3,19 +3,40 @@ SessionControllers = angular.module("SessionControllers", [])
 class SessionCtrl extends MainCtrl
   
   constructor: (@scope, @http, @rootScope, @location) ->
-    if @rootScope.currentUser
-      @location.path("/")
     super(@http, @rootScope, @location)
+    # if @signed_in
+    #   @location.path("/")
 
   createSession: (user) ->
+    @emailMsg = false
+    @passwordMsg = false
+    @errorMsg = false
     console.log "SIGNING IN", user
-    @http.post("/login.json", {user: user}).success (data) =>
+
+    @http.post("/login.json", {user: user})
+    .success (data) =>
+      user.email = ""
+      user.password = ""
+      console.log "SIGNED IN SUCCESSFULLY"
       @set_user data
-      console.log @rootScope.currentUser
+      console.log "CURRENT USER", @rootScope.currentUser
       if @rootScope.currentUser.is_seeker
         @location.path("/seekers/#{@rootScope.currentUser.seeker.id}")
       else if @rootScope.currentUser.is_company
         @location.path("/companies/#{@rootScope.currentUser.company.id}")
+
+    .error (data) =>
+      console.log "ERROR"
+      if data == "EMAIL NOT FOUND"
+        user.email = ""
+        user.password = ""
+        @emailMsg = true
+      else if data == "INVALID PASSWORD"
+        user.password = ""
+        @passwordMsg = true
+      else if data == "ERROR"
+        console.log data
+        @errorMsg = true
 
   @$inject = ["$scope", "$http", "$rootScope", "$location"]
 

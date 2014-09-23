@@ -13,13 +13,10 @@ class SessionController < AngularController
     else
       if User.find_by_email(params[:user][:email]) == nil
         render json: 'EMAIL NOT FOUND', status: 400
-        # 'Account with that email does not exist.'
       elsif User.find_by_email(params[:user][:email]).password != params[:user][:password]
         render json: 'INVALID PASSWORD', status: 400
-        # 'Invalid password.'
       else
         render json: 'ERROR', status: 400
-        # 'Could not log you in. Please try again.'
       end
     end
   end
