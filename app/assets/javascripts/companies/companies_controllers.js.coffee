@@ -28,12 +28,12 @@ class CompaniesShowCtrl extends MainCtrl
       else
         @http.put("/users/#{@company.user_id}.json", {user: @company.user})
         .success (data) =>
+          @editForm = false
+          @updateMsg = true
+        .error (data) =>
           if data == "EMAIL ERROR"
             @company.user.email = ""
             @emailMsg = true
-          else
-            @editForm = false
-            @updateMsg = true
     .error () =>
       @location.path("/")
 

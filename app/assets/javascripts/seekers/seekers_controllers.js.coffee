@@ -23,12 +23,12 @@ class SeekersShowCtrl extends MainCtrl
     .success (data) =>
       @http.put("/users/#{@seeker.user_id}.json", {user: @seeker.user})
       .success (data) =>
+        @editForm = false
+        @updateMsg = true
+      .error (data) =>
         if data == "EMAIL ERROR"
           @seeker.user.email = ""
           @emailMsg = true
-        else
-          @editForm = false
-          @updateMsg = true
     .error () =>
       @location.path("/")
 

@@ -55,7 +55,7 @@ class UsersController < AngularController
         if found_user.id == @user.id
           respond_with @user.update_columns(user_params)
         else
-          render json: 'EMAIL ERROR'
+          render json: 'EMAIL ERROR', status: 400
         end
       else
         respond_with @user.update_columns(user_params)
