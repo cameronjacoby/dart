@@ -9,11 +9,27 @@ class UsersNewCtrl extends MainCtrl
     newUser.is_seeker = true
     console.log "USER", newUser
     console.log "SEEKER", newSeeker
-    @http.post("/users.json", {user: newUser, seeker: newSeeker}).success (data) =>
-      @emailMsgSeek = false
-      @passLenMsgSeek = false
-      @passConfMsgSeek = false
-      @errorMsgSeek = false
+    @emailMsgSeek = false
+    @passLenMsgSeek = false
+    @passConfMsgSeek = false
+    @errorMsgSeek = false
+
+    @http.post("/users.json", {user: newUser, seeker: newSeeker})
+    .success (data) =>
+      @scope.newUserSeek = {}
+      @scope.newSeeker = {}
+      @newSeeker = data
+      console.log "NEW SEEKER", @newSeeker
+
+      @http.post("/login.json", {user: newUser})
+      .success (data) =>
+        console.log "SIGNED IN SUCCESSFULLY"
+        @set_user data
+        console.log "CURRENT USER", @rootScope.currentUser
+        @location.path("/seekers/#{@newSeeker.id}")
+
+    .error (data) =>
+      console.log data
       if data == "EMAIL ERROR"
         newUser.email = ""
         @emailMsgSeek = true
@@ -29,24 +45,46 @@ class UsersNewCtrl extends MainCtrl
         @scope.newUserSeek = {}
         @scope.newSeeker = {}
         @errorMsgSeek = true
-      else
-        @scope.newUserSeek = {}
-        @scope.newSeeker = {}
-        @newSeeker = data
-        console.log "NEW SEEKER", @newSeeker
-        @location.path("/seekers/#{@newSeeker.id}")
+
 
   createCompany: (newUser, newCompany) ->
     newUser.is_company = true
     console.log "USER", newUser
     console.log "COMPANY", newCompany
-    @http.post("/users.json", {user: newUser, company: newCompany}).success (data) =>
-      @emailMsgComp = false
-      @passLenMsgComp = false
-      @passConfMsgComp = false
-      @nameMsgComp = false
-      @errorMsgComp = false
-      if data == "EMAIL ERROR"
+    @emailMsgComp = false
+    @passLenMsgComp = false
+    @passConfMsgComp = false
+    @nameMsgComp = false
+    @errorMsgComp = false
+
+    @http.post("/users.json", {user: newUser, company: newCompany})
+    .success (data) =>
+      @scope.newUserComp = {}
+      @scope.newCompany = {}
+      @newCompany = data
+      console.log "NEW COMPANY", @newCompany
+
+      @http.post("/login.json", {user: newUser})
+      .success (data) =>
+        console.log "SIGNED IN SUCCESSFULLY"
+        @set_user data
+        console.log "CURRENT USER", @rootScope.currentUser
+        @location.path("/companies/#{@newCompany.id}")
+
+    .error (data) =>
+      console.log data
+      if data == "COMPANY NAME ERROR"
+        newCompany.name = ""
+        @nameMsgComp = true
+        @http.delete("/users/#{data.user.id}.json")
+        .success (data) ->
+      else if data == "COMPANY ERROR"
+        @scope.newUserComp = {}
+        @scope.newCompany = {}
+        @errorMsgComp = true
+        @http.delete("/users/#{data.user.id}.json")
+        .success (data) ->
+      else if data == "EMAIL ERROR"
         newUser.email = ""
         @emailMsgComp = true
       else if data == "PASSWORD LENGTH ERROR"
@@ -57,25 +95,11 @@ class UsersNewCtrl extends MainCtrl
         newUser.password = ""
         newUser.password_confirmation = ""
         @passConfMsgComp = true
-      else if data.error == "NAME ERROR"
-        newCompany.name = ""
-        @nameMsgComp = true
-        @http.delete("/users/#{data.user.id}.json").success (data) ->
-      else if data.error == "ERROR"
-        @scope.newUserComp = {}
-        @scope.newCompany = {}
-        @errorMsgComp = true
-        @http.delete("/users/#{data.user.id}.json").success (data) ->
       else if data == "ERROR"
         @scope.newUserComp = {}
         @scope.newCompany = {}
         @errorMsgComp = true
-      else
-        @scope.newUserComp = {}
-        @scope.newCompany = {}
-        @newCompany = data
-        console.log "NEW COMPANY", @newCompany
-        @location.path("/companies/#{@newCompany.id}")
+
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
 

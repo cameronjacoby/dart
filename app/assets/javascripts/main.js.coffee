@@ -23,7 +23,6 @@ class MainCtrl
     @rootScope.sign_out = () =>
       @http.delete("/logout.json")
       .success (data) =>
-        console.log "DATA", data
         @set_user null
         @location.path("/login")
 

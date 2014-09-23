@@ -5,42 +5,46 @@ class UsersController < AngularController
   def new
   end
 
+
   def create
     @user = User.new(user_params)
     if @user.save
       if @user.is_seeker
         @seeker = Seeker.create(seeker_params)
         @user.seeker = @seeker
-        render json: @seeker
+        respond_to do |format|
+          format.json {render :json => @seeker}
+        end
+
       elsif @user.is_company
         @company = Company.new(company_params)
         if @company.save
           @company.get_crunchbase_path
           @company.get_crunchbase_profile
           @user.company = @company
-          render json: @company
+          respond_to do |format|
+            format.json {render :json => @company}
+          end
+
         elsif Company.find_by_name(@company.name)
-          respond_to do |format|
-            format.json {render :json => {:user => @user, :error => 'NAME ERROR'}}
-          end
+          render json: 'COMPANY NAME ERROR', status: 400
         else
-          respond_to do |format|
-            format.json {render :json => {:user => @user, :error => 'ERROR'}}
-          end
+          render json: 'COMPANY ERROR', status: 400
         end
       end
     else
       if User.find_by_email(@user.email)
-        render json: 'EMAIL ERROR'
+        render json: 'EMAIL ERROR', status: 400
       elsif @user.password.length < 6
-        render json: 'PASSWORD LENGTH ERROR'
+        render json: 'PASSWORD LENGTH ERROR', status: 400
       elsif @user.password != @user.password_confirmation
-       render json: 'PASSWORD CONF ERROR'
+        render json: 'PASSWORD CONF ERROR', status: 400
       else
-        render json: 'ERROR'
+        render json: 'ERROR', status: 400
       end
     end
   end
+
 
   def update
     found_user = User.find_by_email(user_params[:email])
@@ -55,15 +59,18 @@ class UsersController < AngularController
     end
   end
 
+
   def destroy
     respond_with @user.destroy
   end
+
 
   def logged_in_user
     respond_to do |format|
       format.json {render :json => current_user, :only => [:id, :email, :is_seeker, :is_company], :include => [:seeker, :company]}
     end
   end
+
 
   private
 
