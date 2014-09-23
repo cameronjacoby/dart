@@ -48,6 +48,8 @@ class SeekersShowCtrl extends MainCtrl
         @seeker.jobs.splice(@seeker.jobs.indexOf(favorite), 1)
         if @seeker.jobs.length == 0
           @favoritesToggle = true
+      .error () =>
+        @location.path("/")
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
 

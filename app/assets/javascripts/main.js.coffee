@@ -28,6 +28,14 @@ class MainCtrl
       .error () =>
         @location.path("/")
 
+    @rootScope.unfavorite = (seeker, job) =>
+      @http.get("/seekers/#{seeker.id}/remove/#{job.id}.json")
+      .success (data) =>
+        console.log "UNFAVORITED", data
+        job.favorited = false
+      .error () =>
+        @location.path("/")
+
     @rootScope.sign_out = () =>
       @http.delete("/logout.json")
       .success (data) =>
