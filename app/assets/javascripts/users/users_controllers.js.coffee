@@ -45,6 +45,8 @@ class UsersNewCtrl extends MainCtrl
         @scope.newUserSeek = {}
         @scope.newSeeker = {}
         @errorMsgSeek = true
+      else
+        @location.path("/")
 
 
   createCompany: (newUser, newCompany) ->
@@ -99,6 +101,8 @@ class UsersNewCtrl extends MainCtrl
         @errorMsgComp = true
         @http.delete("/users/#{data.user_id}.json")
         .success (data) ->
+      else
+        @location.path("/")
 
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]

@@ -7,43 +7,48 @@ class UsersController < AngularController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      if @user.is_seeker
-        @seeker = Seeker.create(seeker_params)
-        @user.seeker = @seeker
-        respond_to do |format|
-          format.json {render :json => @seeker}
+    if session[:user_id] == nil
+      @user = User.new(user_params)
+      if @user.save
+        if @user.is_seeker
+          @seeker = Seeker.create(seeker_params)
+          @user.seeker = @seeker
+          respond_to do |format|
+            format.json {render :json => @seeker}
+          end
+
+        elsif @user.is_company
+          @company = Company.new(company_params)
+          if @company.save
+            @company.get_crunchbase_path
+            @company.get_crunchbase_profile
+            @user.company = @company
+            respond_to do |format|
+              format.json {render :json => @company}
+            end
+
+          elsif Company.find_by_name(@company.name)
+            respond_to do |format|
+              format.json {render :json => {:user_id => @user.id, :error => 'COMPANY NAME ERROR'}, status: 400}
+            end
+          else
+            render json: 'COMPANY ERROR', status: 400
+          end
         end
 
-      elsif @user.is_company
-        @company = Company.new(company_params)
-        if @company.save
-          @company.get_crunchbase_path
-          @company.get_crunchbase_profile
-          @user.company = @company
-          respond_to do |format|
-            format.json {render :json => @company}
-          end
-
-        elsif Company.find_by_name(@company.name)
-          respond_to do |format|
-            format.json {render :json => {:user_id => @user.id, :error => 'COMPANY NAME ERROR'}, status: 400}
-          end
+      else
+        if User.find_by_email(@user.email)
+          render json: 'EMAIL ERROR', status: 400
+        elsif @user.password.length < 6
+          render json: 'PASSWORD LENGTH ERROR', status: 400
+        elsif @user.password != @user.password_confirmation
+          render json: 'PASSWORD CONF ERROR', status: 400
         else
-          render json: 'COMPANY ERROR', status: 400
+          render json: 'ERROR', status: 400
         end
       end
     else
-      if User.find_by_email(@user.email)
-        render json: 'EMAIL ERROR', status: 400
-      elsif @user.password.length < 6
-        render json: 'PASSWORD LENGTH ERROR', status: 400
-      elsif @user.password != @user.password_confirmation
-        render json: 'PASSWORD CONF ERROR', status: 400
-      else
-        render json: 'ERROR', status: 400
-      end
+      render json: {}, status: 403
     end
   end
 
