@@ -59,8 +59,10 @@
 
     <!-- show 'no CrunchBase' message if profile does not exist -->
     <div ng-hide="company.profile" class="no-crunchbase">
-      <p>No company information from CrunchBase</p>
-      <!-- if current user (company) provide a link to create CB profile-->
+      <p>
+        No company information from CrunchBase.
+        <!-- <span ng-show="currentUser.company.id == company.company.id"></span>Sign up for an account <a href="http://www.crunchbase.com/account/signup" target="_blank">here</a>. -->
+      </p>
     </div>
   </div>
   <!-- end left column -->
