@@ -7,4 +7,8 @@ class Seeker < ActiveRecord::Base
   validates :first_name, :last_name,
     presence: true
 
+  def add_favorite job
+    self.jobs << job
+  end
+
 end

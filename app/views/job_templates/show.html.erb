@@ -32,6 +32,9 @@
       <p>{{job.job.how_to_apply}}</p>
     </div>
 
+    <!-- button to favorite job -->
+    <button ng-show="currentUser.is_seeker" ng-click="favorite(currentUser.seeker, job.job)" class="btn btn-default">Favorite</button>
+
     <!-- buttons to edit/delete job -->
     <div ng-hide="job.editForm" class="edit-btns">
       <button ng-show="currentUser.company.id == job.job.company.id" ng-click="job.editJob()" class="btn btn-primary">Edit Job</button> <button ng-show="currentUser.company.id == job.job.company.id" ng-click="job.deleteJob()" class="btn btn-danger">Delete Job</button>

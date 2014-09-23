@@ -20,6 +20,15 @@ class MainCtrl
     console.log "CURRENT USER", @currentUser
     @rootScope.signed_in = @signed_in
 
+    @rootScope.favorite = (seeker, job) =>
+      alert "CLICKED!!!!"
+      @http.get("/seekers/#{seeker.id}/favorite/#{job.id}.json")
+      .success (data) =>
+        console.log "FAVORITED!!!"
+        console.log "DATA", data
+      .error () =>
+        @location.path("/")
+
     @rootScope.sign_out = () =>
       @http.delete("/logout.json")
       .success (data) =>
