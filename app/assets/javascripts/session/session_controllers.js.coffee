@@ -6,6 +6,7 @@ class SessionCtrl extends MainCtrl
     super(@http, @rootScope, @location)
 
   createSession: (user) ->
+    @rootScope.logoutMsg = false
     @emailMsg = false
     @passwordMsg = false
     @errorMsg = false

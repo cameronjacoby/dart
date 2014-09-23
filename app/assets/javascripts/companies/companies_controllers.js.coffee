@@ -42,6 +42,7 @@ class CompaniesShowCtrl extends MainCtrl
     if conf
       @http.delete("/users/#{@company.user_id}.json")
       .success (data) =>
+        @rootScope.deleteMsg = true
         @location.path("/")
       .error (data) =>
         @location.path("/")

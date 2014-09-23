@@ -37,6 +37,7 @@ class SeekersShowCtrl extends MainCtrl
     if conf
       @http.delete("/users/#{@seeker.user_id}.json")
       .success (data) =>
+        @rootScope.deleteMsg = true
         @location.path("/")
       .error (data) =>
         @location.path("/")

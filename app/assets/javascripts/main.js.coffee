@@ -24,6 +24,7 @@ class MainCtrl
       @http.delete("/logout.json")
       .success (data) =>
         @set_user null
+        @rootScope.logoutMsg = true
         @location.path("/login")
 
     if !@signed_in()
