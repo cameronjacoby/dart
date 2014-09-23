@@ -16,7 +16,7 @@ class CompaniesController < AngularController
         if found_company.id == @company.id
           respond_with @company.update(company_params)
         else
-          render json: 'NAME ERROR'
+          render json: 'NAME ERROR', status: 400
         end
       else
         respond_with @company.update(company_params)

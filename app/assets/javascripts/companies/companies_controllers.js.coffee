@@ -22,20 +22,20 @@ class CompaniesShowCtrl extends MainCtrl
     @emailMsg = false
     @http.put("/companies/#{@company.id}.json", {company: @company})
     .success (data) =>
+      @http.put("/users/#{@company.user_id}.json", {user: @company.user})
+      .success (data) =>
+        @editForm = false
+        @updateMsg = true
+      .error (data) =>
+        if data == "EMAIL ERROR"
+          @company.user.email = ""
+          @emailMsg = true
+    .error (data) =>
       if data == "NAME ERROR"
         @company.name = ""
         @nameMsg = true
       else
-        @http.put("/users/#{@company.user_id}.json", {user: @company.user})
-        .success (data) =>
-          @editForm = false
-          @updateMsg = true
-        .error (data) =>
-          if data == "EMAIL ERROR"
-            @company.user.email = ""
-            @emailMsg = true
-    .error () =>
-      @location.path("/")
+        @location.path("/")
 
   deleteCompany: () ->
     conf = confirm "Are you sure you want to delete your company profile?"
