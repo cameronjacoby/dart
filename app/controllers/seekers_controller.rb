@@ -23,7 +23,7 @@ class SeekersController < AngularController
   end
 
   def favorite
-    if @current_user.seeker == @seeker
+    if @current_user.seeker == @seeker and !@seeker.jobs.include? @job
       respond_with @seeker.add_favorite @job
     else
       render json: {}, status: 403
@@ -31,7 +31,7 @@ class SeekersController < AngularController
   end
 
   def unfavorite
-    if @current_user.seeker == @seeker
+    if @current_user.seeker == @seeker and @seeker.jobs.include? @job
       respond_with @seeker.remove_favorite @job
     else
       render json: {}, status: 403
