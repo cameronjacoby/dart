@@ -1,8 +1,8 @@
 class SeekersController < AngularController
 
   before_action :is_authenticated?
-  before_action :set_seeker, only: [:show, :update, :favorite]
-  before_action :set_job, only: [:favorite]
+  before_action :set_seeker, only: [:show, :update, :favorite, :unfavorite]
+  before_action :set_job, only: [:favorite, :unfavorite]
 
   def show
     if @current_user.seeker == @seeker
@@ -25,6 +25,14 @@ class SeekersController < AngularController
   def favorite
     if @current_user.seeker == @seeker
       respond_with @seeker.add_favorite @job
+    else
+      render json: {}, status: 403
+    end
+  end
+
+  def unfavorite
+    if @current_user.seeker == @seeker
+      respond_with @seeker.remove_favorite @job
     else
       render json: {}, status: 403
     end

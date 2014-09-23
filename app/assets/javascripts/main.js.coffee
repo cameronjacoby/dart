@@ -21,11 +21,10 @@ class MainCtrl
     @rootScope.signed_in = @signed_in
 
     @rootScope.favorite = (seeker, job) =>
-      alert "CLICKED!!!!"
       @http.get("/seekers/#{seeker.id}/favorite/#{job.id}.json")
       .success (data) =>
-        console.log "FAVORITED!!!"
-        console.log "DATA", data
+        console.log "FAVORITED", data
+        job.favorited = true
       .error () =>
         @location.path("/")
 

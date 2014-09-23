@@ -8,7 +8,8 @@ class SessionController < AngularController
     if @user
       session[:user_id] = @user.id
       respond_to do |format|
-        format.json {render :json => @user, :only => [:id, :email, :is_seeker, :is_company], :include => [:seeker, :company]}
+        format.json {render :json => @user,
+          :include => [:company, :seeker => {:include => {:jobs => {:only => [:id]}}}]}
       end
     else
       if User.find_by_email(params[:user][:email]) == nil

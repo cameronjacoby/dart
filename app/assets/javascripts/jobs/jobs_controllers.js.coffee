@@ -22,6 +22,14 @@ class JobsShowCtrl extends MainCtrl
     @http.get("/companies/#{@routeParams.company_id}/jobs/#{@routeParams.id}.json")
     .success (data) =>
       @job = data
+      console.log "CURRENT USER FROM JOB PAGE", @rootScope.currentUser.seeker
+      i = 0
+      while i < @rootScope.currentUser.seeker.jobs.length
+        if @job.id == @rootScope.currentUser.seeker.jobs[i].id
+          console.log "FOUND JOB!!!"
+          @job.favorited = true
+        i += 1
+
     .error () =>
       @location.path("/")
 

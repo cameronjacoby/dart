@@ -31,7 +31,7 @@
   margin-top: 15px;
 }
 
-.edit-job, .delete-job {
+.edit-job, .delete-job, .remove-fav {
   margin-left: 8px;
   cursor: pointer;
 }
@@ -40,7 +40,7 @@
   color: rgba(66, 139, 202, 1);
 }
 
-.delete-job:hover {
+.delete-job:hover, .remove-fav:hover {
   color: rgba(217, 83, 79, 1);
 }
 

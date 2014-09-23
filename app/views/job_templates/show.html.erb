@@ -3,7 +3,13 @@
 
     <!-- job details - hide when updating job -->
     <div ng-hide="job.editForm">
-      <h2>{{job.job.title}}</h2>
+      <h2>
+        {{job.job.title}}
+        <span ng-show="currentUser.is_seeker" >
+          <span ng-hide="job.job.favorited" ng-click="favorite(currentUser.seeker, job.job)" class="glyphicon glyphicon-star-empty"></span>
+          <span ng-show="job.job.favorited" class="glyphicon glyphicon-star"></span>
+        </span>
+      </h2>
       <!-- show update message when a job is updated -->
       <p ng-show="job.updateMsg" class="success-msg">Job updated successfully.</p>
       <h5>
@@ -33,7 +39,7 @@
     </div>
 
     <!-- button to favorite job -->
-    <button ng-show="currentUser.is_seeker" ng-click="favorite(currentUser.seeker, job.job)" class="btn btn-default">Favorite</button>
+    <!-- <button ng-show="currentUser.is_seeker" ng-click="favorite(currentUser.seeker, job.job)" class="btn btn-default">Favorite</button> -->
 
     <!-- buttons to edit/delete job -->
     <div ng-hide="job.editForm" class="edit-btns">

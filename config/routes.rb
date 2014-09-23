@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/users/current_user', to: 'users#logged_in_user'
   resources :seekers, only: [:show, :update]
   get '/seekers/:id/favorite/:job_id', to: 'seekers#favorite'
+  get '/seekers/:id/remove/:job_id', to: 'seekers#unfavorite'
 
   resources :companies, only: [:show, :update] do
     resources :jobs, only: [:create, :show, :update, :destroy]

@@ -5,12 +5,16 @@
     <h1 ng-hide="seeker.editForm">{{seeker.seeker.first_name}}'s Profile Page</h1>
     <p ng-show="seeker.updateMsg" class="success-msg">Profile updated successfully.</p>
     <div ng-hide="seeker.editForm">
-      <h4 ng-hide="seeker.seeker.jobs">No saved jobs yet. Browse <a href="/">all jobs</a> to start saving favorites.</h4>
-      <h3 ng-show="seeker.seeker.jobs">Saved Jobs</h3>
+
+      <!-- toggle headers based on presence of favorites -->
+      <!-- favoritesToggle handles situation when last favorite is removed -->
+      <h4 ng-hide="seeker.seeker.jobs" ng-show="seeker.favoritesToggle">No saved jobs yet. Browse <a href="/">all jobs</a> to start saving favorites.</h4>
+      <h3 ng-show="seeker.seeker.jobs" ng-hide="seeker.favoritesToggle">Saved Jobs</h3>
+
       <div ng-repeat="favorite in seeker.seeker.jobs">
         <h5>
           <a href="/companies/{{favorite.company.id}}/jobs/{{favorite.id}}">{{favorite.title}}</a>
-          <span class="glyphicon glyphicon-trash"></span>
+          <span ng-show="currentUser.seeker.id == seeker.seeker.id" ng-click="seeker.removeFav(favorite)" class="glyphicon glyphicon-remove remove-fav"></span>
         </h5>
         <p>
           <a href="/companies/{{favorite.company.id}}">{{favorite.company.name}}</a> | 

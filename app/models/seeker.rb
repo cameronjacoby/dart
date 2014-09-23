@@ -11,4 +11,8 @@ class Seeker < ActiveRecord::Base
     self.jobs << job
   end
 
+  def remove_favorite job
+    self.jobs.delete(job)
+  end
+
 end
