@@ -21,13 +21,15 @@ class MainCtrl
     @rootScope.signed_in = @signed_in
 
     @rootScope.sign_out = () =>
-      @http.delete("/logout.json").success (data) =>
+      @http.delete("/logout.json")
+      .success (data) =>
         console.log "DATA", data
         @set_user null
         @location.path("/login")
 
     if !@signed_in()
-      @http.get("/users/current_user.json").success (data) =>
+      @http.get("/users/current_user.json")
+      .success (data) =>
         console.log "USER DATA", data
         if data != "null"
           @set_user data

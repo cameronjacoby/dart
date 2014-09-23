@@ -14,7 +14,11 @@ class SeekersController < AngularController
   end
 
   def update
-    respond_with @seeker.update(seeker_params)
+    if @current_user.seeker == @seeker
+      respond_with @seeker.update(seeker_params)
+    else
+      render json: {}, status: 403
+    end
   end
 
   private

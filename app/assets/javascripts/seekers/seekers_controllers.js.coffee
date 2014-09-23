@@ -8,7 +8,6 @@ class SeekersShowCtrl extends MainCtrl
     .success (data) =>
       @seeker = data
     .error () =>
-      console.log "error!!!!"
       @location.path("/")
 
   editSeeker: () ->
@@ -17,19 +16,24 @@ class SeekersShowCtrl extends MainCtrl
 
   updateSeeker: () ->
     @emailMsg = false
-    @http.put("/seekers/#{@seeker.id}.json", {seeker: @seeker}).success (data) =>
-      @http.put("/users/#{@seeker.user_id}.json", {user: @seeker.user}).success (data) =>
+    @http.put("/seekers/#{@seeker.id}.json", {seeker: @seeker})
+    .success (data) =>
+      @http.put("/users/#{@seeker.user_id}.json", {user: @seeker.user})
+      .success (data) =>
         if data == "EMAIL ERROR"
           @seeker.user.email = ""
           @emailMsg = true
         else
           @editForm = false
           @updateMsg = true
+    .error () =>
+      @location.path("/")
 
   deleteSeeker: () ->
     conf = confirm "Are you sure you want to delete your profile?"
     if conf
-      @http.delete("/users/#{@seeker.user_id}.json").success (data) =>
+      @http.delete("/users/#{@seeker.user_id}.json")
+      .success (data) =>
         @location.path("/")
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]

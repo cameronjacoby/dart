@@ -4,7 +4,8 @@ class CompaniesShowCtrl extends MainCtrl
   
   constructor: (@scope, @http, @routeParams, @rootScope, @location) ->
     super(@http, @rootScope, @location)
-    @http.get("/companies/#{@routeParams.id}.json").success (data) =>
+    @http.get("/companies/#{@routeParams.id}.json")
+    .success (data) =>
       @company = data
       @profile = data.profile
 
@@ -19,30 +20,36 @@ class CompaniesShowCtrl extends MainCtrl
   updateCompany: () ->
     @nameMsg = false
     @emailMsg = false
-    @http.put("/companies/#{@company.id}.json", {company: @company}).success (data) =>
+    @http.put("/companies/#{@company.id}.json", {company: @company})
+    .success (data) =>
       if data == "NAME ERROR"
         @company.name = ""
         @nameMsg = true
       else
-        @http.put("/users/#{@company.user_id}.json", {user: @company.user}).success (data) =>
+        @http.put("/users/#{@company.user_id}.json", {user: @company.user})
+        .success (data) =>
           if data == "EMAIL ERROR"
             @company.user.email = ""
             @emailMsg = true
           else
             @editForm = false
             @updateMsg = true
+    .error () =>
+      @location.path("/")
 
   deleteCompany: () ->
     conf = confirm "Are you sure you want to delete your company profile?"
     if conf
-      @http.delete("/users/#{@company.user_id}.json").success (data) =>
+      @http.delete("/users/#{@company.user_id}.json")
+      .success (data) =>
         @location.path("/")
 
   showNewJobForm: () ->
     @newJobForm = true
 
   addJob: (newJob) ->
-    @http.post("/companies/#{@company.id}/jobs.json", {job: newJob}).success (data) =>
+    @http.post("/companies/#{@company.id}/jobs.json", {job: newJob})
+    .success (data) =>
       @scope.newJob = {}
       @job = data
       @location.path("/companies/#{@company.id}/jobs/#{@job.id}")
@@ -60,7 +67,8 @@ class CompaniesShowCtrl extends MainCtrl
     @updateMsg = false
 
   updateJob: (job) ->
-    @http.put("/companies/#{@company.id}/jobs/#{job.id}.json", {job: job}).success (data) =>
+    @http.put("/companies/#{@company.id}/jobs/#{job.id}.json", {job: job})
+    .success (data) =>
       console.log "UPDATED!!!"
       job.updateJobMsg = true
       job.editJobForm = false
@@ -69,7 +77,8 @@ class CompaniesShowCtrl extends MainCtrl
   deleteJob: (job) ->
     conf = confirm "Are you sure you want to delete this job?"
     if conf
-      @http.delete("/companies/#{@company.id}/jobs/#{job.id}.json").success (data) =>
+      @http.delete("/companies/#{@company.id}/jobs/#{job.id}.json")
+      .success (data) =>
         @company.jobs.splice(@company.jobs.indexOf(job), 1)
         if @company.jobs.length == 0
           @jobsToggle = true

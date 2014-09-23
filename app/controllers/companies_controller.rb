@@ -1,5 +1,6 @@
 class CompaniesController < AngularController
 
+  before_action :is_authenticated?
   before_action :set_company, only: [:show, :update]
 
   def show
@@ -9,15 +10,19 @@ class CompaniesController < AngularController
   end
 
   def update
-    found_company = Company.find_by_name(company_params[:name])
-    if found_company
-      if found_company.id == @company.id
-        respond_with @company.update(company_params)
+    if @current_user.seeker == @seeker
+      found_company = Company.find_by_name(company_params[:name])
+      if found_company
+        if found_company.id == @company.id
+          respond_with @company.update(company_params)
+        else
+          render json: 'NAME ERROR'
+        end
       else
-        render json: 'NAME ERROR'
+        respond_with @company.update(company_params)
       end
     else
-      respond_with @company.update(company_params)
+      render json: {}, status: 403
     end
   end
 

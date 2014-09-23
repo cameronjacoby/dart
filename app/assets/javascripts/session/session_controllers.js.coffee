@@ -4,8 +4,6 @@ class SessionCtrl extends MainCtrl
   
   constructor: (@scope, @http, @rootScope, @location) ->
     super(@http, @rootScope, @location)
-    # if @signed_in
-    #   @location.path("/")
 
   createSession: (user) ->
     @emailMsg = false
@@ -26,7 +24,7 @@ class SessionCtrl extends MainCtrl
         @location.path("/companies/#{@rootScope.currentUser.company.id}")
 
     .error (data) =>
-      console.log "ERROR"
+      console.log data
       if data == "EMAIL NOT FOUND"
         user.email = ""
         user.password = ""
@@ -35,7 +33,6 @@ class SessionCtrl extends MainCtrl
         user.password = ""
         @passwordMsg = true
       else if data == "ERROR"
-        console.log data
         @errorMsg = true
 
   @$inject = ["$scope", "$http", "$rootScope", "$location"]
