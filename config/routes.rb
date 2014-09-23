@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/users/current_user", to: "users#logged_in_user"
+  get '/users/current_user', to: 'users#logged_in_user'
   resources :users, only: [:create, :update, :destroy]
   resources :seekers, only: [:show, :update]
 

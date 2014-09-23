@@ -3,14 +3,15 @@ SessionControllers = angular.module("SessionControllers", [])
 class SessionCtrl extends MainCtrl
   
   constructor: (@scope, @http, @rootScope, @location) ->
-    if @signed_in
+    if @rootScope.currentUser
       @location.path("/")
     super(@http, @rootScope, @location)
 
   createSession: (user) ->
-    console.log user
-    console.log "CREATE SESSION"
-    @sign_in user, () =>
+    console.log "SIGNING IN", user
+    @http.post("/login.json", {user: user}).success (data) =>
+      @set_user data
+      console.log @rootScope.currentUser
       if @rootScope.currentUser.is_seeker
         @location.path("/seekers/#{@rootScope.currentUser.seeker.id}")
       else if @rootScope.currentUser.is_company
