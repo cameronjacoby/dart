@@ -1,6 +1,6 @@
 class CompaniesController < AngularController
 
-  before_action :is_authenticated?
+  before_action :is_authenticated?, only: [:update]
   before_action :set_company, only: [:show, :update]
 
   def show
