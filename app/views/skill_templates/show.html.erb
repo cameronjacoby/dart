@@ -12,7 +12,7 @@
       <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
       <p>
         <a href="/companies/{{job.company.id}}">{{job.company.name}}</a> | 
-        {{job.location}} | {{job.category}}
+        {{job.location}} | <span class="category">{{job.category}}</span>
       </p>
       <p>{{job.description}}</p>
       <p ng-show="job.skills">

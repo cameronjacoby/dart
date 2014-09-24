@@ -1,17 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700,800,600);
+
+/* site styles */
+
 body {
   background-color: rgba(253, 253, 253, 1);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
 }
 
-.navbar {
-  background-color: rgba(245, 245, 245, 1);
+h1, h3, h5, a {
+  color: rgba(51, 51, 51, 1);
 }
 
-#nav-link:hover {
+a:hover, #nav-link:hover {
+  text-decoration: none;
   color: rgba(255, 0, 81, 1);
-}
-
-#hamburger, #hamburger:hover {
-  background-color: rgba(245, 245, 245, 1);
 }
 
 .content {
@@ -22,6 +26,74 @@ body {
 .logo {
   height: 65%;
 }
+
+.navbar, #hamburger, #hamburger:hover {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+.success-msg {
+  margin-top: 15px;
+  background-color: rgba(150, 234, 231, 1);
+  padding: 3px 5px 3px 5px;
+}
+
+.exit {
+  float: right;
+  cursor: pointer;
+}
+
+/* homepage styles */
+
+#dart {
+  letter-spacing: 4px;
+}
+
+.filter {
+  float: right;
+  margin-top: -45px;
+  font-size: 1.1em;
+  font-weight: 400;
+  padding: 5px;
+  color: rgba(51, 51, 51, 1);
+  border: 1.5px solid rgba(51, 51, 51, 1);
+  cursor: pointer;
+}
+
+.filter:hover {
+  color: rgba(255, 0, 81, 1);
+  border: 1.5px solid rgba(255, 0, 81, 1);
+}
+
+.job {
+  margin-top: 20px;
+}
+
+.sub-heading {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.sub-heading span {
+  margin-right: 5px;
+}
+
+.company {
+  font-weight: 700;
+}
+
+.category {
+  border: 1px solid rgba(255, 0, 81, 1);
+  color: rgba(255, 0, 81, 1);
+  font-size: .9em;
+  padding: 3px;
+}
+
+.trending {
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+
 
 .clearfix {
   overflow: auto;
@@ -79,8 +151,4 @@ body {
 
 .error-msg {
   color: rgba(217, 83, 79, 1);
-}
-
-.success-msg {
-  color: rgba(66, 139, 202, 1);
 }

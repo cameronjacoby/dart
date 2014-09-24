@@ -1,15 +1,17 @@
 <div ng-show="jobs.skills" class="row">
   <div class="col-sm-3">
-    <h3 ng-show="jobs.skills">Trending Skills</h3>
-    <span ng-repeat="skill in jobs.skills | orderBy: '-jobs.length' | limitTo: 20">
-      <span ng-show="skill.jobs.length" class="skill-spaced"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
-    </span>
+    <div class="trending">
+      <h3 ng-show="jobs.skills">Trending Skills</h3>
+      <span ng-repeat="skill in jobs.skills | orderBy: '-jobs.length' | limitTo: 20">
+        <span ng-show="skill.jobs.length" class="skill-spaced"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
+      </span>
+    </div>
   </div>
 
   <div class="col-sm-6">
-    <p ng-show="deleteMsg" class="success-msg">Successfully deleted profile.</p>
+    <p ng-show="deleteMsg" ng-hide="jobs.hide" class="success-msg">Successfully deleted profile. <span ng-click="jobs.hide=true" class="exit">X</span></p>
 
-    <form class="form-inline">
+    <form ng-hide="true" class="form-inline">
       <div class="form-group">
         <input ng-model="search.location" class="form-control options" placeholder="Location">
       </div>
@@ -26,20 +28,16 @@
       </div>
     </form>
 
-    <h1>All Jobs</h1>
-    <div ng-repeat="job in jobs.jobs | orderBy: '-clicks' | filter:search:strict">
-      <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
-      <p>
-        <a href="/companies/{{job.company.id}}">{{job.company.name}}</a> | 
-        {{job.location}} | {{job.category}}
-      </p>
+    <h1 id="dart">DART JOBS</h1>
+    <div class="filter">Filter Jobs</div>
+    <div ng-repeat="job in jobs.jobs | orderBy: '-clicks' | filter:search:strict" class="job">
+      <h3><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h3>
+      <h5 class="sub-heading">
+        <span class="company"><a href="/companies/{{job.company.id}}">{{job.company.name}}</a></span>
+        <span>{{job.location}}</span>
+        <span class="category">{{job.category}}</span>
+      </h5>
       <p>{{job.description}}</p>
-      <p ng-show="job.skills">
-        <span class="skill"><strong>Skills:</strong></span>
-        <span ng-repeat="skill in job.skills">
-          <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
-        </span>
-      </p>
     </div>
   </div>
 
