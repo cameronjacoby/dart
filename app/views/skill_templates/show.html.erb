@@ -1,4 +1,4 @@
-<div class="row">
+<div ng-show="skill.skills" class="row">
   <div class="col-sm-3">
     <h3 ng-show="skill.skills">Trending Skills</h3>
     <span ng-repeat="skill in skill.skills | orderBy: '-jobs.length' | limitTo: 20">
@@ -7,7 +7,7 @@
   </div>
 
   <div class="col-sm-9">
-    <h1 ng-show="skill.skill">Jobs that require {{skill.skill.name}}</h1>
+    <h1>Jobs that require {{skill.skill.name}}</h1>
     <div ng-repeat="job in skill.skill.jobs | orderBy: '-clicks'">
       <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
       <p>

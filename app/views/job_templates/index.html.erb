@@ -1,4 +1,4 @@
-<div class="row">
+<div ng-show="jobs.skills" class="row">
   <div class="col-sm-3">
     <h3 ng-show="jobs.skills">Trending Skills</h3>
     <span ng-repeat="skill in jobs.skills | orderBy: '-jobs.length' | limitTo: 20">
@@ -26,7 +26,7 @@
       </div>
     </form>
 
-    <h1 ng-show="jobs.jobs">All Jobs</h1>
+    <h1>All Jobs</h1>
     <div ng-repeat="job in jobs.jobs | orderBy: '-clicks' | filter:search:strict">
       <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
       <p>
