@@ -182,6 +182,17 @@ a:hover, #nav-link:hover {
   margin-right: 10px;
 }
 
+/*job show page styles*/
+
+#job-title {
+  margin-bottom: 20px;
+}
+
+#job-elements {
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
 /*seeker profile page styles*/
 
 .saved-jobs {
