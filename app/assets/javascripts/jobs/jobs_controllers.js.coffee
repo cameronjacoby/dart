@@ -48,6 +48,12 @@ class JobsShowCtrl extends MainCtrl
     .error () =>
       @location.path("/")
 
+  exitUpdateMsg: () ->
+    @updateMsg = false
+
+  exitEditForm: () ->
+    @editForm = false
+
   editJob: () ->
     if !@job.skill_names
       skills = []
@@ -72,6 +78,7 @@ class JobsShowCtrl extends MainCtrl
     if conf
       @http.delete("/companies/#{@job.company_id}/jobs/#{@job.id}.json")
       .success (data) =>
+        @rootScope.deleteMsg = true
         @location.path("/companies/#{@job.company_id}")
       .error () =>
         @location.path("/")

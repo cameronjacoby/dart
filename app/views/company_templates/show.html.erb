@@ -79,6 +79,9 @@
           <!-- show update message when company profile updated -->
           <p ng-show="company.updateMsg" class="success-msg">Profile updated successfully.</p>
 
+          <!-- show success message when company deletes a job -->
+          <p ng-show="deleteMsg" class="success-msg">Successfully deleted job. <span ng-click="company.exitDeleteMsg()" class="exit">X</span></p>
+
           <!-- toggle headers based on presence of job postings -->
           <!-- jobsToggle handles situation when last job is deleted -->
           <h3 ng-hide="company.company.jobs" ng-show="company.jobsToggle">No Job Postings Yet</h3>

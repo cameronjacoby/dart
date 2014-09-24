@@ -9,6 +9,9 @@ class CompaniesShowCtrl extends MainCtrl
       @company = data
       @profile = data.profile
 
+  exitDeleteMsg: () ->
+    @rootScope.deleteMsg = false
+
   editCompany: () ->
     @editForm = true
     @updateMsg = false
