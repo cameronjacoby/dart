@@ -3,15 +3,15 @@
 
   <div class="col-sm-6">
     <h1 ng-hide="seeker.editForm">{{seeker.seeker.first_name}}'s Profile Page</h1>
-    <p ng-show="seeker.updateMsg" class="success-msg">Profile updated successfully.</p>
+    <p ng-show="seeker.updateMsg" class="success-msg">Profile updated successfully. <span ng-click="seeker.exitUpdateMsg()" class="exit">X</span></p>
     <div ng-hide="seeker.editForm">
 
       <!-- toggle headers based on presence of favorites -->
       <!-- favoritesToggle handles situation when last favorite is removed -->
       <h4 ng-hide="seeker.seeker.jobs" ng-show="seeker.favoritesToggle" class="no-saved-jobs">No saved jobs yet. <a href="/">Browse all jobs to start saving favorites. <span class="mini-arrow">&#10172;</span></a></h4>
 
-      <div class="favorites">
-        <h3 ng-show="seeker.seeker.jobs" ng-hide="seeker.favoritesToggle" class="saved-jobs">SAVED JOBS</h3>
+      <div ng-show="seeker.seeker.jobs" ng-hide="seeker.favoritesToggle" class="favorites">
+        <h3 class="saved-jobs">SAVED JOBS</h3>
         <div ng-repeat="favorite in seeker.seeker.jobs" class="job">
           <h4>
             <a href="/companies/{{favorite.company.id}}/jobs/{{favorite.id}}">{{favorite.title}}</a>
@@ -36,21 +36,21 @@
     </div>
 
     <!-- edit profile form -->
-    <h2 ng-show="seeker.editForm">Edit Your Profile</h2>
+    <h2 ng-show="seeker.editForm">Edit Your Profile <span ng-click="seeker.exitEditForm()" class="exit" id="edit-exit">X</span></h2>
     <form ng-show="seeker.editForm" ng-submit="seeker.updateSeeker()" class="edit-form">
-      <p>
+      <div class="form-group">
         <input type="text" ng-model="seeker.seeker.first_name" class="form-control" placeholder="First Name" required autofocus>
-      </p>
-      <p>
+      </div>
+      <div class="form-group">
         <input type="text" ng-model="seeker.seeker.last_name" class="form-control" placeholder="Last Name" required>
-      </p>
+      </div>
       <p ng-show="seeker.emailMsg" class="error-msg">An account with that email already exists.</p>
-      <p>
+      <div class="form-group">
         <input type="text" ng-model="seeker.seeker.user.email" class="form-control" placeholder="Email" required>
-      </p>
-      <p>
-        <button class="btn btn-primary">Save Profile</button>
-      </p>
+      </div>
+      <div class="form-group">
+        <button class="save-btn">Update Profile</button>
+      </div>
     </form>
 
   </div>

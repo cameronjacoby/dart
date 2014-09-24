@@ -37,6 +37,12 @@ a:hover, #nav-link:hover {
   padding: 5px 10px 5px 10px;
 }
 
+.error-msg {
+  background-color: rgba(255, 199, 199, 1);
+  margin-top: 15px;
+  padding: 5px 10px 5px 10px;
+}
+
 .exit {
   float: right;
   cursor: pointer;
@@ -52,6 +58,33 @@ a:hover, #nav-link:hover {
 }
 
 .edit-btns button:hover {
+  color: rgba(255, 0, 81, 1);
+  border: 1.5px solid rgba(255, 0, 81, 1);
+}
+
+.edit-form, .new-form {
+  margin-top: 20px;
+}
+
+#edit-exit {
+  font-size: .5em;
+  margin-top: 10px;
+  margin-right: 2px;
+}
+
+#edit-exit:hover {
+  color: rgba(255, 0, 81, 1);
+}
+
+.save-btn {
+  font-weight: 400;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1.5px solid rgba(51, 51, 51, 1);
+  background-color: rgba(253, 253, 253, 1);
+}
+
+.save-btn:hover {
   color: rgba(255, 0, 81, 1);
   border: 1.5px solid rgba(255, 0, 81, 1);
 }
@@ -141,10 +174,17 @@ a:hover, #nav-link:hover {
   margin-left: 2px;
 }
 
+.skill {
+  margin-right: 5px;
+}
+
+.skill-spaced {
+  margin-right: 10px;
+}
+
 /*seeker profile page styles*/
 
 .saved-jobs {
-  margin-top: 25px;
   letter-spacing: 3px;
 }
 
@@ -155,6 +195,9 @@ a:hover, #nav-link:hover {
 .favorites {
   border-top: 1px solid rgba(51, 51, 51, 1);
   border-bottom: 1px solid rgba(51, 51, 51, 1);
+  margin-top: 20px;
+  padding-top: 7px;
+  padding-bottom: 20px;
 }
 
 /* ***** */
@@ -183,11 +226,7 @@ a:hover, #nav-link:hover {
   color: rgba(0, 0, 0, .6);
 }
 
-.edit-form, .new-form {
-  margin-top: 15px;
-}
-
-.edit-job, .delete-job, .remove-fav {
+.edit-job, .delete-job {
   margin-left: 8px;
   cursor: pointer;
 }
@@ -196,23 +235,11 @@ a:hover, #nav-link:hover {
   color: rgba(66, 139, 202, 1);
 }
 
-.delete-job:hover, .remove-fav:hover {
+.delete-job:hover {
   color: rgba(217, 83, 79, 1);
-}
-
-.skill {
-  margin-right: 5px;
-}
-
-.skill-spaced {
-  margin-right: 10px;
 }
 
 .signup-col {
   padding-left: 25px;
   padding-right: 25px;
-}
-
-.error-msg {
-  color: rgba(217, 83, 79, 1);
 }

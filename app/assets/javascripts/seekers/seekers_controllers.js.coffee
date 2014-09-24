@@ -13,6 +13,12 @@ class SeekersShowCtrl extends MainCtrl
       else if @rootScope.currentUser.is_company
         @location.path("/companies/#{@rootScope.currentUser.company.id}")
 
+  exitUpdateMsg: () ->
+    @updateMsg = false
+
+  exitEditForm: () ->
+    @editForm = false
+
   editSeeker: () ->
     @editForm = true
     @updateMsg = false
