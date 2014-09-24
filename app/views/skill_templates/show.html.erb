@@ -8,7 +8,7 @@
 
   <div class="col-sm-9">
     <h1>Jobs that require {{skill.skill.name}}</h1>
-    <div ng-repeat="job in skill.skill.jobs">
+    <div ng-repeat="job in skill.skill.jobs | orderBy: '-clicks'">
       <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
       <p>
         <a href="/companies/{{job.company.id}}">{{job.company.name}}</a> | 
