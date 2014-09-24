@@ -11,6 +11,9 @@ class JobsCtrl extends MainCtrl
       .success (data) =>
         @skills = data
 
+  hideMsg: () ->
+    @rootScope.deleteMsg = false
+
   @$inject = ["$scope", "$http", "$rootScope", "$location"]
 
 JobsControllers.controller("JobsCtrl", JobsCtrl)

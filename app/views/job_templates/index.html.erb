@@ -9,7 +9,7 @@
   </div>
 
   <div class="col-sm-6">
-    <p ng-show="deleteMsg" ng-hide="jobs.hide" class="success-msg">Successfully deleted profile. <span ng-click="jobs.hide=true" class="exit">X</span></p>
+    <p ng-show="deleteMsg" class="success-msg">Successfully deleted profile. <span ng-click="jobs.hideMsg()" class="exit">X</span></p>
 
     <form ng-hide="true" class="form-inline">
       <div class="form-group">
@@ -30,7 +30,7 @@
 
     <h1 id="dart">DART JOBS</h1>
     <div class="filter">Filter Jobs</div>
-    <div ng-repeat="job in jobs.jobs | orderBy: '-clicks' | filter:search:strict" class="job">
+    <div ng-repeat="job in jobs.jobs | filter:search:strict | orderBy: 'clicks'" class="job">
       <h3><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h3>
       <h5 class="sub-heading">
         <span class="company"><a href="/companies/{{job.company.id}}">{{job.company.name}}</a></span>
