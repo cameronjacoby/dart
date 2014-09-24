@@ -10,14 +10,14 @@
 <body ng-app="DartApp">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-       <button ng-mouseover="hoverStyle={'background-color':'rgba(255, 0, 81, 1)'}" ng-mouseleave="hoverStyle={}" type="button" class="navbar-toggle collapsed" id="hamburger" data-toggle="collapse" data-target=".navbar-collapse">
+       <button ng-mouseover="hoverStyle={'background-color':'rgba(255, 0, 81, 1)'}" ng-mouseleave="hoverStyle={'background-color':'rgba(119, 119, 119, 1)'}" type="button" class="navbar-toggle collapsed" id="hamburger" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span ng-style="hoverStyle" class="icon-bar"></span>
           <span ng-style="hoverStyle" class="icon-bar"></span>
           <span ng-style="hoverStyle" class="icon-bar"></span>
       </button>
       <div class="navbar-header">
-        <a class ="navbar-brand" href="/"><img class="logo" src="arrow.png"></a>
+        <a class="navbar-brand logo" id="nav-link" href="/">&#10172;</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">

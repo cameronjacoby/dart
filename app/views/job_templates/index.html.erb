@@ -37,7 +37,10 @@
         <span>{{job.location}}</span>
         <span class="category">{{job.category}}</span>
       </h5>
-      <p>{{job.description}}</p>
+      <p>
+        {{job.description}}
+        <strong><a class="details" href="/companies/{{job.company.id}}/jobs/{{job.id}}">Job Details <span class="mini-arrow">&#10172;</span></a></strong>
+      </p>
     </div>
   </div>
 

@@ -9,13 +9,13 @@ body {
   font-weight: 300;
 }
 
-h1, h3, h5, a {
+a {
   color: rgba(51, 51, 51, 1);
 }
 
 a:hover, #nav-link:hover {
-  text-decoration: none;
   color: rgba(255, 0, 81, 1);
+  text-decoration: none;
 }
 
 .content {
@@ -24,7 +24,7 @@ a:hover, #nav-link:hover {
 }
 
 .logo {
-  height: 65%;
+  font-size: 2em
 }
 
 .navbar, #hamburger, #hamburger:hover {
@@ -32,8 +32,8 @@ a:hover, #nav-link:hover {
 }
 
 .success-msg {
-  margin-top: 15px;
   background-color: rgba(150, 234, 231, 1);
+  margin-top: 15px;
   padding: 3px 5px 3px 5px;
 }
 
@@ -49,12 +49,11 @@ a:hover, #nav-link:hover {
 }
 
 .filter {
-  float: right;
-  margin-top: -45px;
   font-size: 1.1em;
   font-weight: 400;
+  float: right;
+  margin-top: -45px;
   padding: 5px;
-  color: rgba(51, 51, 51, 1);
   border: 1.5px solid rgba(51, 51, 51, 1);
   cursor: pointer;
 }
@@ -86,6 +85,14 @@ a:hover, #nav-link:hover {
   color: rgba(255, 0, 81, 1);
   font-size: .9em;
   padding: 3px;
+}
+
+.details {
+  margin-left: 5px;
+}
+
+.mini-arrow {
+  margin-left: 2px;
 }
 
 .trending {

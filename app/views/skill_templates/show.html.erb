@@ -1,25 +1,25 @@
 <div ng-show="skill.skills" class="row">
   <div class="col-sm-3">
-    <h3 ng-show="skill.skills">Trending Skills</h3>
-    <span ng-repeat="skill in skill.skills | orderBy: '-jobs.length' | limitTo: 20">
-      <span ng-show="skill.jobs.length" class="skill-spaced"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
-    </span>
+    <div class="trending">
+       <h3 ng-show="skill.skills">Trending Skills</h3>
+      <span ng-repeat="skill in skill.skills | orderBy: '-jobs.length' | limitTo: 20">
+        <span ng-show="skill.jobs.length" class="skill-spaced"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
+      </span>
+    </div>
   </div>
 
   <div class="col-sm-9">
     <h1>Jobs that require {{skill.skill.name}}</h1>
-    <div ng-repeat="job in skill.skill.jobs | orderBy: '-clicks'">
-      <h4><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h4>
+    <div ng-repeat="job in skill.skill.jobs | orderBy: 'clicks'" class="job">
+      <h3><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h3>
+      <h5 class="sub-heading">
+        <span class="company"><a href="/companies/{{job.company.id}}">{{job.company.name}}</a></span>
+        <span>{{job.location}}</span>
+        <span class="category">{{job.category}}</span>
+      </h5>
       <p>
-        <a href="/companies/{{job.company.id}}">{{job.company.name}}</a> | 
-        {{job.location}} | <span class="category">{{job.category}}</span>
-      </p>
-      <p>{{job.description}}</p>
-      <p ng-show="job.skills">
-        <span class="skill"><strong>Skills:</strong></span>
-        <span ng-repeat="skill in job.skills">
-          <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
-        </span>
+        {{job.description}}
+        <strong><a class="details" href="/companies/{{job.company.id}}/jobs/{{job.id}}">Job Details <span class="mini-arrow">&#10172;</span></a></strong>
       </p>
     </div>
   </div>
