@@ -22,11 +22,12 @@ class JobsShowCtrl extends MainCtrl
     @http.get("/companies/#{@routeParams.company_id}/jobs/#{@routeParams.id}.json")
     .success (data) =>
       @job = data
-      i = 0
-      while i < @rootScope.currentUser.seeker.jobs.length
-        if @job.id == @rootScope.currentUser.seeker.jobs[i].id
-          @job.favorited = true
-        i += 1
+      if @rootScope.currentUser && @rootScope.currentUser.is_seeker
+        i = 0
+        while i < @rootScope.currentUser.seeker.jobs.length
+          if @job.id == @rootScope.currentUser.seeker.jobs[i].id
+            @job.favorited = true
+          i += 1
 
     .error () =>
       @location.path("/")
