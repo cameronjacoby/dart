@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>D A R T</title>
+  <%= favicon_link_tag 'favicon.png' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -9,24 +10,25 @@
 <body ng-app="DartApp">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+       <button ng-mouseover="hoverStyle={'background-color':'rgba(255, 0, 81, 1)'}" ng-mouseleave="hoverStyle={}" type="button" class="navbar-toggle collapsed" id="hamburger" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <span ng-style="hoverStyle" class="icon-bar"></span>
+          <span ng-style="hoverStyle" class="icon-bar"></span>
+          <span ng-style="hoverStyle" class="icon-bar"></span>
       </button>
       <div class="navbar-header">
-        <a id="navli" class ="navbar-brand" href="/">DART</a>
+        <a class ="navbar-brand" href="/"><img class="logo" src="arrow.png"></a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li ng-show="currentUser.is_seeker"><a id="navli" href="/seekers/{{currentUser.seeker.id}}">Profile</a></li>
-          <li ng-show="currentUser.is_company"><a id="navli" href="/companies/{{currentUser.company.id}}">Company Page</a></li>
+          <li><a id="nav-link" href="/">Jobs</a></li>
+          <li ng-show="currentUser.is_seeker"><a id="nav-link" href="/seekers/{{currentUser.seeker.id}}">Profile</a></li>
+          <li ng-show="currentUser.is_company"><a id="nav-link" href="/companies/{{currentUser.company.id}}">Company Page</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-show="!signed_in()"><a id="navli" href="/login">Log In</a></li>
-          <li ng-show="!signed_in()"><a id="navli" href="/register">Register</a></li>
-          <li ng-show="signed_in()"><a id="navli" href="" ng-click="sign_out()">Log Out</a></li>
+          <li ng-show="!signed_in()"><a id="nav-link" href="/login">Log In</a></li>
+          <li ng-show="!signed_in()"><a id="nav-link" href="/register">Register</a></li>
+          <li ng-show="signed_in()"><a id="nav-link" href="" ng-click="sign_out()">Log Out</a></li>
         </ul>
       </div>
     </div>

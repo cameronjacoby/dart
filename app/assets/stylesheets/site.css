@@ -1,6 +1,26 @@
+body {
+  background-color: rgba(253, 253, 253, 1);
+}
+
+.navbar {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+#nav-link:hover {
+  color: rgba(255, 0, 81, 1);
+}
+
+#hamburger, #hamburger:hover {
+  background-color: rgba(245, 245, 245, 1);
+}
+
 .content {
   margin-top: 60px;
   margin-bottom: 40px;
+}
+
+.logo {
+  height: 65%;
 }
 
 .clearfix {
