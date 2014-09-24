@@ -2,10 +2,10 @@
   <div class="col-sm-3"></div>
 
   <div class="col-sm-6">
-    <p ng-show="logoutMsg" class="success-msg">Successfully logged out.</p>
-    <h2>Log In</h2>
+    <p ng-show="logoutMsg" class="success-msg">Successfully logged out. <span ng-click="session.exitLogoutMsg()" class="exit">X</span></p>
+    <h2 id="dart">Log In to DART</h2>
     <p ng-show="session.errorMsg" class="error-msg">Could not log you in. Please try again.</p>
-    <form ng-submit="session.createSession(user)">
+    <form ng-submit="session.createSession(user)" class="login-form">
       <p ng-show="session.emailMsg" class="error-msg">Account with that email does not exist.</p>
       <div class="form-group">
         <input type="email" ng-model="user.email" class="form-control" placeholder="Email" required autofocus>
@@ -15,7 +15,7 @@
         <input type="password" ng-model="user.password" class="form-control" placeholder="Password" required>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary">Log In</button>
+        <button class="login-btn">Log In</button>
       </div>
     </form>
 

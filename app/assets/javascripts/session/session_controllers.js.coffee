@@ -5,6 +5,9 @@ class SessionCtrl extends MainCtrl
   constructor: (@scope, @http, @rootScope, @location) ->
     super(@http, @rootScope, @location)
 
+  exitLogoutMsg: () ->
+    @rootScope.logoutMsg = false
+
   createSession: (user) ->
     @rootScope.logoutMsg = false
     @emailMsg = false
