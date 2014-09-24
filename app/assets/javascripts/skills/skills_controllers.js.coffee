@@ -7,9 +7,9 @@ class SkillsShowCtrl extends MainCtrl
     @http.get("/skills/#{@routeParams.id}.json")
     .success (data) =>
       @skill = data
-    @http.get("/skills.json")
-    .success (data) =>
-      @skills = data
+      @http.get("/skills.json")
+      .success (data) =>
+        @skills = data
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
 

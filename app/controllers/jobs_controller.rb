@@ -7,7 +7,7 @@ class JobsController < AngularController
   def index
     @jobs = Job.all
     respond_to do |format|
-      format.json {render :json => @jobs, :include => [:company, :skills]}
+      format.json {render :json => @jobs, :include => [:company => {:only => [:id, :name]}, :skills => {:only => [:id, :name]}]}
     end
   end
 
