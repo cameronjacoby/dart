@@ -200,14 +200,26 @@ a:hover, #nav-link:hover {
   margin-right: 20px;
 }
 
+#company-name {
+  letter-spacing: 4px;
+}
+
 .no-crunchbase {
   margin-top: 22px;
   color: rgba(0, 0, 0, .6);
 }
 
+.about-company {
+  margin-top: 15px;
+}
+
 .company-links {
   font-weight: 400;
   margin-bottom: 5px;
+}
+
+.news {
+  margin-top: 15px;
 }
 
 /*job show page styles*/
