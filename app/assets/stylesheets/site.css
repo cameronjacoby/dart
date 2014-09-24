@@ -42,7 +42,21 @@ a:hover, #nav-link:hover {
   cursor: pointer;
 }
 
-/* homepage styles */
+.edit-btns button {
+  font-weight: 400;
+  margin-top: 30px;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1.5px solid rgba(51, 51, 51, 1);
+  background-color: rgba(253, 253, 253, 1);
+}
+
+.edit-btns button:hover {
+  color: rgba(255, 0, 81, 1);
+  border: 1.5px solid rgba(255, 0, 81, 1);
+}
+
+/* homepage styles (jobs) */
 
 #dart {
   letter-spacing: 4px;
@@ -64,10 +78,12 @@ a:hover, #nav-link:hover {
 }
 
 .filter-form {
+  position: relative;
   background-color: rgba(150, 234, 231, 1);
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
+  padding-right: 28px;
 }
 
 .filter-form input {
@@ -75,8 +91,11 @@ a:hover, #nav-link:hover {
 }
 
 .filter-form .exit {
+  position: absolute;
+  top: 0;
+  right: 0;
   margin-top: 7px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .trending {
@@ -122,7 +141,23 @@ a:hover, #nav-link:hover {
   margin-left: 2px;
 }
 
+/*seeker profile page styles*/
 
+.saved-jobs {
+  margin-top: 25px;
+  letter-spacing: 3px;
+}
+
+.no-saved-jobs {
+  margin-top: 25px;
+}
+
+.favorites {
+  border-top: 1px solid rgba(51, 51, 51, 1);
+  border-bottom: 1px solid rgba(51, 51, 51, 1);
+}
+
+/* ***** */
 
 .clearfix {
   overflow: auto;
@@ -148,7 +183,7 @@ a:hover, #nav-link:hover {
   color: rgba(0, 0, 0, .6);
 }
 
-.edit-btns, .edit-form, .new-form {
+.edit-form, .new-form {
   margin-top: 15px;
 }
 

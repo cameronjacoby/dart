@@ -1,4 +1,4 @@
-<div class="row">
+<div ng-show="seeker.seeker" class="row">
   <div class="col-sm-3"></div>
 
   <div class="col-sm-6">
@@ -8,26 +8,31 @@
 
       <!-- toggle headers based on presence of favorites -->
       <!-- favoritesToggle handles situation when last favorite is removed -->
-      <h4 ng-hide="seeker.seeker.jobs" ng-show="seeker.favoritesToggle">No saved jobs yet. Browse <a href="/">all jobs</a> to start saving favorites.</h4>
-      <h3 ng-show="seeker.seeker.jobs" ng-hide="seeker.favoritesToggle">Saved Jobs</h3>
+      <h4 ng-hide="seeker.seeker.jobs" ng-show="seeker.favoritesToggle" class="no-saved-jobs">No saved jobs yet. <a href="/">Browse all jobs to start saving favorites. <span class="mini-arrow">&#10172;</span></a></h4>
 
-      <div ng-repeat="favorite in seeker.seeker.jobs">
-        <h5>
-          <a href="/companies/{{favorite.company.id}}/jobs/{{favorite.id}}">{{favorite.title}}</a>
-          <span ng-show="currentUser.seeker.id == seeker.seeker.id">
-            <span ng-click="seeker.removeFav(currentUser.seeker, favorite)" class="glyphicon glyphicon-star"></span>
-          </span>
-        </h5>
-        <p>
-          <a href="/companies/{{favorite.company.id}}">{{favorite.company.name}}</a> | 
-          {{favorite.location}} | {{favorite.category}}
-        </p>
+      <div class="favorites">
+        <h3 ng-show="seeker.seeker.jobs" ng-hide="seeker.favoritesToggle" class="saved-jobs">SAVED JOBS</h3>
+        <div ng-repeat="favorite in seeker.seeker.jobs" class="job">
+          <h4>
+            <a href="/companies/{{favorite.company.id}}/jobs/{{favorite.id}}">{{favorite.title}}</a>
+            <span ng-show="currentUser.seeker.id == seeker.seeker.id">
+              <span ng-click="seeker.removeFav(currentUser.seeker, favorite)" class="glyphicon glyphicon-star star"></span>
+            </span>
+          </h4>
+          <p class="sub-heading">
+            <span class="category">{{favorite.category}}</span>
+            <span class="company"><a href="/companies/{{favorite.company.id}}">{{favorite.company.name}}</a></span>
+            <span>{{favorite.location}}</span>
+            <span><strong><a class="details" href="/companies/{{favorite.company.id}}/jobs/{{favorite.id}}">Job Details <span class="mini-arrow">&#10172;</span></a></strong></span>
+          </p>
+        </div>
       </div>
+      
     </div>
 
     <!-- edit/delete buttons -->
     <div ng-hide="seeker.editForm" class="edit-btns">
-      <button ng-show="currentUser.seeker.id == seeker.seeker.id" ng-click="seeker.editSeeker()" class="btn btn-primary">Edit Profile</button> <button ng-show="currentUser.seeker.id == seeker.seeker.id" ng-click="seeker.deleteSeeker()" class="btn btn-danger">Delete Profile</button>
+      <button ng-show="currentUser.seeker.id == seeker.seeker.id" ng-click="seeker.editSeeker()">Edit Profile</button> <button ng-show="currentUser.seeker.id == seeker.seeker.id" ng-click="seeker.deleteSeeker()">Delete Profile</button>
     </div>
 
     <!-- edit profile form -->

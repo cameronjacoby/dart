@@ -43,10 +43,15 @@ class SeekersShowCtrl extends MainCtrl
         @location.path("/")
 
   removeFav: (seeker, job) ->
-    @rootScope.unfavorite seeker, job, () =>
-      @seeker.jobs.splice(@seeker.jobs.indexOf(job), 1)
-      if @seeker.jobs.length == 0
-        @favoritesToggle = true
+    @http.get("/seekers/#{seeker.id}/remove/#{job.id}.json")
+      .success (data) =>
+        console.log "UNFAVORITED", data
+        job.favorited = false
+        @seeker.jobs.splice(@seeker.jobs.indexOf(job), 1)
+        if @seeker.jobs.length == 0
+          @favoritesToggle = true
+      .error () =>
+        @location.path("/")
 
   @$inject = ["$scope", "$http", "$routeParams", "$rootScope", "$location"]
 
