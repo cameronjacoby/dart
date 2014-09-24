@@ -36,8 +36,10 @@
       <h3>
         <a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
         <span ng-show="currentUser.is_seeker">
-          <span ng-hide="job.favorited" ng-click="favorite(currentUser.seeker, job)" class="glyphicon glyphicon-star-empty star"></span>
-          <span ng-show="job.favorited" ng-click="unfavorite(currentUser.seeker, job)" class="glyphicon glyphicon-star star"></span>
+
+          <span ng-hide="job.favorited" ng-click="favorite(currentUser.seeker, job)" ng-mouseover="emptyStarStyle={'color':'rgba(255, 0, 81, .6)'}" ng-mouseout="emptyStarStyle={}" ng-style="emptyStarStyle" class="glyphicon glyphicon-star-empty star"></span>
+
+          <span ng-show="job.favorited" ng-click="unfavorite(currentUser.seeker, job)" ng-mouseover="starStyle={'color':'rgba(255, 0, 81, .6)'}" ng-mouseout="starStyle={}" ng-style="starStyle" class="glyphicon glyphicon-star star"></span>
         </span>
       </h3>
 
@@ -48,7 +50,7 @@
       </h5>
       <p>
         {{job.description}}
-        <strong><a class="details" href="/companies/{{job.company.id}}/jobs/{{job.id}}">Job Details <span class="mini-arrow">&#10172;</span></a></strong>
+        <span class="weight"><a class="details" href="/companies/{{job.company.id}}/jobs/{{job.id}}">Job Details <span class="mini-arrow">&#10172;</span></a></span>
       </p>
     </div>
   </div>

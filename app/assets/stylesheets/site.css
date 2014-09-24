@@ -89,6 +89,10 @@ a:hover, #nav-link:hover {
   border: 1px solid rgba(255, 0, 81, 1);
 }
 
+.weight {
+  font-weight: 400;
+}
+
 /* homepage styles (jobs) */
 
 #dart {
@@ -182,6 +186,30 @@ a:hover, #nav-link:hover {
   margin-right: 10px;
 }
 
+/*company show page styles*/
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
+.company-img {
+  float: left;
+  height: 50px;
+  margin-top: 15px;
+  margin-right: 20px;
+}
+
+.no-crunchbase {
+  margin-top: 22px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.company-links {
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
 /*job show page styles*/
 
 #job-subheading {
@@ -224,23 +252,6 @@ a:hover, #nav-link:hover {
 }
 
 /* ***** */
-
-.clearfix {
-  overflow: auto;
-  zoom: 1;
-}
-
-.company-img {
-  float: left;
-  height: 50px;
-  margin-top: 15px;
-  margin-right: 20px;
-}
-
-.no-crunchbase {
-  margin-top: 25px;
-  color: rgba(0, 0, 0, .6);
-}
 
 .edit-job, .delete-job {
   margin-left: 8px;

@@ -1,5 +1,5 @@
 <!-- start top row -->
-<div class="row">
+<div ng-show="company.company" class="row">
   <div class="col-sm-12">
     <!-- hide company logo & name when editing company profile -->
     <div ng-hide="company.editForm" class="clearfix">
@@ -11,7 +11,7 @@
 <!-- end top row -->
 
 
-<div class="row">
+<div ng-show="company.company" class="row">
   <!-- start left column -->
   <div class="col-sm-4">
     <!-- only show CrunchBase data if profile exists -->
@@ -24,33 +24,31 @@
       <!-- company details -->
       <h3>Details</h3>
       <p ng-show="company.profile.relationships.offices.items[0].city || company.profile.relationships.offices.items[0].region">
-        <strong>Location:</strong> 
+        <span class="weight">Location:</span> 
         {{company.profile.relationships.offices.items[0].city}}, 
         {{company.profile.relationships.offices.items[0].region}}
       </p>
-      <p ng-show="company.profile.properties.founded_on"><strong>
-        Founded:</strong> 
+      <p ng-show="company.profile.properties.founded_on">
+        <span class="weight">Founded:</span> 
         {{company.profile.properties.founded_on | date}}
       </p>
       <p ng-show="company.profile.properties.total_funding_usd">
-        <strong>Total Funding:</strong> 
+        <span class="weight">Total Funding:</span> 
         {{company.profile.properties.total_funding_usd | currency: "$"}}
       </p>
       <p ng-show="company.profile.properties.number_of_employees">
-        <strong>Size:</strong> 
+        <span class="weight">Size:</span> 
         {{company.profile.properties.number_of_employees}} employees
       </p>
-      <p ng-show="company.profile.properties.homepage_url">
-        <span ng-show="company.profile.properties.homepage_url"><a href="{{company.profile.properties.homepage_url}}" target="_blank">Homepage</a></span> | 
-        <a href="http://www.crunchbase.com/{{company.company.crunchbase_path}}" target="_blank">CrunchBase</a>
-      </p>
+      <p ng-show="company.profile.properties.homepage_url" class="company-links"><a href="{{company.profile.properties.homepage_url}}" target="_blank">Homepage <span class="mini-arrow">&#10172;</span></a></p>
+      <p class="company-links"><a href="http://www.crunchbase.com/{{company.company.crunchbase_path}}" target="_blank">CrunchBase <span class="mini-arrow">&#10172;</span></a></p>
 
       <!-- current team -->
       <h3 ng-show="company.profile.relationships.current_team.items">Team</h3>
       <div ng-repeat="person in company.profile.relationships.current_team.items">
         <p>
           <a href="http://www.crunchbase.com/{{person.path}}" target="_blank">
-            {{person.first_name}} {{person.last_name}}
+            <span class="weight">{{person.first_name}} {{person.last_name}}</span>
           </a>, 
           {{person.title}}
         </p>
@@ -58,12 +56,10 @@
     </div>
 
     <!-- show 'no CrunchBase' message if profile does not exist -->
-    <div ng-hide="company.profile" class="no-crunchbase">
-      <p>
-        No company information from CrunchBase.
-        <!-- <span ng-show="currentUser.company.id == company.company.id"></span>Sign up for an account <a href="http://www.crunchbase.com/account/signup" target="_blank">here</a>. -->
-      </p>
-    </div>
+    <p ng-hide="company.profile" class="no-crunchbase weight">
+      No company information from CrunchBase.
+      <!-- <span ng-show="currentUser.company.id == company.company.id"></span>Sign up for an account <a href="http://www.crunchbase.com/account/signup" target="_blank">here</a>. -->
+    </p>
   </div>
   <!-- end left column -->
 
@@ -132,16 +128,25 @@
 
       <!-- start list of current job postings -->
       <!-- hide entire list when adding new job -->
-      <div ng-hide="company.newJobForm" ng-repeat="job in company.company.jobs | orderBy: '-created_at'">
+      <div ng-hide="company.newJobForm" ng-repeat="job in company.company.jobs | orderBy: '-created_at'" class="job">
         
         <!-- hide job elements individually when editing a specific job -->
-        <h5 ng-hide="company.hideWhenEditingJob">
+        <h4 ng-hide="company.hideWhenEditingJob">
           <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
 
           <!-- click icons to edit/delete jobs -->
           <span ng-show="currentUser.company.id == company.company.id" ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil edit-job"></span>
           <span ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash delete-job"></span>
-        </h5>
+
+          <span ng-show="currentUser.is_seeker">
+
+            <span ng-hide="job.favorited" ng-click="favorite(currentUser.seeker, job)" class="glyphicon glyphicon-star-empty star"></span>
+
+            <span ng-show="job.favorited" ng-click="unfavorite(currentUser.seeker, job)" class="glyphicon glyphicon-star star"></span>
+          </span>
+
+
+        </h4>
 
         <!-- show update message when a job is updated -->
         <p ng-show="job.updateJobMsg" class="success-msg">Job updated successfully.</p>
@@ -237,7 +242,7 @@
     <!-- only show news if articles from CrunchBase exist -->
     <h3 ng-show="company.profile.relationships.news.items">News</h3>
     <div ng-repeat="article in company.profile.relationships.news.items | orderBy : '-created_at' | limitTo: 10">
-      <p><a href="{{article.url}}" target="_blank">{{article.title}}</a></p>
+      <p class="weight"><a href="{{article.url}}" target="_blank">{{article.title}} <span class="mini-arrow">&#10172;</span></a></p>
     </div>
   </div>
   <!-- end right column -->

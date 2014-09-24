@@ -9,6 +9,16 @@ class CompaniesShowCtrl extends MainCtrl
       @company = data
       @profile = data.profile
 
+      if @rootScope.currentUser && @rootScope.currentUser.is_seeker
+        i = 0
+        while i < @company.jobs.length
+          j = 0
+          while j < @rootScope.currentUser.seeker.jobs.length
+            if @company.jobs[i].id == @rootScope.currentUser.seeker.jobs[j].id
+              @company.jobs[i].favorited = true
+            j += 1
+          i += 1
+
   exitDeleteMsg: () ->
     @rootScope.deleteMsg = false
 
