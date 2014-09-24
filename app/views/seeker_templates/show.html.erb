@@ -14,7 +14,9 @@
       <div ng-repeat="favorite in seeker.seeker.jobs">
         <h5>
           <a href="/companies/{{favorite.company.id}}/jobs/{{favorite.id}}">{{favorite.title}}</a>
-          <span ng-show="currentUser.seeker.id == seeker.seeker.id" ng-click="seeker.removeFav(favorite)" class="glyphicon glyphicon-remove remove-fav"></span>
+          <span ng-show="currentUser.seeker.id == seeker.seeker.id">
+            <span ng-click="seeker.removeFav(currentUser.seeker, favorite)" class="glyphicon glyphicon-star"></span>
+          </span>
         </h5>
         <p>
           <a href="/companies/{{favorite.company.id}}">{{favorite.company.name}}</a> | 

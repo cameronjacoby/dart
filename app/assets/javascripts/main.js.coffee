@@ -28,11 +28,13 @@ class MainCtrl
       .error () =>
         @location.path("/")
 
-    @rootScope.unfavorite = (seeker, job) =>
+    @rootScope.unfavorite = (seeker, job, callback) =>
       @http.get("/seekers/#{seeker.id}/remove/#{job.id}.json")
       .success (data) =>
         console.log "UNFAVORITED", data
         job.favorited = false
+        if callback
+          callback()
       .error () =>
         @location.path("/")
 
