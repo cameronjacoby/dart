@@ -34,7 +34,7 @@ a:hover, #nav-link:hover {
 .success-msg {
   background-color: rgba(150, 234, 231, 1);
   margin-top: 15px;
-  padding: 3px 5px 3px 5px;
+  padding: 5px 10px 5px 10px;
 }
 
 .exit {
@@ -61,6 +61,27 @@ a:hover, #nav-link:hover {
 .filter:hover {
   color: rgba(255, 0, 81, 1);
   border: 1.5px solid rgba(255, 0, 81, 1);
+}
+
+.filter-form {
+  background-color: rgba(150, 234, 231, 1);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.filter-form input {
+  margin-right: 5px;
+}
+
+.filter-form .exit {
+  margin-top: 7px;
+  margin-right: 5px;
+}
+
+.trending {
+  margin-top: 25px;
+  margin-bottom: 30px;
 }
 
 .job {
@@ -93,11 +114,6 @@ a:hover, #nav-link:hover {
 
 .mini-arrow {
   margin-left: 2px;
-}
-
-.trending {
-  margin-top: 25px;
-  margin-bottom: 30px;
 }
 
 

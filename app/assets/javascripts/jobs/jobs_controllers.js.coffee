@@ -11,8 +11,11 @@ class JobsCtrl extends MainCtrl
       .success (data) =>
         @skills = data
 
-  hideMsg: () ->
+  exitDeleteMsg: () ->
     @rootScope.deleteMsg = false
+
+  exitFilterForm: () ->
+    @showFilter = false
 
   @$inject = ["$scope", "$http", "$rootScope", "$location"]
 
