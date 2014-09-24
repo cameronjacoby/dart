@@ -14,7 +14,6 @@
     <h1 id="dart">DART JOBS</h1>
     <div ng-hide="jobs.showFilter" ng-click="jobs.showFilter=true" class="filter">Filter Jobs</div>
 
-
     <form ng-show="jobs.showFilter" class="form-inline filter-form">
       <div class="form-group">
         <input ng-model="search.location" class="form-control options" placeholder="Location">
@@ -33,10 +32,15 @@
       <span ng-click="jobs.exitFilterForm()" class="exit">X</span>
     </form>    
 
-
-
     <div ng-repeat="job in jobs.jobs | filter:search:strict | orderBy: 'clicks'" class="job">
-      <h3><a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a></h3>
+      <h3>
+        <span ng-show="currentUser.is_seeker">
+          <span ng-hide="job.favorited" ng-click="favorite(currentUser.seeker, job)" class="glyphicon glyphicon-star-empty star"></span>
+          <span ng-show="job.favorited" ng-click="unfavorite(currentUser.seeker, job)" class="glyphicon glyphicon-star star"></span>
+        </span>
+        <a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
+      </h3>
+
       <h5 class="sub-heading">
         <span class="company"><a href="/companies/{{job.company.id}}">{{job.company.name}}</a></span>
         <span>{{job.location}}</span>

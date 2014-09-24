@@ -85,7 +85,13 @@ a:hover, #nav-link:hover {
 }
 
 .job {
-  margin-top: 20px;
+  margin-top: 25px;
+}
+
+.star {
+  color: rgba(255, 0, 81, 1);
+  font-size: .8em;
+  margin-right: 5px;
 }
 
 .sub-heading {

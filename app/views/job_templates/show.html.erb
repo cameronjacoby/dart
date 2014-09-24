@@ -5,7 +5,7 @@
     <div ng-hide="job.editForm">
       <h2>
         {{job.job.title}}
-        <span ng-show="currentUser.is_seeker" >
+        <span ng-show="currentUser.is_seeker">
           <span ng-hide="job.job.favorited" ng-click="favorite(currentUser.seeker, job.job)" class="glyphicon glyphicon-star-empty"></span>
           <span ng-show="job.job.favorited" ng-click="unfavorite(currentUser.seeker, job.job)" class="glyphicon glyphicon-star"></span>
         </span>
