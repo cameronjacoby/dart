@@ -91,7 +91,7 @@ a:hover, #nav-link:hover {
 .star {
   color: rgba(255, 0, 81, 1);
   font-size: .8em;
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .sub-heading {
@@ -100,7 +100,7 @@ a:hover, #nav-link:hover {
 }
 
 .sub-heading span {
-  margin-right: 5px;
+  margin-right: 7px;
 }
 
 .company {
@@ -111,7 +111,7 @@ a:hover, #nav-link:hover {
   border: 1px solid rgba(255, 0, 81, 1);
   color: rgba(255, 0, 81, 1);
   font-size: .9em;
-  padding: 3px;
+  padding: 3px 6px 3px 6px;
 }
 
 .details {

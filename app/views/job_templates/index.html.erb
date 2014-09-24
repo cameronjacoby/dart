@@ -34,17 +34,17 @@
 
     <div ng-repeat="job in jobs.jobs | filter:search:strict | orderBy: 'clicks'" class="job">
       <h3>
+        <a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
         <span ng-show="currentUser.is_seeker">
           <span ng-hide="job.favorited" ng-click="favorite(currentUser.seeker, job)" class="glyphicon glyphicon-star-empty star"></span>
           <span ng-show="job.favorited" ng-click="unfavorite(currentUser.seeker, job)" class="glyphicon glyphicon-star star"></span>
         </span>
-        <a href="/companies/{{job.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
       </h3>
 
       <h5 class="sub-heading">
+        <span class="category">{{job.category}}</span>
         <span class="company"><a href="/companies/{{job.company.id}}">{{job.company.name}}</a></span>
         <span>{{job.location}}</span>
-        <span class="category">{{job.category}}</span>
       </h5>
       <p>
         {{job.description}}

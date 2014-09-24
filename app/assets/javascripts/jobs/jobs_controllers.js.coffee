@@ -11,6 +11,16 @@ class JobsCtrl extends MainCtrl
       .success (data) =>
         @skills = data
 
+      if @rootScope.currentUser && @rootScope.currentUser.is_seeker
+        i = 0
+        while i < @jobs.length
+          j = 0
+          while j < @rootScope.currentUser.seeker.jobs.length
+            if @jobs[i].id == @rootScope.currentUser.seeker.jobs[j].id
+              @jobs[i].favorited = true
+            j += 1
+          i += 1
+
   exitDeleteMsg: () ->
     @rootScope.deleteMsg = false
 
