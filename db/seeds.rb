@@ -1,6 +1,4 @@
-companies = ["Weft", "Benzinga", "Cerego", "FanJam", "Kaggle", "Lyst", "Thumbtack", "Shortcut",
-  "Khan Academy", "Believe.in", "Typeform", "PythonAnywhere", "FoundationDB", "Ginger.io",
-  "Sencha", "Heap"]
+companies = ["Weft", "Benzinga", "Cerego", "FanJam", "Kaggle", "Lyst", "Thumbtack", "Shortcut"]
 
 companies.each do |company_name|
   Company.create({name: company_name})
@@ -10,10 +8,7 @@ cities = ["San Francisco", "Los Angeles", "New York, NY", "Chicago", "London"]
 categories = ["Full Stack", "Front End", "Back End", "Mobile - iOS", "Mobile - Android", "Other"]
 
 Company.all.each do |company|
-  puts company.inspect
-  puts "company path"
   company.get_crunchbase_path
-  puts "company profile"
   company.get_crunchbase_profile
   5.times do 
     company.jobs.create({
