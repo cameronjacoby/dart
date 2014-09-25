@@ -49,6 +49,10 @@ group :developement do
   gem 'pry-rails'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'geocoder'
 
 gem 'typhoeus'
