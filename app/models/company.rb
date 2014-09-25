@@ -10,9 +10,8 @@ class Company < ActiveRecord::Base
   def get_crunchbase_path
     # use self.name for API call to get CrunchBase path
     request = Typhoeus.get(
-      'http://api.crunchbase.com/v/2/organizations',
+      "http://api.crunchbase.com/v/2/organizations/?user_key=#{ENV['CRUNCHBASE_USER_KEY']}",
       :params => {
-        :user_key => ENV['CRUNCHBASE_USER_KEY'],
         :name => self.name,
         :organization_types => "company"
       }
@@ -30,10 +29,7 @@ class Company < ActiveRecord::Base
     if self.crunchbase_path
       # use self.crunchbase_path for API call to get CrunchBase profile
       request = Typhoeus.get(
-        'http://api.crunchbase.com/v/2/' + self.crunchbase_path,
-        :params => {
-          :user_key => ENV['CRUNCHBASE_USER_KEY']
-        }
+        "http://api.crunchbase.com/v/2/" + self.crunchbase_path + "/?user_key=#{ENV['CRUNCHBASE_USER_KEY']}",
       )
       response = JSON.parse(request.body)
       # save CrunchBase profile
