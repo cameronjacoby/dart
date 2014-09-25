@@ -22,6 +22,22 @@ class CompaniesShowCtrl extends MainCtrl
   exitDeleteMsg: () ->
     @rootScope.deleteMsg = false
 
+  exitUpdateMsg: () ->
+    @updateMsg = false
+
+  exitUpdateJobMsg: (job) ->
+    job.updateJobMsg = false
+
+  exitNewForm: () ->
+    @newJobForm = false
+
+  exitUpdateForm: () ->
+    @editForm = false
+
+  exitEditJobForm: (job) ->
+    job.editJobForm = false
+    @hideWhenEditingJob = false
+
   editCompany: () ->
     @editForm = true
     @updateMsg = false
@@ -84,6 +100,11 @@ class CompaniesShowCtrl extends MainCtrl
     job.updateJobMsg = false
     @hideWhenEditingJob = true
     @updateMsg = false
+
+    i = 0
+    while i < @company.jobs.length
+      @company.jobs[i].updateJobMsg = false
+      i += 1
 
   updateJob: (job) ->
     @http.put("/companies/#{@company.id}/jobs/#{job.id}.json", {job: job})

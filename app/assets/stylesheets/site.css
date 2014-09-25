@@ -52,7 +52,7 @@ a:hover, #nav-link:hover {
   font-weight: 400;
   margin-top: 30px;
   margin-right: 10px;
-  padding: 5px;
+  padding: 5px 10px 5px 10px;
   border: 1px solid rgba(51, 51, 51, 1);
   background-color: rgba(253, 253, 253, 1);
 }
@@ -66,13 +66,23 @@ a:hover, #nav-link:hover {
   margin-top: 20px;
 }
 
+/* h2 edit-exit span */
+
 #edit-exit {
   font-size: .5em;
   margin-top: 10px;
   margin-right: 2px;
 }
 
-#edit-exit:hover {
+/* h3 exit span */
+
+#h3-exit {
+  font-size: .6em;
+  margin-top: 10px;
+  margin-right: 2px;
+}
+
+#edit-exit:hover, #h3-exit:hover {
   color: rgba(255, 0, 81, 1);
 }
 
@@ -104,7 +114,7 @@ a:hover, #nav-link:hover {
   font-weight: 400;
   float: right;
   margin-top: -45px;
-  padding: 5px;
+  padding: 5px 10px 5px 10px;
   border: 1px solid rgba(51, 51, 51, 1);
   cursor: pointer;
 }
@@ -197,16 +207,15 @@ a:hover, #nav-link:hover {
   float: left;
   height: 50px;
   margin-top: 15px;
-  margin-right: 20px;
+  margin-right: 25px;
 }
 
 #company-name {
-  letter-spacing: 4px;
+  letter-spacing: 5px;
 }
 
 .no-crunchbase {
   margin-top: 22px;
-  color: rgba(0, 0, 0, .6);
 }
 
 .about-company {
@@ -214,12 +223,36 @@ a:hover, #nav-link:hover {
 }
 
 .company-links {
-  font-weight: 400;
+  letter-spacing: 2px;
   margin-bottom: 5px;
 }
 
 .news {
   margin-top: 15px;
+}
+
+#post-job {
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+#post-job:hover {
+  color: rgba(255, 0, 81, 1);
+}
+
+.plus {
+  font-size: 1.1em;
+  margin-right: 5px;
+}
+
+.pencil-edit, .trash-delete {
+  font-size: .75em;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.pencil-edit:hover, .trash-delete:hover {
+  color: rgba(255, 0, 81, 1);
 }
 
 /*job show page styles*/
@@ -263,24 +296,7 @@ a:hover, #nav-link:hover {
   padding-bottom: 20px;
 }
 
-/*log in page styles*/
-
-
-
 /* ***** */
-
-.edit-job, .delete-job {
-  margin-left: 8px;
-  cursor: pointer;
-}
-
-.edit-job:hover {
-  color: rgba(66, 139, 202, 1);
-}
-
-.delete-job:hover {
-  color: rgba(217, 83, 79, 1);
-}
 
 .signup-col {
   padding-left: 25px;

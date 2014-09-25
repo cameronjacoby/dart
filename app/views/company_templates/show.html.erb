@@ -40,8 +40,8 @@
         <span class="weight">Size:</span> 
         {{company.profile.properties.number_of_employees}} employees
       </p>
-      <p ng-show="company.profile.properties.homepage_url" class="company-links"><a href="{{company.profile.properties.homepage_url}}" target="_blank">Homepage <span class="mini-arrow">&#10172;</span></a></p>
-      <p class="company-links"><a href="http://www.crunchbase.com/{{company.company.crunchbase_path}}" target="_blank">CrunchBase <span class="mini-arrow">&#10172;</span></a></p>
+      <p ng-show="company.profile.properties.homepage_url" class="company-links weight"><a href="{{company.profile.properties.homepage_url}}" target="_blank">HOMEPAGE <span class="mini-arrow">&#10172;</span></a></p>
+      <p class="company-links weight"><a href="http://www.crunchbase.com/{{company.company.crunchbase_path}}" target="_blank">CRUNCHBASE <span class="mini-arrow">&#10172;</span></a></p>
 
       <!-- current team -->
       <h3 ng-show="company.profile.relationships.current_team.items">Team</h3>
@@ -73,9 +73,9 @@
         <div ng-hide="company.hideWhenEditingJob">
 
           <!-- show update message when company profile updated -->
-          <p ng-show="company.updateMsg" class="success-msg">Profile updated successfully.</p>
+          <p ng-show="company.updateMsg" class="success-msg">Profile updated successfully. <span ng-click="company.exitUpdateMsg()" class="exit">X</span></p>
 
-          <!-- show success message when company deletes a job -->
+          <!-- show success message when company deletes a job (from job show page) -->
           <p ng-show="deleteMsg" class="success-msg">Successfully deleted job. <span ng-click="company.exitDeleteMsg()" class="exit">X</span></p>
 
           <!-- toggle headers based on presence of job postings -->
@@ -83,8 +83,8 @@
           <h3 ng-hide="company.company.jobs" ng-show="company.jobsToggle">No Job Postings Yet</h3>
           <h3 ng-show="company.company.jobs" ng-hide="company.jobsToggle">Current Job Openings</h3>
 
-          <!-- button to post new job (show form) -->
-          <button ng-show="currentUser.company.id == company.company.id" ng-click="company.showNewJobForm()" class="btn btn-primary">Post a Job</button>
+          <!-- click to post new job (show form) -->
+          <h5 ng-show="currentUser.company.id == company.company.id" ng-click="company.showNewJobForm()" id="post-job"><span class="plus">+</span>POST A JOB</h5>
 
         </div>
         <!-- end hide for editing a job posting -->
@@ -92,15 +92,15 @@
       <!-- end hide for adding new job-->
 
       <!-- form to add new job -->
-      <h3 ng-show="company.newJobForm">Add a New Job</h3>
+      <h3 ng-show="company.newJobForm">Add a New Job <span ng-click="company.exitNewForm()" class="exit" id="h3-exit">X</span></h3>
       <form ng-show="company.newJobForm" ng-submit="company.addJob(newJob)" class="new-form">
-        <p>
+        <div class="form-group">
           <input type="text" ng-model="newJob.title" class="form-control" placeholder="Title" required autofocus>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <input type="text" ng-model="newJob.location" class="form-control" placeholder="Location (City, State)" required>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <select ng-model="newJob.category" class="form-control options" required>
             <option value="" disabled selected>Category</option>
             <option>Full Stack</option>
@@ -110,19 +110,19 @@
             <option>Mobile - Android</option>
             <option>Other</option>
           </select>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <textarea ng-model="newJob.description" class="form-control" placeholder="Description" required></textarea>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <textarea ng-model="newJob.how_to_apply" class="form-control" placeholder="How to Apply" required></textarea>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <input type="text" ng-model="newJob.skills" class="form-control" placeholder="Skills / Languages (separated by commas)" required>
-        </p>
-        <p>
-          <button class="btn btn-primary">Save Job</button>
-        </p>
+        </div>
+        <div class="form-group">
+          <button class="save-btn">Add Job</button>
+        </div>
       </form>
       <!-- end form to add new job -->
 
@@ -135,8 +135,9 @@
           <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
 
           <!-- click icons to edit/delete jobs -->
-          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil edit-job"></span>
-          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash delete-job"></span>
+          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil pencil-edit"></span>
+
+          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash trash-delete"></span>
 
           <!-- currentUser (seeker) can favorite jobs -->
           <span ng-show="currentUser.is_seeker">
@@ -146,7 +147,7 @@
         </h4>
 
         <!-- show update message when a job is updated -->
-        <p ng-show="job.updateJobMsg" class="success-msg">Job updated successfully.</p>
+        <p ng-show="job.updateJobMsg" class="success-msg">Job updated successfully. <span ng-click="company.exitUpdateJobMsg(job)" class="exit">X</span></p>
 
         <!-- hide job elements individually when editing a specific job -->
         <p ng-hide="company.hideWhenEditingJob" class="sub-heading">
@@ -172,15 +173,15 @@
         </div>
 
         <!-- form to edit a job -->
-        <h3 ng-show="job.editJobForm">Edit Job</h3>
+        <h3 ng-show="job.editJobForm">Edit Job Posting <span ng-click="company.exitEditJobForm(job)" class="exit" id="h3-exit">X</span></h3>
         <form ng-show="job.editJobForm" ng-submit="company.updateJob(job)" class="edit-form">
-          <p>
+          <div class="form-group">
             <input type="text" ng-model="job.title" class="form-control" placeholder="Title" required autofocus>
-          </p>
-          <p>
+          </div>
+          <div class="form-group">
             <input type="text" ng-model="job.location" class="form-control" placeholder="Location (City, State)" required>
-          </p>
-          <p>
+          </div>
+          <div class="form-group">
             <select ng-model="job.category" class="form-control options" required>
               <option value="" disabled selected>Category</option>
               <option>Full Stack</option>
@@ -190,19 +191,19 @@
               <option>Mobile - Android</option>
               <option>Other</option>
             </select>
-          </p>
-          <p>
+          </div>
+          <div class="form-group">
             <textarea ng-model="job.description" class="form-control" placeholder="Description" required></textarea>
-          </p>
-          <p>
+          </div>
+          <div class="form-group">
             <textarea ng-model="job.how_to_apply" class="form-control" placeholder="How to Apply" required></textarea>
-          </p>
-          <p>
+          </div>
+          <div class="form-group">
             <input type="text" ng-model="job.skill_names" class="form-control" placeholder="Skills / Languages (separated by commas)" required>
-          </p>
-          <p>
-            <button class="btn btn-primary">Save Job</button>
-          </p>
+          </div>
+          <div class="form-group">
+            <button class="save-btn">Update Job</button>
+          </div>
         </form>
         <!-- end form to edit a job -->
       </div>
@@ -214,25 +215,25 @@
     <div ng-hide="company.editForm" class="edit-btns">
       <div ng-hide="company.newJobForm">
         <div ng-hide="company.hideWhenEditingJob">
-          <button ng-show="currentUser.company.id == company.company.id" ng-click="company.editCompany()" class="btn btn-primary">Edit Profile</button> <button ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteCompany()" class="btn btn-danger">Delete Profile</button>
+          <button ng-show="currentUser.company.id == company.company.id" ng-click="company.editCompany()">Edit Profile</button> <button ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteCompany()">Delete Profile</button>
         </div>
       </div>
     </div>
 
     <!-- form to edit company profile -->
-    <h3 ng-show="company.editForm">Edit Your Profile</h3>
+    <h3 ng-show="company.editForm">Edit Your Profile <span ng-click="company.exitUpdateForm()" class="exit" id="h3-exit">X</span></h3>
     <form ng-show="company.editForm" ng-submit="company.updateCompany()" class="edit-form">
        <p ng-show="company.nameMsg" class="error-msg">A company with that name already exists.</p>
-      <p>
+      <div class="form-group">
         <input type="text" ng-model="company.company.name" class="form-control" placeholder="Name" required autofocus>
-      </p>
+      </div>
       <p ng-show="company.emailMsg" class="error-msg">An account with that email already exists.</p>
-      <p>
+      <div class="form-group">
         <input type="text" ng-model="company.company.user.email" class="form-control" placeholder="Email" required>
-      </p>
-      <p>
-        <button class="btn btn-primary">Save Profile</button>
-      </p>
+      </div>
+      <div class="form-group">
+        <button class="save-btn">Update Profile</button>
+      </div>
     </form>
     <!-- end form to edit company profile -->
   </div>

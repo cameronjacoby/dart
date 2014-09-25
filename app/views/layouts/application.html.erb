@@ -23,7 +23,7 @@
         <ul class="nav navbar-nav">
           <li><a id="nav-link" href="/">Jobs</a></li>
           <li ng-show="currentUser.is_seeker"><a id="nav-link" href="/seekers/{{currentUser.seeker.id}}">Profile</a></li>
-          <li ng-show="currentUser.is_company"><a id="nav-link" href="/companies/{{currentUser.company.id}}">Company Page</a></li>
+          <li ng-show="currentUser.is_company"><a id="nav-link" href="/companies/{{currentUser.company.id}}">Company Profile</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li ng-show="!signed_in()"><a id="nav-link" href="/login">Log In</a></li>
