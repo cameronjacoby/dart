@@ -43,10 +43,6 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
-group :developement, :production do
-  gem 'ffaker'
-end
-
 group :developement do
   gem 'pry'
   gem 'pry-rails'
@@ -55,6 +51,8 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'ffaker'
 
 gem 'geocoder'
 
