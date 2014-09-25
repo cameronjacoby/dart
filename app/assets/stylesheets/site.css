@@ -156,7 +156,7 @@ a:hover, #nav-link:hover {
   color: rgba(255, 0, 81, 1);
   font-size: .8em;
   margin-left: 5px;
-  font-family: 'Glyphicons Halflings';
+  cursor: pointer;
 }
 
 .sub-heading {
