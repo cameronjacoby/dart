@@ -1,5 +1,5 @@
 <div ng-show="skill.skills" class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-3 hidden-xs">
     <div class="trending">
        <h3 ng-show="skill.skills">Trending Skills</h3>
       <span ng-repeat="skill in skill.skills | orderBy: '-jobs.length' | limitTo: 20">
