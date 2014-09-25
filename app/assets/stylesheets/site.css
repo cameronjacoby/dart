@@ -23,7 +23,8 @@ a:hover, #nav-link:hover {
 }
 
 .logo {
-  font-size: 2em
+  height: 10px;
+  margin-bottom: 3px;
 }
 
 .navbar, #hamburger, #hamburger:hover {
