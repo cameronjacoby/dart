@@ -26,6 +26,7 @@ class JobsCtrl extends MainCtrl
 
   exitFilterForm: () ->
     @showFilter = false
+    console.log @rootScope.search
 
   @$inject = ["$scope", "$http", "$rootScope", "$location"]
 

@@ -29,7 +29,7 @@
           <option>Other</option>
         </select>
       </div>
-      <div ng-click="jobs.exitFilterForm()" class="exit">X</div>
+      <div ng-click="jobs.exitFilterForm(); search = undefined;" class="exit">X</div>
     </form>    
 
     <div ng-repeat="job in jobs.jobs | filter:search:strict | orderBy: 'clicks'" class="job">
