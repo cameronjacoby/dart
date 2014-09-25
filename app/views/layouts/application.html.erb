@@ -7,6 +7,17 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- script to close hamburger nav on mobile after nav option is clicked -->
+  <script>
+    $( document ).ready(function() {
+      $('.navbar-collapse').click(function(){ 
+       if($(this).hasClass('in')) {
+          $('button.navbar-toggle').click();
+        }
+      });  
+    });
+</script>
 </head>
 <body ng-app="DartApp">
   <nav class="navbar navbar-default navbar-fixed-top">
