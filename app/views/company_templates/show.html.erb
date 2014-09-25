@@ -128,86 +128,90 @@
 
       <!-- start list of current job postings -->
       <!-- hide entire list when adding new job -->
-      <div ng-hide="company.newJobForm" ng-repeat="job in company.company.jobs | orderBy: '-created_at'" class="job">
-        
-        <!-- hide job elements individually when editing a specific job -->
-        <h4 ng-hide="company.hideWhenEditingJob">
-          <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
 
-          <!-- click icons to edit/delete jobs -->
-          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil pencil-edit"></span>
+        <div ng-show="company.company.jobs" ng-hide="company.newJobForm || company.hideWhenEditingJob || company.jobsToggle" id="job-list-top"></div>
 
-          <span ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash trash-delete"></span>
+        <div ng-hide="company.newJobForm" ng-repeat="job in company.company.jobs | orderBy: '-created_at'" class="job">
+          
+          <!-- hide job elements individually when editing a specific job -->
+          <h4 ng-hide="company.hideWhenEditingJob">
+            <a href="/companies/{{company.company.id}}/jobs/{{job.id}}">{{job.title}}</a>
 
-          <!-- currentUser (seeker) can favorite jobs -->
-          <span ng-show="currentUser.is_seeker">
-            <span ng-hide="job.favorited" ng-click="favorite(currentUser.seeker, job)" class="glyphicon glyphicon-star-empty star"></span>
-            <span ng-show="job.favorited" ng-click="unfavorite(currentUser.seeker, job)" class="glyphicon glyphicon-star star"></span>
-          </span>
-        </h4>
+            <!-- click icons to edit/delete jobs -->
+            <span ng-show="currentUser.company.id == company.company.id" ng-click="company.editJob(job)" class="glyphicon glyphicon-pencil pencil-edit"></span>
 
-        <!-- show update message when a job is updated -->
-        <p ng-show="job.updateJobMsg" class="success-msg">Job updated successfully. <span ng-click="company.exitUpdateJobMsg(job)" class="exit">X</span></p>
+            <span ng-show="currentUser.company.id == company.company.id" ng-click="company.deleteJob(job)" class="glyphicon glyphicon-trash trash-delete"></span>
 
-        <!-- hide job elements individually when editing a specific job -->
-        <p ng-hide="company.hideWhenEditingJob" class="sub-heading">
-          <span class="category">{{job.category}}</span>
-          <span>{{job.location}}</span>
-          <span class="weight"><a href="/companies/{{company.company.id}}/jobs/{{job.id}}">Job Details <span class="mini-arrow">&#10172;</span></a></span>
-        </p>
-
-        <div ng-hide="company.hideWhenEditingJob">
-          <!-- list of skills related to a job -->
-          <!-- hide when just updated job (show skill names instead - not clickable) -->
-          <p ng-show="job.skills" ng-hide="job.skill_names">
-            <span class="skill weight">Skills:</span>
-            <span ng-repeat="skill in job.skills">
-              <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
+            <!-- currentUser (seeker) can favorite jobs -->
+            <span ng-show="currentUser.is_seeker">
+              <span ng-hide="job.favorited" ng-click="favorite(currentUser.seeker, job)" class="glyphicon glyphicon-star-empty star"></span>
+              <span ng-show="job.favorited" ng-click="unfavorite(currentUser.seeker, job)" class="glyphicon glyphicon-star star"></span>
             </span>
+          </h4>
+
+          <!-- show update message when a job is updated -->
+          <p ng-show="job.updateJobMsg" class="success-msg">Job updated successfully. <span ng-click="company.exitUpdateJobMsg(job)" class="exit">X</span></p>
+
+          <!-- hide job elements individually when editing a specific job -->
+          <p ng-hide="company.hideWhenEditingJob" class="sub-heading">
+            <span class="category">{{job.category}}</span>
+            <span>{{job.location}}</span>
+            <span class="weight"><a href="/companies/{{company.company.id}}/jobs/{{job.id}}">Job Details <span class="mini-arrow">&#10172;</span></a></span>
           </p>
 
-          <!-- show string of skill names when just updated job -->
-          <p ng-show="job.skill_names" ng-hide="job.skills">
-            <strong>Skills:</strong> {{job.skill_names}}
-          </p>
+          <div ng-hide="company.hideWhenEditingJob">
+            <!-- list of skills related to a job -->
+            <!-- hide when just updated job (show skill names instead - not clickable) -->
+            <p ng-show="job.skills" ng-hide="job.skill_names">
+              <span class="skill weight">Skills:</span>
+              <span ng-repeat="skill in job.skills">
+                <span class="skill"><a href="/skills/{{skill.id}}">#{{skill.name}}</a></span>
+              </span>
+            </p>
+
+            <!-- show string of skill names when just updated job -->
+            <p ng-show="job.skill_names" ng-hide="job.skills">
+              <strong>Skills:</strong> {{job.skill_names}}
+            </p>
+          </div>
+
+          <!-- form to edit a job -->
+          <h3 ng-show="job.editJobForm">Edit Job Posting <span ng-click="company.exitEditJobForm(job)" class="exit" id="h3-exit">X</span></h3>
+          <form ng-show="job.editJobForm" ng-submit="company.updateJob(job)" class="edit-form">
+            <div class="form-group">
+              <input type="text" ng-model="job.title" class="form-control" placeholder="Title" required autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" ng-model="job.location" class="form-control" placeholder="Location (City, State)" required>
+            </div>
+            <div class="form-group">
+              <select ng-model="job.category" class="form-control options" required>
+                <option value="" disabled selected>Category</option>
+                <option>Full Stack</option>
+                <option>Front End</option>
+                <option>Back End</option>
+                <option>Mobile - iOS</option>
+                <option>Mobile - Android</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea ng-model="job.description" class="form-control" placeholder="Description" required></textarea>
+            </div>
+            <div class="form-group">
+              <textarea ng-model="job.how_to_apply" class="form-control" placeholder="How to Apply" required></textarea>
+            </div>
+            <div class="form-group">
+              <input type="text" ng-model="job.skill_names" class="form-control" placeholder="Skills / Languages (separated by commas)" required>
+            </div>
+            <div class="form-group">
+              <button class="save-btn">Update Job</button>
+            </div>
+          </form>
+          <!-- end form to edit a job -->
         </div>
-
-        <!-- form to edit a job -->
-        <h3 ng-show="job.editJobForm">Edit Job Posting <span ng-click="company.exitEditJobForm(job)" class="exit" id="h3-exit">X</span></h3>
-        <form ng-show="job.editJobForm" ng-submit="company.updateJob(job)" class="edit-form">
-          <div class="form-group">
-            <input type="text" ng-model="job.title" class="form-control" placeholder="Title" required autofocus>
-          </div>
-          <div class="form-group">
-            <input type="text" ng-model="job.location" class="form-control" placeholder="Location (City, State)" required>
-          </div>
-          <div class="form-group">
-            <select ng-model="job.category" class="form-control options" required>
-              <option value="" disabled selected>Category</option>
-              <option>Full Stack</option>
-              <option>Front End</option>
-              <option>Back End</option>
-              <option>Mobile - iOS</option>
-              <option>Mobile - Android</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <textarea ng-model="job.description" class="form-control" placeholder="Description" required></textarea>
-          </div>
-          <div class="form-group">
-            <textarea ng-model="job.how_to_apply" class="form-control" placeholder="How to Apply" required></textarea>
-          </div>
-          <div class="form-group">
-            <input type="text" ng-model="job.skill_names" class="form-control" placeholder="Skills / Languages (separated by commas)" required>
-          </div>
-          <div class="form-group">
-            <button class="save-btn">Update Job</button>
-          </div>
-        </form>
-        <!-- end form to edit a job -->
-      </div>
-      <!-- end list of current job postings -->
+        <!-- end list of current job postings -->
+        <div ng-show="company.company.jobs" ng-hide="company.newJobForm || company.hideWhenEditingJob || company.jobsToggle" id="job-list-bottom"></div>
     </div>
     <!-- end job section -->
 

@@ -158,6 +158,7 @@ a:hover, #nav-link:hover {
   color: rgba(255, 0, 81, 1);
   font-size: .8em;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 .sub-heading {
@@ -229,6 +230,17 @@ a:hover, #nav-link:hover {
 
 .news {
   margin-top: 15px;
+}
+
+#job-list-top {
+  border-top: 1px solid rgba(51, 51, 51, 1);
+  margin-top: 20px;
+  margin-bottom: 7px;
+}
+
+#job-list-bottom {
+  border-bottom: 1px solid rgba(51, 51, 51, 1);
+  margin-top: 25px;
 }
 
 #post-job {
