@@ -1,6 +1,6 @@
 companies = ["Weft", "Benzinga", "Cerego", "FanJam", "Kaggle", "Lyst", "Thumbtack", "Shortcut",
   "Khan Academy", "Believe.in", "Typeform", "PythonAnywhere", "FoundationDB", "Ginger.io",
-  "Plethora.io", "Sencha", "VaxTrac", "Heap", "BeanGenius", "Planet Labs"]
+  "Sencha", "Heap"]
 
 companies.each do |company_name|
   Company.create({name: company_name})
