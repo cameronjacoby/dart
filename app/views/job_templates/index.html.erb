@@ -11,7 +11,7 @@
   <div class="col-sm-6">
     <p ng-show="deleteMsg" class="success-msg">Successfully deleted profile. <span ng-click="jobs.exitDeleteMsg()" class="exit">X</span></p>
 
-    <h1 id="dart">ALL JOBS</h1>
+    <h1 ng-hide="jobs.showFilter" id="dart">ALL JOBS</h1>
     <div ng-hide="jobs.showFilter" ng-click="jobs.showFilter=true" class="filter">Filter Jobs</div>
 
     <form ng-show="jobs.showFilter" class="form-inline filter-form">
