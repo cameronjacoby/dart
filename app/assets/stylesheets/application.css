@@ -11,7 +11,10 @@
  * file per style scope.
  *
  *= require bootstrap/dist/css/bootstrap.min
- *= require bootstrap/dist/fonts
+ *= require bootstrap/dist/fonts/glyphicons-halflings-regular.eot
+ *= require bootstrap/dist/fonts/glyphicons-halflings-regular.svg
+ *= require bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
+ *= require bootstrap/dist/fonts/glyphicons-halflings-regular.woff
  *= require_tree .
  *= require_self
  */
