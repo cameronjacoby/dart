@@ -30,6 +30,8 @@ class CompaniesShowCtrl extends MainCtrl
 
   exitNewForm: () ->
     @newJobForm = false
+    if @company.jobs.length == 0
+      @hideWhenExit = true
 
   exitUpdateForm: () ->
     @editForm = false

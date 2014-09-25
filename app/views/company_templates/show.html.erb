@@ -129,7 +129,7 @@
       <!-- start list of current job postings -->
       <!-- hide entire list when adding new job -->
 
-        <div ng-show="company.company.jobs" ng-hide="company.newJobForm || company.hideWhenEditingJob || company.jobsToggle" id="job-list-top"></div>
+        <div ng-show="company.company.jobs" ng-hide="company.hideWhenExit || company.newJobForm || company.hideWhenEditingJob || company.jobsToggle" id="job-list-top"></div>
 
         <div ng-hide="company.newJobForm" ng-repeat="job in company.company.jobs | orderBy: '-created_at'" class="job">
           
@@ -211,7 +211,7 @@
           <!-- end form to edit a job -->
         </div>
         <!-- end list of current job postings -->
-        <div ng-show="company.company.jobs" ng-hide="company.newJobForm || company.hideWhenEditingJob || company.jobsToggle" id="job-list-bottom"></div>
+        <div ng-show="company.company.jobs" ng-hide="company.hideWhenExit || company.newJobForm || company.hideWhenEditingJob || company.jobsToggle" id="job-list-bottom"></div>
     </div>
     <!-- end job section -->
 
