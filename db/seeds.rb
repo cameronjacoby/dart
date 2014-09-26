@@ -12,17 +12,17 @@ Company.all.each do |company|
   company.get_crunchbase_profile
   5.times do 
     company.jobs.create({
-      title: Faker::HipsterIpsum.words(2).join(' '),
+      title: Faker::Lorem.words(2).join(' '),
       location: cities.sample,
       category: categories.sample,
-      description: Faker::HipsterIpsum.paragraph,
-      how_to_apply: Faker::HipsterIpsum.sentence
+      description: Faker::Lorem.paragraph,
+      how_to_apply: Faker::Lorem.sentence
     })
   end
 end
 
 20.times do
-  Skill.create({name: Faker::HipsterIpsum.words(1).join(' ')})
+  Skill.create({name: Faker::Lorem.words(1).join(' ')})
 end
 
 Job.all.each do |job|
