@@ -22,4 +22,4 @@ The motivation for this project is to provide a simple platform for posting and 
 
 --------------------
 
-![ScreenShot](public/images/screenshot.png)
+![ScreenShot](app/assets/images/screenshot.png)
