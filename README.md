@@ -14,6 +14,7 @@ The motivation for this project is to provide a simple platform for posting and 
 ##Built With:
 
 * AngularJS
+* CoffeeScript
 * Rails
 * PostgreSQL
 * CrunchBase API
