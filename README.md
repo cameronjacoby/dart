@@ -5,7 +5,7 @@ Quickly search and discover startup engineering jobs.
 
 ##Overview
 
-DART allows job seekers to search and discover open positions in web and mobile development. Companies can create an account to post current job openings. Company profiles are populated with data from the CrunchBase API.
+DART allows job seekers to search and discover open positions in web and mobile development. Companies can create accounts to post current job openings. Company profiles are populated with data from CrunchBase.
 
 ##Motivation
 
