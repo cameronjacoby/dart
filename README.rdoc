@@ -1,28 +1,25 @@
-== README
+D A R T
+===========
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Quickly search and discover startup engineering jobs.
 
-Things you may want to cover:
+##Overview
 
-* Ruby version
+DART allows job seekers to search and discover open positions in web and mobile development. Companies can create an account to post current job openings. Company profiles are populated with data from the CrunchBase API.
 
-* System dependencies
+##Motivation
 
-* Configuration
+The motivation for this project is to provide a simple platform for posting and searching jobs with helpful filters for location and job category.
 
-* Database creation
+##Built With:
 
-* Database initialization
+* AngularJS
+* Rails
+* PostgreSQL
+* CrunchBase API
 
-* How to run the test suite
+###Find it here: [http://dartjobs.herokuapp.com/](http://dartjobs.herokuapp.com/)
 
-* Services (job queues, cache servers, search engines, etc.)
+--------------------
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+![ScreenShot](public/images/screenshot.png)
