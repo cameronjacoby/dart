@@ -14,7 +14,8 @@ Company.all.each do |company|
       location: cities.sample,
       category: categories.sample,
       description: Faker::Lorem.paragraph,
-      how_to_apply: Faker::Lorem.sentence
+      how_to_apply: Faker::Lorem.sentence,
+      clicks: 0
     })
   end
 end
