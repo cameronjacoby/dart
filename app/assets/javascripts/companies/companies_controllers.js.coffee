@@ -82,6 +82,7 @@ class CompaniesShowCtrl extends MainCtrl
     @newJobForm = true
 
   addJob: (newJob) ->
+    newJob.clicks = 0
     @http.post("/companies/#{@company.id}/jobs.json", {job: newJob})
     .success (data) =>
       @scope.newJob = {}

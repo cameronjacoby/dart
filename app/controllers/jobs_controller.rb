@@ -74,7 +74,7 @@ class JobsController < AngularController
     end
 
     def job_params
-      params.require(:job).permit(:title, :location, :category, :description, :how_to_apply)
+      params.require(:job).permit(:title, :location, :category, :description, :how_to_apply, :clicks)
     end
 
 end

@@ -17,11 +17,7 @@ class Job < ActiveRecord::Base
   after_validation :geocode
 
   def increase_clicks
-    if self.clicks == nil
-      self.clicks = 1
-    else
-      self.clicks += 1
-    end
+    self.clicks += 1
     self.save
   end
 
