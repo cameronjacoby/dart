@@ -1,7 +1,5 @@
-companies = ["Weft", "Benzinga", "Cerego", "FanJam", "Kaggle", "Lyst", "Thumbtack", "Shortcut"]
-
-companies.each do |company_name|
-  Company.create({name: company_name})
+4.times do
+  Company.create({name: Faker::Company.name})
 end
 
 cities = ["San Francisco", "Los Angeles", "New York, NY", "Chicago", "London"]
@@ -22,7 +20,7 @@ Company.all.each do |company|
 end
 
 20.times do
-  Skill.create({name: Faker::Lorem.words(1).join(' ')})
+  Skill.create({name: Faker::Lorem.word})
 end
 
 Job.all.each do |job|
