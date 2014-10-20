@@ -7,6 +7,8 @@ class UsersController < AngularController
   end
 
   def create
+    # use a service class for creating users, seekers, companies
+    # only return success state .success?
     if session[:user_id] == nil
       @user = User.new(user_params)
       if @user.save
@@ -37,6 +39,7 @@ class UsersController < AngularController
         end
 
       else
+        # send active record error messages instead
         if User.find_by_email(@user.email)
           render json: 'EMAIL ERROR', status: 400
         elsif @user.password.length < 6
