@@ -1,17 +1,12 @@
-D A R T
-===========
+# D A R T
 
-Quickly search and discover startup engineering jobs.
+DART allows job seekers to search and discover open positions in web and mobile development. Companies can create accounts to post current job openings.
 
-##Overview
+## Motivation
 
-DART allows job seekers to search and discover open positions in web and mobile development. Companies can create accounts to post current job openings. Company profiles are populated with data from CrunchBase.
+The motivation for this project is to provide a platform to easily search and discover tech jobs by location and category.
 
-##Motivation
-
-The motivation for this project is to provide a simple platform for posting and searching jobs with helpful filters for location and job category.
-
-##Built With:
+## Built With:
 
 * AngularJS
 * CoffeeScript
@@ -19,8 +14,4 @@ The motivation for this project is to provide a simple platform for posting and 
 * PostgreSQL
 * CrunchBase API
 
-###Find it here: [http://dartjobs.herokuapp.com/](http://dartjobs.herokuapp.com/)
-
---------------------
-
-![ScreenShot](app/assets/images/screenshot.png)
+### Find it here: <a href="http://dartjobs.herokuapp.com" target="_blank">dartjobs.herokuapp.com</a>
