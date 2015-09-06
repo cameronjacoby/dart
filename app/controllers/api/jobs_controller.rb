@@ -6,7 +6,7 @@ class Api::JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find_by(id: params[:id])
+    @job = Job.find_by(guid: params[:id])
     render json: @job
   end
 
