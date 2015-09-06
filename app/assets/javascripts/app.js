@@ -7,6 +7,7 @@ angular.module('dartApp', [
   'satellizer',
   'templates',
   'Router',
+  'Filters',
   'UsersServices',
   'JobsServices',
   'MainController',

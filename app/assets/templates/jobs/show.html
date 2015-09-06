@@ -2,6 +2,7 @@
   <div class="col-md-6 col-md-offset-3">
     <h4 class="text-center">J O B &nbsp;&nbsp; D E T A I L S</h4>
     <hr>
-    <p>{{job.description}}</p>
+    <p><strong>{{job.title}}</strong></p>
+    <div ng-bind-html="job.description | sanitize"></div>
   </div>
 </div>

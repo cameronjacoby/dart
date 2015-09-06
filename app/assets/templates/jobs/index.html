@@ -5,7 +5,9 @@
     <!-- show all jobs -->
     <div ng-if="jobs.length > 0">
       <div ng-repeat="job in jobs">
-        <p>{{job.description}} &nbsp;<a ng-href="/jobs/{{job.guid}}">View Details</a></p>
+        <p><strong>{{job.title}}</strong></p>
+        <div ng-bind-html="job.description | sanitizePreview"></div>
+        <p><a ng-href="/jobs/{{job.guid}}">View Details</a></p>
         <hr>
       </div>
     </div>

@@ -24,6 +24,7 @@ gem "uglifier", ">= 1.3.0"
 
 # apis
 gem "jbuilder", "~> 2.0"
+gem "nokogiri"
 gem "sdoc", "~> 0.4.0", group: :doc
 
 group :development, :test do

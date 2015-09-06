@@ -172,6 +172,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jwt
+  nokogiri
   pg
   rails (= 4.2.3)
   sass-rails (~> 5.0)
