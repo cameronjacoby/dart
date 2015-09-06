@@ -11,69 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923234305) do
+ActiveRecord::Schema.define(version: 20150906041948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "companies", force: true do |t|
-    t.string   "name"
-    t.string   "crunchbase_path"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.json     "profile"
-  end
-
-  create_table "favorites", force: true do |t|
-    t.integer  "seeker_id"
-    t.integer  "job_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "jobs", force: true do |t|
-    t.string   "title"
-    t.string   "location"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "category"
+  create_table "jobs", force: :cascade do |t|
     t.text     "description"
-    t.text     "how_to_apply"
-    t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "clicks"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "requirements", force: true do |t|
-    t.integer  "job_id"
-    t.integer  "skill_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "seekers", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "skills", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.boolean  "is_seeker"
-    t.boolean  "is_company"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "facebook"
+    t.string   "github"
+    t.string   "google"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
 end

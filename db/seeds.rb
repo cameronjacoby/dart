@@ -1,29 +1,7 @@
-4.times do
-  Company.create({name: Faker::Company.name})
-end
-
-cities = ["San Francisco", "Los Angeles", "New York, NY", "Chicago", "London"]
-categories = ["Full Stack", "Front End", "Back End", "Mobile - iOS", "Mobile - Android", "Other"]
-
-Company.all.each do |company|
-  company.get_crunchbase_path
-  company.get_crunchbase_profile
-  5.times do 
-    company.jobs.create({
-      title: Faker::Lorem.words(2).join(' '),
-      location: cities.sample,
-      category: categories.sample,
-      description: Faker::Lorem.paragraph,
-      how_to_apply: Faker::Lorem.sentence,
-      clicks: 0
-    })
-  end
-end
-
-20.times do
-  Skill.create({name: Faker::Lorem.word})
-end
-
-Job.all.each do |job|
-  job.skills << Skill.all.sample(5)
-end
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)

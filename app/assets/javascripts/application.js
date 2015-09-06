@@ -12,8 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular/angular.min
-//= require angular-route/angular-route.min
-//= require bootstrap/dist/js/bootstrap.min
-//= require main
+//= require bootstrap-sprockets
+//= require angular.min
+//= require angular-route.min
+//= require angular-resource.min
+//= require angular-messages.min
+//= require angular-animate.min
+//= require angular-toastr.tpls.min
+//= require satellizer.min
+//= require angular-rails-templates
+//= require_tree ../templates
 //= require_tree .

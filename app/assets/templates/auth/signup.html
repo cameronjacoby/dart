@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h4 class="text-center">G E T &nbsp;&nbsp; S T A R T E D</h4>
+    <br>
+    <form name="signupForm" ng-submit="signup()">
+      <div class="form-group">
+        <input type="email" ng-model="user.email" name="email" class="form-control" placeholder="Email" required>
+        <div ng-messages="signupForm.email.$error" ng-if="signupForm.email.$touched">
+          <div ng-message="required" class="error-msg">Email is required</div>
+          <div ng-message="email" class="error-msg">Invalid email format</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" ng-model="user.password" name="password" class="form-control" placeholder="Password" required minlength="6">
+        <div ng-messages="signupForm.password.$error" ng-if="signupForm.password.$touched">
+          <div ng-message="required" class="error-msg">Password is required</div>
+          <div ng-message="minlength" class="error-msg">Password must be at least 6 characters</div>
+        </div>
+      </div>
+      <input type="submit" value="Sign Up" class="btn btn-block btn-success" ng-disabled="signupForm.$invalid">
+    </form>
+    <br>
+    <p class="text-center text-muted">Already have an account? <a href="/login">Log in</a></p>
+    <hr>
+
+    <!-- facebook -->
+    <button ng-click="authenticate('facebook')" class="btn btn-block btn-facebook"><i class="fa fa-facebook"></i> Sign up with Facebook</button>
+    <!-- google -->
+    <button ng-click="authenticate('google')" class="btn btn-block btn-google-plus"><i class="fa fa-google-plus"></i> Sign up with Google</button>
+    <!-- github -->
+    <button ng-click="authenticate('github')" class="btn btn-block btn-github"><i class="fa fa-github"></i> Sign up with GitHub</button>
+  </div>
+</div>

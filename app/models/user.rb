@@ -1,22 +1,26 @@
 class User < ActiveRecord::Base
-
-  has_one :seeker, dependent: :destroy
-  has_one :company, dependent: :destroy
-
   has_secure_password
+  validates :password, length: { minimum: 6 }, on: :create
 
   validates :email,
     presence: true,
-    uniqueness: {case_sensitive: false},
-    :format => {:with => /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/}
-  
-  validates :password,
-    presence: true,
-    confirmation: true,
-    length: {minimum: 6}
+    uniqueness: true,
+    format: {
+      with: /@/,
+      message: "not a valid format"
+    }
 
-  def self.authenticate email, password
-    User.find_by_email(email).try(:authenticate, password)
+  def self.from_oauth oauth
+    oauth.get_data
+    data = oauth.data
+    user = find_by(oauth.provider => data[:id]) || find_or_create_by(email: data[:email]) do |u|
+      u.password =  SecureRandom.hex
+    end
+    user.update(
+      email: data[:email],
+      oauth.provider => data[:id]
+    )
+    user
   end
 
 end

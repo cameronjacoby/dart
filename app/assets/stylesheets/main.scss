@@ -1,0 +1,47 @@
+[ng\:cloak], [ng-cloak], .ng-cloak { display: none; }
+
+// bootstrap overrides
+a, a:focus {
+  color: #aaaaaa;
+}
+a:hover {
+  color: #777777;
+}
+.container {
+  padding-bottom: 50px;
+}
+
+// helper classes
+.error-msg {
+  color: #a94442;
+  margin: 6px 2px;
+}
+
+// social buttons
+.btn-facebook {
+  background-color: #3b5998;
+  border: 1px solid #335190;
+  color: #ffffff;
+}
+.btn-facebook:focus, .btn-facebook:hover {
+  background-color: #294786;
+  color: #ffffff;
+}
+.btn-google-plus {
+  background-color: #dd4b39;
+  border: 1px solid #d54331;
+  color: #ffffff;
+}
+.btn-google-plus:focus, .btn-google-plus:hover {
+  background-color: #cb3927;
+  color: #ffffff;
+}
+.btn-github {
+  background-color: #444;
+  border: 1px solid #3b3b3b;
+  color: #ffffff;
+}
+.btn-github:focus, .btn-github:hover {
+  background-color: #303030;
+  color: #ffffff;
+}
