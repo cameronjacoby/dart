@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906061957) do
+ActiveRecord::Schema.define(version: 20150906230259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20150906061957) do
     t.string   "guid"
     t.string   "title"
   end
+
+  add_index "jobs", ["guid"], name: "index_jobs_on_guid", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

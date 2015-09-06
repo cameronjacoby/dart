@@ -6,7 +6,7 @@
     <div ng-if="jobs.length > 0">
       <div ng-repeat="job in jobs">
         <p><strong>{{job.title}}</strong></p>
-        <div ng-bind-html="job.description | sanitizePreview"></div>
+        <div ng-bind-html="job.description | sanitizeLimit:500"></div>
         <p><a ng-href="/jobs/{{job.guid}}">View Details</a></p>
         <hr>
       </div>

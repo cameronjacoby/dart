@@ -1,15 +1,16 @@
 task fill_jobs: :environment do
   puts "Before fill: #{Job.count} jobs"
 
-  url = "https://news.ycombinator.com/item?id=10152809"
-  page = Nokogiri::HTML(open(url))
+  html = open("https://news.ycombinator.com/item?id=10152809")
+  page = Nokogiri::HTML(html.read)
+  page.encoding = "utf-8"
 
   page.css(".athing").each do |comment|
     if comment.css(".ind img[width='0']").present?
       
       full_text = comment.css(".default .comment .c00")
-      reply = full_text.css(".reply").text
       title = full_text.text
+      reply = full_text.css(".reply").text
       title.slice!(reply)
       description = ""
 
