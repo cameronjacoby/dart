@@ -2,7 +2,7 @@ class Api::JobsController < ApplicationController
 
   def index
     @jobs = Job.order("created_at DESC")
-    render json: @jobs
+    render json: @jobs, include: :locations
   end
 
   def show

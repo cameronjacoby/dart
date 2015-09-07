@@ -2,6 +2,8 @@ Location.create([
   { city: "Austin", state: "TX", country: "United States", slug: "austin" },
   { city: "Boston", state: "MA", country: "United States", slug: "boston" },
   { city: "Chicago", state: "IL", country: "United States", slug: "chicago" },
+  { city: "Denver", state: "CO", country: "United States", slug: "denver" },
+  { city: "Los Angeles", state: "CA", country: "United States", slug: "los-angeles" },
   { city: "New York", state: "NY", country: "United States", slug: "new-york" },
   { city: "Palo Alto", state: "CA", country: "United States", slug: "palo-alto" },
   { city: "Philadelphia", state: "PA", country: "United States", slug: "philadelphia" },

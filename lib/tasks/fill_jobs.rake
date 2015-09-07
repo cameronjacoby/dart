@@ -29,19 +29,16 @@ task fill_jobs: :environment do
 
       # html/css for one comment
       comment_body = comment.css(".default .comment .c00")
-      
-      # full text inside one comment
-      full_text = comment_body.text
 
-      # reply text (to remove from full text)
-      reply = comment_body.css(".reply").text
-
-      # slice out reply from full text
-      full_text.slice!(reply)
-      
       # initially set title to full text
       # will slice out description paragraphs
-      title = full_text
+      title = comment_body.text
+
+      # reply text (to remove from title)
+      reply = comment_body.css(".reply").text
+
+      # slice out reply from title
+      title.slice!(reply)
 
       # initially set description to empty string
       # will build up with description paragraphs
@@ -60,14 +57,14 @@ task fill_jobs: :environment do
 
         if job.save
           location_matches.each do |slug, matches|
-            if matches.match(full_text)
+            if matches.match(title) || matches.match(description)
               loc = Location.find_by(slug: slug)
               loc.jobs << job
             end
           end
 
           category_matches.each do |slug, matches|
-            if matches.match(full_text)
+            if matches.match(title) || matches.match(description)
               puts slug
             end
           end
