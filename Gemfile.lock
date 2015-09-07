@@ -41,7 +41,7 @@ GEM
       sprockets (~> 2)
       tilt
     arel (6.0.3)
-    autoprefixer-rails (6.0.0)
+    autoprefixer-rails (6.0.1)
       execjs
       json
     bcrypt (3.1.10)
@@ -68,6 +68,7 @@ GEM
     execjs (2.6.0)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
+    geocoder (1.2.9)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -168,6 +169,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   dotenv-rails
   font-awesome-sass
+  geocoder
   httpclient
   jbuilder (~> 2.0)
   jquery-rails

@@ -4,6 +4,7 @@ source "https://rubygems.org"
 gem "rails", "4.2.3"
 
 # database
+gem "geocoder"
 gem "pg"
 
 # auth

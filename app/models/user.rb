@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_secure_password
-  validates :password, length: { minimum: 6 }, on: :create
 
   validates :email,
     presence: true,
@@ -9,6 +8,8 @@ class User < ActiveRecord::Base
       with: /@/,
       message: "not a valid format"
     }
+
+  validates :password, length: { minimum: 6 }, on: :create
 
   def self.from_oauth oauth
     oauth.get_data
