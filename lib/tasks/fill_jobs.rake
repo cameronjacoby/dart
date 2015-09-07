@@ -1,21 +1,6 @@
 task fill_jobs: :environment do
   include LocationsHelper
-
-  def category_matches
-    {
-      # web development
-      "back-end" => /\bback end\b|\bback-end\b|\bbackend\b/i,
-      "front-end" => /\bfront end\b|\bfront-end\b|\bfrontend\b/i,
-      "full-stack" => /\bfull stack\b|\bfull-stack\b|\bfullstack\b/i,
-
-      # mobile development
-      "android" => /\bandroid\b/i,
-      "ios" => /\bios\b/i,
-
-      # design
-      "design" => /\bdesigner\b/i
-    }
-  end
+  include CategoriesHelper
 
   puts "Before fill: #{Job.count} jobs"
 
@@ -65,7 +50,8 @@ task fill_jobs: :environment do
 
           category_matches.each do |slug, matches|
             if matches.match(title) || matches.match(description)
-              puts slug
+              cat = Category.find_by(slug: slug)
+              cat.jobs << job
             end
           end
         end

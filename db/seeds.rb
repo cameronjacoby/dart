@@ -25,3 +25,12 @@ Location.create([
   { city: "Vancouver", country: "Canada", slug: "vancouver" },
   { slug: "remote" }
 ])
+
+Category.create([
+  { name: "Back End", slug: "back-end" },
+  { name: "Front End", slug: "front-end" },
+  { name: "Full Stack", slug: "full-stack" },
+  { name: "Android", slug: "android" },
+  { name: "iOS", slug: "ios" },
+  { name: "Design", slug: "design" }
+])
