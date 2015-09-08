@@ -1,12 +1,19 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
+    <!-- show selected searches -->
+    <div ng-if="allSearches.length > 0">
+      <span ng-repeat="search in allSearches">{{search}}&nbsp;&nbsp;</span>
+      <hr>
+    </div>
+
     <form class="form-inline">
       <div class="form-group">
+        
         <!-- category search -->
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
+            Category
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -17,10 +24,11 @@
         </div>
       </div>
       <div class="form-group">
+        
         <!-- location search -->
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
+            Location
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -36,7 +44,6 @@
     <!-- show all jobs -->
     <div ng-hide="showFiltered" ng-if="jobs.length > 0">
       <p>{{jobs.length}} jobs</p>
-
       <div ng-repeat="job in jobs">
         <hr>
         <p><strong>{{job.title}}</strong></p>

@@ -9,26 +9,31 @@ JobsControllers.controller('JobsIndexCtrl', [
     $scope.jobs = Job.query();
     $scope.filteredJobs = [];
 
-    var searchedCats = [];
-    var searchedLocs = [];
+    $scope.searchedCats = [];
+    $scope.searchedLocs = [];
+    $scope.allSearches = [];
 
     $scope.addCatToSearch = function (cat) {
-      if (searchedCats.indexOf(cat) === -1) {
-        searchedCats.push(cat);
+      if ($scope.searchedCats.indexOf(cat) === -1) {
+        $scope.searchedCats.push(cat);
+        $scope.allSearches.push(cat);
         filter();
       }
     };
 
     $scope.addLocToSearch = function (loc) {
-      if (searchedLocs.indexOf(loc) === -1) {
-        searchedLocs.push(loc);
+      if ($scope.searchedLocs.indexOf(loc) === -1) {
+        $scope.searchedLocs.push(loc);
+        $scope.allSearches.push(loc);
         filter();
       }
     };
 
+    // helper function to filter jobs by searched categories and locations
     var filter = function() {
-      console.log(searchedCats);
-      console.log(searchedLocs);
+      console.log($scope.searchedCats);
+      console.log($scope.searchedLocs);
+      console.log($scope.allSearches);
       
       $scope.filteredJobs = [];
         
@@ -36,9 +41,9 @@ JobsControllers.controller('JobsIndexCtrl', [
         var catMatch = false;
         var locMatch = false;
         
-        if (searchedCats.length > 0) {
+        if ($scope.searchedCats.length > 0) {
           angular.forEach(job.categories, function (cat) {
-            if (searchedCats.indexOf(cat.slug) > -1) {
+            if ($scope.searchedCats.indexOf(cat.slug) > -1) {
               catMatch = true;
             }
           });
@@ -46,9 +51,9 @@ JobsControllers.controller('JobsIndexCtrl', [
           catMatch = true;
         }
 
-        if (searchedLocs.length > 0) {
+        if ($scope.searchedLocs.length > 0) {
           angular.forEach(job.locations, function (loc) {
-            if (searchedLocs.indexOf(loc.slug) > -1) {
+            if ($scope.searchedLocs.indexOf(loc.slug) > -1) {
               locMatch = true;
             }
           });
