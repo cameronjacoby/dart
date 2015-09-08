@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
       message: "not a valid format"
     }
 
-  validates :password, length: { minimum: 6 }, on: :create
+  validates :password,
+    length: { minimum: 6 }, on: :create
 
   def self.from_oauth oauth
     oauth.get_data

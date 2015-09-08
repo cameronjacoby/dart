@@ -47,17 +47,17 @@ class UpdateJobsService
       unless Job.find_by(title: job_attrs[:title])
         job = Job.new(job_attrs)
         if job.save
-          find_categories job
+          find_roles job
           find_locations job
         end
       end
     end
 
-    def find_categories job
-      category_matches.each do |slug, matches|
+    def find_roles job
+      role_matches.each do |slug, matches|
         if matches.match(job.title) || matches.match(job.description)
-          cat = Category.find_by(slug: slug)
-          cat.jobs << job
+          role = Role.find_by(slug: slug)
+          role.jobs << job
         end
       end
     end

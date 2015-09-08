@@ -5,4 +5,8 @@ class Location < ActiveRecord::Base
   geocoded_by :city, latitude: :latitude, longitude: :longitude
   after_validation :geocode, if: lambda { |obj| obj.city_changed? }
 
+  validates :slug,
+    presence: true,
+    uniqueness: true
+
 end

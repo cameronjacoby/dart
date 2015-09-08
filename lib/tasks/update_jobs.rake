@@ -1,6 +1,6 @@
 task update_jobs: :environment do
   include LocationsHelper
-  include CategoriesHelper
+  include RolesHelper
 
   puts "Before update: #{Job.count} jobs"
 

@@ -9,14 +9,14 @@ JobsControllers.controller('JobsIndexCtrl', [
     $scope.jobs = Job.query();
     $scope.filteredJobs = [];
 
-    $scope.searchedCats = [];
+    $scope.searchedRoles = [];
     $scope.searchedLocs = [];
     $scope.allSearches = [];
 
-    $scope.addCatToSearch = function (cat) {
-      if ($scope.searchedCats.indexOf(cat) === -1) {
-        $scope.searchedCats.push(cat);
-        $scope.allSearches.push(cat);
+    $scope.addRoleToSearch = function (role) {
+      if ($scope.searchedRoles.indexOf(role) === -1) {
+        $scope.searchedRoles.push(role);
+        $scope.allSearches.push(role);
         filter();
       }
     };
@@ -29,26 +29,26 @@ JobsControllers.controller('JobsIndexCtrl', [
       }
     };
 
-    // helper function to filter jobs by searched categories and locations
+    // helper function to filter jobs by searched roles and locations
     var filter = function() {
-      console.log($scope.searchedCats);
+      console.log($scope.searchedRoles);
       console.log($scope.searchedLocs);
       console.log($scope.allSearches);
       
       $scope.filteredJobs = [];
         
       angular.forEach($scope.jobs, function (job) {
-        var catMatch = false;
+        var roleMatch = false;
         var locMatch = false;
         
-        if ($scope.searchedCats.length > 0) {
-          angular.forEach(job.categories, function (cat) {
-            if ($scope.searchedCats.indexOf(cat.slug) > -1) {
-              catMatch = true;
+        if ($scope.searchedRoles.length > 0) {
+          angular.forEach(job.roles, function (role) {
+            if ($scope.searchedRoles.indexOf(role.slug) > -1) {
+              roleMatch = true;
             }
           });
         } else {
-          catMatch = true;
+          roleMatch = true;
         }
 
         if ($scope.searchedLocs.length > 0) {
@@ -61,7 +61,7 @@ JobsControllers.controller('JobsIndexCtrl', [
           locMatch = true;
         }
         
-        if (catMatch && locMatch && $scope.filteredJobs.indexOf(job) === -1) {
+        if (roleMatch && locMatch && $scope.filteredJobs.indexOf(job) === -1) {
           $scope.filteredJobs.push(job);
         }
       });

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # api routes
   namespace :api, defaults: { format: :json } do
     resources :jobs, only: [:index, :show]
+    resources :roles, only: [:index]
+    resources :locations, only: [:index]
     get "/users/current", to: "users#current"
   end
 

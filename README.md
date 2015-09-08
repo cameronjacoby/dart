@@ -4,7 +4,7 @@ DART allows job seekers to search and discover open positions in web and mobile 
 
 ## Motivation
 
-The motivation for this project is to provide a platform to easily search and discover tech jobs by location and category.
+The motivation for this project is to provide a platform to easily search and discover tech jobs by role and location.
 
 ## Built With:
 

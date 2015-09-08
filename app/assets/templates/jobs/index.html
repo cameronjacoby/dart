@@ -10,16 +10,16 @@
     <form class="form-inline">
       <div class="form-group">
         
-        <!-- category search -->
+        <!-- role search -->
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Category
+            Role
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#" ng-click="addCatToSearch('ios')">Mobile - iOS</a></li>
-            <li><a href="#" ng-click="addCatToSearch('android')">Mobile - Android</a></li>
-            <li><a href="#" ng-click="addCatToSearch('design')">Design</a></li>
+            <li><a href="#" ng-click="addRoleToSearch('ios')">Mobile - iOS</a></li>
+            <li><a href="#" ng-click="addRoleToSearch('android')">Mobile - Android</a></li>
+            <li><a href="#" ng-click="addRoleToSearch('design')">Design</a></li>
           </ul>
         </div>
       </div>
@@ -47,10 +47,10 @@
       <div ng-repeat="job in jobs">
         <hr>
         <p><strong>{{job.title}}</strong></p>
-        <p><span ng-repeat="cat in job.categories">{{cat.name}}{{$last ? '' : ', '}}</span></p>
+        <p><span ng-repeat="role in job.roles">{{role.name}}{{$last ? '' : ', '}}</span></p>
         <p><span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span></p>
 
-        <!-- <p><strong>CATEGORIES:</strong> {{job.categories}}</p> -->
+        <!-- <p><strong>ROLES:</strong> {{job.roles}}</p> -->
         <!-- <p><strong>LOCATIONS:</strong> {{job.locations}}</p> -->
         <!-- <div ng-bind-html="job.description | sanitizeLimit:500"></div> -->
         <p><a ng-href="/jobs/{{job.guid}}">View Details</a></p>

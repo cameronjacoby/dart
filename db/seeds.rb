@@ -26,11 +26,12 @@ Location.create([
   { slug: "remote" }
 ])
 
-Category.create([
+Role.create([
   { name: "Back End", slug: "back-end" },
   { name: "Front End", slug: "front-end" },
   { name: "Full Stack", slug: "full-stack" },
+  { name: "Dev Ops", slug: "dev-ops" },
   { name: "Mobile - Android", slug: "android" },
   { name: "Mobile - iOS", slug: "ios" },
-  { name: "Design", slug: "design" }
+  { name: "Designer", slug: "designer" }
 ])
