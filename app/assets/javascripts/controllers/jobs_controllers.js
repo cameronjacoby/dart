@@ -1,14 +1,16 @@
 var JobsControllers = angular.module('JobsControllers', []);
 
 JobsControllers.controller('JobsIndexCtrl', [
-  '$scope', '$controller', 'Job',
-  function ($scope, $controller, Job) {
+  '$scope', '$controller', 'Job', 'Role', 'Location',
+  function ($scope, $controller, Job, Role, Location) {
 
     $controller('MainCtrl', { $scope: $scope });
     
     $scope.jobs = Job.query();
-    $scope.filteredJobs = [];
+    $scope.roles = Role.query();
+    $scope.locations = Location.query();
 
+    $scope.filteredJobs = [];
     $scope.searchedRoles = [];
     $scope.searchedLocs = [];
     $scope.allSearches = [];

@@ -8,8 +8,7 @@ angular.module('dartApp', [
   'templates',
   'Router',
   'Filters',
-  'UsersServices',
-  'JobsServices',
+  'Services',
   'MainController',
   'AuthController',
   'JobsControllers'
