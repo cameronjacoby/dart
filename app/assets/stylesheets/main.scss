@@ -1,6 +1,55 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+
+$color-primary-1: #2b2d42;
+$color-accent-1: #8d99ae;
+$color-link-1: #edf2f4;
+$color-hover-1: #ef233c;
+$color-banner-1: #d90429;
+
+$color-primary-2: #0b3954;
+$color-accent-2: #ff6663;
+$color-link-2: #bfd7ea;
+$color-hover-2: #e0ff4f;
+$color-banner-2: #fefffe;
+
+$color-primary-3: #1b998b;
+$color-accent-3: #2d3047;
+$color-link-3: #fffd82;
+$color-hover-3: #ff9b71;
+$color-banner-3: #e84855;
+
+.color {
+  border: 1px solid #cccccc;
+  height: 20px;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.color-1 { background-color: $color-primary-1 }
+.color-2 { background-color: $color-accent-1 }
+.color-3 { background-color: $color-link-1 }
+.color-4 { background-color: $color-hover-1 }
+.color-5 { background-color: $color-banner-1 }
+
+.color-6 { background-color: $color-primary-2 }
+.color-7 { background-color: $color-accent-2 }
+.color-8 { background-color: $color-link-2 }
+.color-9 { background-color: $color-hover-2 }
+.color-10 { background-color: $color-banner-2 }
+
+.color-11 { background-color: $color-primary-3 }
+.color-12 { background-color: $color-accent-3 }
+.color-13 { background-color: $color-link-3 }
+.color-14 { background-color: $color-hover-3 }
+.color-15 { background-color: $color-banner-3 }
+
 [ng\:cloak], [ng-cloak], .ng-cloak { display: none; }
 
-// bootstrap overrides
+body {
+  background-color: $color-link-1;
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
 a, a:focus {
   color: #aaaaaa;
 }
@@ -12,6 +61,78 @@ a:hover {
 .error-msg {
   color: #a94442;
   margin: 6px 2px;
+}
+
+// navbar
+.navbar-default {
+  background-color: $color-banner-2;
+  .navbar-nav > li > a {
+    color: $color-accent-1;
+  }
+  .navbar-nav > li > a:hover,
+  .navbar-nav > li > a:focus {
+    border-bottom: 1px solid $color-primary-1;
+    color: $color-primary-1;
+  }
+}
+.navbar-brand {
+  height: 58px;
+}
+.dart-logo {
+  color: $color-primary-3;
+  font-size: 28px;
+}
+.logo-text {
+  color: $color-primary-1;
+  display: inline-block;
+  font-size: 22px;
+  margin: 4px 0 0 10px;
+  vertical-align: top;
+}
+
+// page layout
+.main-content {
+  padding-top: 70px;
+}
+
+// buttons
+.btn {
+  border-radius: 2px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.btn-cta,
+.navbar-default .navbar-nav > li > a.btn-cta {
+  color: $color-banner-2;
+  background-color: $color-primary-3;
+}
+.btn-cta:hover,
+.navbar-default .navbar-nav > li > a.btn-cta:hover {
+  // background-color: #188a7d;
+  background-color: #167a6f;
+}
+.btn-secondary,
+.navbar-default .navbar-nav > li > a.btn-secondary {
+  color: $color-banner-2;
+  background-color: $color-accent-1;
+}
+.btn-secondary:hover,
+.navbar-default .navbar-nav > li > a.btn-secondary:hover {
+  // background-color: #7f8a9d;
+  background-color: #717a8b;
+}
+.navbar-default .navbar-nav > li > a.btn-nav {
+  margin: 12px 6px;
+  padding: 6px 12px;
+}
+
+// jobs
+.job {
+  background-color: $color-banner-2;
+  border: 1px solid #e7e7e7;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  padding: 12px;
 }
 
 // social buttons
@@ -41,4 +162,12 @@ a:hover {
 .btn-github:focus, .btn-github:hover {
   background-color: #303030;
   color: #ffffff;
+}
+
+// media queries
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 19px;
+    padding-bottom: 19px;
+  }
 }
