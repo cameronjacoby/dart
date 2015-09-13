@@ -50,31 +50,32 @@ body {
   font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
-a, a:focus {
-  color: #aaaaaa;
-}
-a:hover {
-  color: #777777;
-}
+// a, a:focus {
+//   color: #aaaaaa;
+// }
+// a:hover {
+//   color: #777777;
+// }
 
 // helper classes
 .error-msg {
-  color: #a94442;
+  color: $color-banner-3;
   margin: 6px 2px;
 }
 
 // navbar
 .navbar-default {
   background-color: $color-banner-2;
-  .navbar-nav > li > a {
+  .navbar-nav > li > a,
+  .navbar-nav > li > a:focus {
     color: $color-accent-1;
   }
-  .navbar-nav > li > a:hover,
-  .navbar-nav > li > a:focus {
+  .navbar-nav > li > a:hover {
     // border-bottom: 1px solid $color-primary-1;
     color: $color-primary-1;
   }
-  .navbar-toggle {
+  .navbar-toggle,
+  .navbar-toggle:focus {
     border-color: transparent;
     margin-top: 12px;
     margin-bottom: 12px;
@@ -82,8 +83,7 @@ a:hover {
       background-color: $color-primary-3;
     }
   }
-  .navbar-toggle:hover,
-  .navbar-toggle:focus {
+  .navbar-toggle:hover {
     background-color: transparent;
     .icon-bar {
       background-color: #167a6f;
