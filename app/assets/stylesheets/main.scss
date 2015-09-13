@@ -71,8 +71,23 @@ a:hover {
   }
   .navbar-nav > li > a:hover,
   .navbar-nav > li > a:focus {
-    border-bottom: 1px solid $color-primary-1;
+    // border-bottom: 1px solid $color-primary-1;
     color: $color-primary-1;
+  }
+  .navbar-toggle {
+    border-color: transparent;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    .icon-bar {
+      background-color: $color-primary-3;
+    }
+  }
+  .navbar-toggle:hover,
+  .navbar-toggle:focus {
+    background-color: transparent;
+    .icon-bar {
+      background-color: #167a6f;
+    }
   }
 }
 .navbar-brand {
@@ -108,7 +123,6 @@ a:hover {
 }
 .btn-cta:hover,
 .navbar-default .navbar-nav > li > a.btn-cta:hover {
-  // background-color: #188a7d;
   background-color: #167a6f;
 }
 .btn-secondary,
@@ -118,7 +132,6 @@ a:hover {
 }
 .btn-secondary:hover,
 .navbar-default .navbar-nav > li > a.btn-secondary:hover {
-  // background-color: #7f8a9d;
   background-color: #717a8b;
 }
 .navbar-default .navbar-nav > li > a.btn-nav {
@@ -169,5 +182,11 @@ a:hover {
   .navbar-nav > li > a {
     padding-top: 19px;
     padding-bottom: 19px;
+  }
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav > li > a.btn-nav {
+    display: inline-block;
+    margin: 6px 15px;
   }
 }
