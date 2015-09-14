@@ -47,17 +47,21 @@ $color-banner-3: #e84855;
 
 body {
   background-color: $color-link-1;
+  color: $color-primary-1;
   font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
-// a, a:focus {
-//   color: #aaaaaa;
-// }
-// a:hover {
-//   color: #777777;
-// }
+a, a:focus {
+  color: $color-primary-3;
+}
+a:hover {
+  color: #167a6f;
+}
 
 // helper classes
+.normal {
+  font-weight: normal;
+}
 .error-msg {
   color: $color-banner-3;
   margin: 6px 2px;
@@ -76,6 +80,7 @@ body {
   }
   .navbar-toggle,
   .navbar-toggle:focus {
+    background-color: transparent;
     border-color: transparent;
     margin-top: 12px;
     margin-bottom: 12px;
@@ -116,23 +121,47 @@ body {
   font-weight: 300;
   text-transform: uppercase;
 }
+.btn-xs {
+  padding: 2px 6px;
+}
 .btn-cta,
 .navbar-default .navbar-nav > li > a.btn-cta {
-  color: $color-banner-2;
   background-color: $color-primary-3;
+  color: $color-banner-2;
 }
 .btn-cta:hover,
 .navbar-default .navbar-nav > li > a.btn-cta:hover {
   background-color: #167a6f;
+  color: $color-banner-2;
 }
 .btn-secondary,
 .navbar-default .navbar-nav > li > a.btn-secondary {
-  color: $color-banner-2;
   background-color: $color-accent-1;
+  color: $color-banner-2;
 }
 .btn-secondary:hover,
 .navbar-default .navbar-nav > li > a.btn-secondary:hover {
   background-color: #717a8b;
+  color: $color-banner-2;
+}
+.btn-light {
+  background-color: $color-accent-1;
+  color: $color-banner-2;
+  opacity: 0.6;
+}
+.btn-light:not(.btn-flag):hover {
+  background-color: $color-accent-1;
+  color: $color-banner-2;
+  opacity: 0.8;
+}
+.btn-flag, .btn-flag:hover {
+  color: $color-banner-2;
+  cursor: default;
+  margin-right: 6px;
+  text-transform: none;
+}
+.btn-flag:last-child {
+  margin-right: 0;
 }
 .navbar-default .navbar-nav > li > a.btn-nav {
   margin: 12px 6px;
