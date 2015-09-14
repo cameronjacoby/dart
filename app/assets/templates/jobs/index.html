@@ -41,7 +41,7 @@
       <div ng-repeat="job in jobs" class="job">
         <p class="normal">{{job.title}}</p>
         <p ng-if="job.roles.length > 0"><span ng-repeat="role in job.roles" class="btn btn-xs btn-light btn-flag">{{role.name}}</span></p>
-        <p ng-if="job.locations.length > 0"><i class="fa fa-globe"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span></p>
+        <p ng-if="job.locations.length > 0"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span></p>
         <!-- <div ng-bind-html="job.description | sanitizeLimit:500"></div> -->
         <a ng-href="/jobs/{{job.guid}}">View Details</a>
       </div>
