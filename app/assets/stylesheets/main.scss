@@ -51,16 +51,30 @@ body {
   font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
+h4 {
+  font-weight: normal;
+  margin-bottom: 20px;
+}
 a, a:focus {
   color: $color-primary-3;
+  text-decoration: none;
 }
 a:hover {
   color: #167a6f;
+  text-decoration: none;
+}
+hr {
+  border-top: 1px solid #e7e7e7;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 // helper classes
 .normal {
   font-weight: normal;
+}
+.no-margin {
+  margin: 0;
 }
 .error-msg {
   color: $color-banner-3;
@@ -145,14 +159,14 @@ a:hover {
   color: $color-banner-2;
 }
 .btn-light {
-  background-color: $color-accent-1;
+  // background-color: $color-accent-1;
+  // background-color: #bac2ce;
+  background-color: #c5ccd6;
   color: $color-banner-2;
-  opacity: 0.6;
 }
 .btn-light:not(.btn-flag):hover {
-  background-color: $color-accent-1;
+  background-color: #a3adbf;
   color: $color-banner-2;
-  opacity: 0.8;
 }
 .btn-flag, .btn-flag:hover {
   color: $color-banner-2;

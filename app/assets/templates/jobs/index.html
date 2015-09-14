@@ -1,49 +1,62 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <!-- show selected searches -->
-    <div ng-if="allSearches.length > 0">
-      <span ng-repeat="search in allSearches">{{search}}&nbsp;&nbsp;</span>
+    <div class="job">
+      <p>
+        <i class="fa fa-search"></i>&nbsp;&nbsp;
+        <!-- show selected searches -->
+        <span ng-if="allSearches.length > 0">
+          <span ng-repeat="search in allSearches">{{search}}&nbsp;&nbsp;</span>
+        </span>
+      </p>
+      <hr>
+      <form class="form-inline">
+        <div class="form-group">
+          
+          <!-- role search -->
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Role
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li ng-repeat="role in roles"><a href="#" ng-click="addRoleToSearch(role.slug)">{{role.name}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group">
+          
+          <!-- location search -->
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Location
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li ng-repeat="loc in locations"><a href="#" ng-click="addLocToSearch(loc.slug)">{{loc.city || loc.slug}}</a></li>
+            </ul>
+          </div>
+        </div>
+      </form>
     </div>
-
-    <form class="form-inline">
-      <div class="form-group">
-        
-        <!-- role search -->
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Role
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li ng-repeat="role in roles"><a href="#" ng-click="addRoleToSearch(role.slug)">{{role.name}}</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="form-group">
-        
-        <!-- location search -->
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Location
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li ng-repeat="loc in locations"><a href="#" ng-click="addLocToSearch(loc.slug)">{{loc.city || loc.slug}}</a></li>
-          </ul>
-        </div>
-      </div>
-    </form>
 
     <!-- show all jobs -->
     <div ng-hide="showFiltered" ng-if="jobs.length > 0">
-      <p>{{jobs.length}} jobs</p>
+      <h4 class="text-center">{{jobs.length}} jobs</h4>
       <div ng-repeat="job in jobs" class="job">
         <p class="normal">{{job.title}}</p>
         <p ng-if="job.roles.length > 0"><span ng-repeat="role in job.roles" class="btn btn-xs btn-light btn-flag">{{role.name}}</span></p>
+        <hr>
         <p ng-if="job.locations.length > 0"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span></p>
-        <!-- <div ng-bind-html="job.description | sanitizeLimit:500"></div> -->
-        <a ng-href="/jobs/{{job.guid}}">View Details</a>
+        <p><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
+        <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
+        <hr>
+        <div ng-bind-html="job.description | sanitizeLimit:500"></div>
+        <hr>
+        <p class="no-margin">
+          <span><a href="#"><i class="fa fa-bookmark-o"></i>&nbsp;&nbsp;Save to Bookmarks</a></span>
+          <span class="pull-right"><a ng-href="/jobs/{{job.guid}}">View Details</a></span>
+        </p>
       </div>
     </div>
   </div>
