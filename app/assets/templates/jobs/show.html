@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <p><strong>{{job.title}}</strong></p>
-    <div ng-bind-html="job.description | sanitize"></div>
+    <div class="content">
+      <p><strong>{{job.title}}</strong></p>
+      <div ng-bind-html="job.description | sanitize"></div>
+    </div>
   </div>
 </div>

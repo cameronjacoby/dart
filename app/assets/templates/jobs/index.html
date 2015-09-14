@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <div class="job">
+    <div class="content bottom-margin">
       <p>
         <i class="fa fa-search"></i>&nbsp;&nbsp;
         <!-- show selected searches -->
@@ -42,21 +42,29 @@
 
     <!-- show all jobs -->
     <div ng-hide="showFiltered" ng-if="jobs.length > 0">
-      <h4 class="text-center">{{jobs.length}} jobs</h4>
-      <div ng-repeat="job in jobs" class="job">
+      <h4 class="text-center bottom-margin">{{jobs.length}} jobs</h4>
+      <div ng-repeat="job in jobs" class="content bottom-margin">
+        
+        <span class="pull-right favorite-icon"><a href="#" class="normal"><i class="fa fa-star-o"></i></a></span>
+        
         <p class="normal">{{job.title}}</p>
         <p ng-if="job.roles.length > 0"><span ng-repeat="role in job.roles" class="btn btn-xs btn-light btn-flag">{{role.name}}</span></p>
-        <hr>
-        <p ng-if="job.locations.length > 0"><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span></p>
-        <p><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
-        <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
+        <div ng-if="job.locations.length > 0">
+          <hr>
+          <p>
+            <i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span>
+          </p>
+        </div>
         <hr>
         <div ng-bind-html="job.description | sanitizeLimit:500"></div>
         <hr>
-        <p class="no-margin">
-          <span><a href="#"><i class="fa fa-bookmark-o"></i>&nbsp;&nbsp;Save to Bookmarks</a></span>
-          <span class="pull-right"><a ng-href="/jobs/{{job.guid}}">View Details</a></span>
-        </p>
+        <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
+        <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
+        
+        <!-- <p class="no-margin">
+          <span><a href="#" class="normal"><i class="fa fa-bookmark-o"></i>&nbsp;&nbsp;Save to Bookmarks</a></span>
+          <span class="pull-right"><a ng-href="/jobs/{{job.guid}}" class="normal">View Details</a></span>
+        </p> -->
       </div>
     </div>
   </div>

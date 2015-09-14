@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+ @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
 
 $color-primary-1: #2b2d42;
 $color-accent-1: #8d99ae;
@@ -53,7 +53,6 @@ body {
 }
 h4 {
   font-weight: normal;
-  margin-bottom: 20px;
 }
 a, a:focus {
   color: $color-primary-3;
@@ -75,6 +74,9 @@ hr {
 }
 .no-margin {
   margin: 0;
+}
+.bottom-margin {
+  margin-bottom: 20px;
 }
 .error-msg {
   color: $color-banner-3;
@@ -126,7 +128,7 @@ hr {
 
 // page layout
 .main-content {
-  padding-top: 70px;
+  padding-top: 78px;
 }
 
 // buttons
@@ -183,12 +185,19 @@ hr {
 }
 
 // jobs
-.job {
+.content {
   background-color: $color-banner-2;
   border: 1px solid #e7e7e7;
   border-radius: 2px;
-  margin-bottom: 20px;
   padding: 12px;
+}
+.favorite-icon {
+  font-size: 18px;
+  line-height: 1;
+  margin: 0 0 10px 10px;
+  a, a:focus, a:hover {
+    color: $color-banner-3;
+  }
 }
 
 // social buttons
