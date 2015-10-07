@@ -3,6 +3,7 @@
 $color-black: #2b2d42;
 $color-green: #1b998b;
 $color-green-hover: #167a6f;
+$color-green-muted: #91ccc5;
 $color-grey: #8d99ae;
 $color-grey-hover: #717a8b;
 $color-grey-light: #c5ccd6;
@@ -56,7 +57,7 @@ body {
   font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
-h4 {
+h3, h4 {
   font-weight: normal;
 }
 a, a:focus {
@@ -145,17 +146,43 @@ hr {
   padding: 12px;
 }
 
-// buttons
-.btn {
-  border-radius: 2px;
-  font-weight: 300;
-}
-.btn:active, .btn.active {
+// forms
+.form-control {
+  background-color  : $color-white;
+  border            : 1px solid $color-grey-border;
+  border-radius     : 2px;
   box-shadow        : none;
   -webkit-box-shadow: none;
   -moz-box-shadow   : none;
   -ms-box-shadow    : none;
   -o-box-shadow     : none;
+  color             : $color-black;
+  padding           : 6px 10px;
+}
+.form-control:focus {
+  border-color      : $color-green-muted;
+  box-shadow        : none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow   : none;
+  -ms-box-shadow    : none;
+  -o-box-shadow     : none;
+}
+
+// buttons
+.btn {
+  border-radius: 2px;
+  font-weight: 300;
+}
+.btn:active,
+.btn.active {
+  box-shadow        : none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow   : none;
+  -ms-box-shadow    : none;
+  -o-box-shadow     : none;
+}
+.btn:active:focus {
+  outline: none;
 }
 .btn-xs {
   padding: 2px 6px;
@@ -204,6 +231,22 @@ hr {
 .btn-flag:focus {
   outline: none;
 }
+.btn-dropdown,
+.btn-dropdown:focus {
+  background-color: $color-white;
+  border: 1px solid $color-grey-border;
+  color: $color-black;
+}
+.btn-dropdown:hover {
+  background-color: #f5f5f5;
+  color: $color-black;
+}
+.btn-dropdown {
+  margin-right: 3px;
+}
+.btn-dropdown:last-child {
+  margin-right: 0;
+}
 
 // social buttons
 .btn-facebook,
@@ -245,6 +288,17 @@ hr {
   a, a:focus, a:hover {
     color: $color-red;
   }
+}
+
+// signup / login
+.auth-content {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 12px 20px 32px 20px;
+}
+.auth-msg {
+  p { margin: 10px 0; }
+  h5 { margin-top: 16px; }
 }
 
 // media queries

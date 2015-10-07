@@ -15,7 +15,7 @@
           
           <!-- role search -->
           <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button class="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Role
               <span class="caret"></span>
             </button>
@@ -28,7 +28,7 @@
           
           <!-- location search -->
           <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button class="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               Location
               <span class="caret"></span>
             </button>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- show all jobs -->
-    <div ng-hide="showFiltered" ng-if="jobs.length > 0">
+    <div ng-if="jobs.length > 0">
       <h4 class="text-center bottom-margin">{{jobs.length}} jobs</h4>
       <div ng-repeat="job in jobs" class="content bottom-margin">
         

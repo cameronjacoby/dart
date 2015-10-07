@@ -1,31 +1,36 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <h4 class="text-center">W E L C O M E &nbsp;&nbsp; B A C K</h4>
-    <br>
-    <form name="loginForm" ng-submit="login()">
-      <div class="form-group">
-        <input type="text" ng-model="user.email" name="email" class="form-control" placeholder="Email" required>
-        <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$touched">
-          <div ng-message="required" class="error-msg">Email is required</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <input type="password" ng-model="user.password" name="password" class="form-control" placeholder="Password" required>
-        <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched">
-          <div ng-message="required" class="error-msg">Password is required</div>
-        </div>
-      </div>
-      <input type="submit" value="Log In" class="btn btn-block btn-success" ng-disabled="loginForm.$invalid">
-    </form>
-    <br>
-    <p class="text-center text-muted">Don't have an account yet? <a href="/signup">Sign up</a></p>
-    <hr>
 
-    <!-- facebook -->
-    <button ng-click="authenticate('facebook')" class="btn btn-block btn-facebook"><i class="fa fa-facebook"></i> Log in with Facebook</button>
-    <!-- google -->
-    <button ng-click="authenticate('google')" class="btn btn-block btn-google-plus"><i class="fa fa-google-plus"></i> Log in with Google</button>
-    <!-- github -->
-    <button ng-click="authenticate('github')" class="btn btn-block btn-github"><i class="fa fa-github"></i> Log in with GitHub</button>
+    <div class="content auth-content">
+      <h3 class="text-center">Welcome back!</h3>
+      <br>
+      <form name="loginForm" ng-submit="login()">
+        <div class="form-group">
+          <input type="text" ng-model="user.email" name="email" class="form-control" placeholder="Email" required>
+          <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$touched">
+            <div ng-message="required" class="error-msg">Email is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" ng-model="user.password" name="password" class="form-control" placeholder="Password" required>
+          <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched">
+            <div ng-message="required" class="error-msg">Password is required</div>
+          </div>
+        </div>
+        <input type="submit" value="Log In" class="btn btn-block btn-cta" ng-disabled="loginForm.$invalid">
+      </form>
+      <div class="text-center auth-msg">
+        <p>Don't have an account yet? <a href="/signup">Sign up</a></p>
+        <h5>OR</h5>
+      </div>
+
+      <!-- facebook -->
+      <button ng-click="authenticate('facebook')" class="btn btn-block btn-facebook"><i class="fa fa-facebook"></i>&nbsp;&nbsp;Log in with Facebook</button>
+      <!-- google -->
+      <button ng-click="authenticate('google')" class="btn btn-block btn-google-plus"><i class="fa fa-google-plus"></i>&nbsp;&nbsp;Log in with Google</button>
+      <!-- github -->
+      <button ng-click="authenticate('github')" class="btn btn-block btn-github"><i class="fa fa-github"></i>&nbsp;&nbsp;Log in with GitHub</button>
+    </div>
+
   </div>
 </div>

@@ -50,17 +50,14 @@ AuthController.controller('AuthCtrl', [
 
 AuthController.config(function($authProvider) {
   $authProvider.facebook({
-    // REPLACE WITH YOUR FACEBOOK CLIENT ID
     clientId: '857543190967093'
   });
 
   $authProvider.google({
-    // REPLACE WITH YOUR GOOGLE CLIENT ID
     clientId: '475741487933-5r46cke91ed84ukp1n7gbkrdio1btcft.apps.googleusercontent.com'
   });
 
   $authProvider.github({
-    // REPLACE WITH YOUR GITHUB CLIENT ID
     clientId: '1416f3ece765ca3fd9e0'
   });
 });
