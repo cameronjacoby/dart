@@ -45,7 +45,7 @@
       <h4 class="text-center bottom-margin">{{jobs.length}} jobs</h4>
       <div ng-repeat="job in jobs" class="content bottom-margin">
         
-        <span class="pull-right favorite-icon"><a href="#" class="normal"><i class="fa fa-star-o"></i></a></span>
+        <span class="pull-right bookmark-icon"><a href="#" ng-mouseenter="fillBookmark = true" ng-mouseleave="fillBookmark = false"><i class="fa" ng-class="{'fa-bookmark-o': !fillBookmark, 'fa-bookmark': fillBookmark}"></i></a></span>
         
         <p class="normal">{{job.title}}</p>
         <p ng-if="job.roles.length > 0"><span ng-repeat="role in job.roles" class="btn btn-xs btn-light btn-flag">{{role.name}}</span></p>

@@ -281,12 +281,12 @@ hr {
 }
 
 // jobs
-.favorite-icon {
+.bookmark-icon {
   font-size: 18px;
   line-height: 1;
   margin: 0 0 10px 10px;
-  a, a:focus, a:hover {
-    color: $color-red;
+  a:hover {
+    color: $color-green;
   }
 }
 
