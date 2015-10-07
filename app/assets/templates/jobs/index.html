@@ -56,7 +56,7 @@
           </p>
         </div>
         <hr>
-        <div ng-bind-html="job.description | sanitizeLimit:500"></div>
+        <div ng-bind-html="job.description | sanitizeLimit:500:job.guid"></div>
         <hr>
         <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
         <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
