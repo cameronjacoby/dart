@@ -51,21 +51,16 @@
         <p ng-if="job.roles.length > 0"><span ng-repeat="role in job.roles" class="btn btn-xs btn-light btn-flag">{{role.name}}</span></p>
         <div ng-if="job.locations.length > 0">
           <hr>
-          <p>
-            <i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span>
-          </p>
+          <p><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span></p>
         </div>
         <hr>
         <div ng-bind-html="job.description | sanitizeLimit:500:job.guid"></div>
+
         <hr>
         <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
         <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
-        
-        <!-- <p class="no-margin">
-          <span><a href="#" class="normal"><i class="fa fa-bookmark-o"></i>&nbsp;&nbsp;Save to Bookmarks</a></span>
-          <span class="pull-right"><a ng-href="/jobs/{{job.guid}}" class="normal">View Details</a></span>
-        </p> -->
       </div>
     </div>
+
   </div>
 </div>

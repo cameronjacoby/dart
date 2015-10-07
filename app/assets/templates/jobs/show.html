@@ -1,8 +1,22 @@
 <div ng-if="job.title" class="row">
   <div class="col-md-6 col-md-offset-3">
+    
     <div class="content">
+      <span class="pull-right bookmark-icon"><a href="#" ng-mouseenter="fillBookmark = true" ng-mouseleave="fillBookmark = false"><i class="fa" ng-class="{'fa-bookmark-o': !fillBookmark, 'fa-bookmark': fillBookmark}"></i></a></span>
+      
       <p><strong>{{job.title}}</strong></p>
+      <p ng-if="job.roles.length > 0"><span ng-repeat="role in job.roles" class="btn btn-xs btn-light btn-flag">{{role.name}}</span></p>
+      <div ng-if="job.locations.length > 0">
+        <hr>
+        <p><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;<span ng-repeat="loc in job.locations">{{loc.city || loc.slug}}{{$last ? '' : ', '}}</span></p>
+      </div>
+      <hr>
       <div ng-bind-html="job.description | sanitize"></div>
+      
+      <hr>
+      <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
+      <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
     </div>
+  
   </div>
 </div>
