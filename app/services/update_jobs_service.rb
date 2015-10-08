@@ -1,5 +1,8 @@
 class UpdateJobsService
 
+  include LocationsHelper
+  include RolesHelper
+
   def process_doc html_doc
     html_doc.css(".athing").each do |comment|
       process_comment comment

@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <div ng-if="roles.length > 0 && locations.length > 0 && jobs.length > 0" class="content bottom-margin">
+    <div ng-if="roles.length > 0 && locations.length > 0 && jobs.length > 0" class="content">
       <p>
         <i class="fa fa-search"></i>&nbsp;&nbsp;
-        <span ng-hide="allSearches.length > 0">Filter jobs</span>
+        <span ng-hide="allSearches.length > 0" class="normal">Filter jobs</span>
         <!-- show selected searches -->
         <span ng-show="allSearches.length > 0">
           <span ng-repeat="search in allSearches">{{search}}&nbsp;&nbsp;</span>
@@ -50,7 +50,7 @@
     <!-- show all jobs -->
     <div ng-show="jobs.length > 0">
       <h4 class="text-center bottom-margin">{{jobs.length}} jobs</h4>
-      <div ng-repeat="job in jobs" class="content bottom-margin">
+      <div ng-repeat="job in jobs" class="content">
         
         <span class="pull-right bookmark-icon"><a href="#" ng-mouseenter="fillBookmark = true" ng-mouseleave="fillBookmark = false"><i class="fa" ng-class="{'fa-bookmark-o': !fillBookmark, 'fa-bookmark': fillBookmark}"></i></a></span>
         
