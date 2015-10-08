@@ -1,12 +1,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <div ng-hide="jobs.length > 0 && roles.length > 0 && locations.length > 0" class="text-center">
-      <h3>Hold tight &mdash; we're finding your next job.</h3>
-      <h3><i class="fa fa-hourglass-half"></i></h3>
-    </div>
-
-    <div ng-show="jobs.length > 0 && roles.length > 0 && locations.length > 0" class="content bottom-margin">
+    <div ng-if="roles.length > 0 && locations.length > 0 && jobs.length > 0" class="content bottom-margin">
       <p>
         <i class="fa fa-search"></i>&nbsp;&nbsp;
         <span ng-hide="allSearches.length > 0">Filter jobs</span>
@@ -47,8 +42,13 @@
       </form>
     </div>
 
+    <div ng-hide="jobs.length > 0" class="text-center">
+      <h3>Finding your next job&#8230;</h3>
+      <h3><i class="fa fa-hourglass-half"></i></h3>
+    </div>
+
     <!-- show all jobs -->
-    <div ng-show="jobs.length > 0 && roles.length > 0 && locations.length > 0">
+    <div ng-show="jobs.length > 0">
       <h4 class="text-center bottom-margin">{{jobs.length}} jobs</h4>
       <div ng-repeat="job in jobs" class="content bottom-margin">
         
