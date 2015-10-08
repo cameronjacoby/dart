@@ -100,15 +100,15 @@ hr {
     color: $color-black;
   }
   .navbar-nav > li > a.btn-nav {
-    margin: 12px 6px;
+    margin: 10px 6px;
     padding: 6px 12px;
   }
   .navbar-toggle,
   .navbar-toggle:focus {
     background-color: transparent;
     border-color: transparent;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     .icon-bar {
       background-color: $color-green;
     }
@@ -121,7 +121,8 @@ hr {
   }
 }
 .navbar-brand {
-  height: 58px;
+  height: 54px;
+  padding: 13px 15px;
 }
 .dart-logo {
   color: $color-green;
@@ -137,7 +138,7 @@ hr {
 
 // site layout
 .view-wrapper {
-  padding-top: 78px;
+  padding-top: 74px;
 }
 .content {
   background-color: $color-white;
@@ -305,13 +306,13 @@ hr {
 // media queries
 @media (min-width: 768px) {
   .navbar-nav > li > a {
-    padding-top: 19px;
-    padding-bottom: 19px;
+    padding-top: 17px;
+    padding-bottom: 17px;
   }
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav > li > a.btn-nav {
     display: inline-block;
-    margin: 6px 15px;
+    margin: 5px 15px;
   }
 }
