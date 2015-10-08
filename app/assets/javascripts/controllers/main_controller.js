@@ -4,6 +4,8 @@ MainController.controller('MainCtrl', [
   '$rootScope', '$location', '$auth', 'User', 'toastr',
   function ($rootScope, $location, $auth, User, toastr) {
 
+    $rootScope.date = new Date();
+
     User.currentUser()
       .then(function(response) {
          $rootScope.currentUser = response.data;

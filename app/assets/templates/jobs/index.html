@@ -50,8 +50,8 @@
     <!-- show all jobs -->
     <div ng-show="jobs.length > 0">
       <h4 class="text-center bottom-margin">{{jobs.length}} jobs</h4>
+      
       <div ng-repeat="job in jobs" class="content">
-        
         <span class="pull-right bookmark-icon"><a href="#" ng-mouseenter="fillBookmark = true" ng-mouseleave="fillBookmark = false"><i class="fa" ng-class="{'fa-bookmark-o': !fillBookmark, 'fa-bookmark': fillBookmark}"></i></a></span>
         
         <p class="normal">{{job.title}}</p>
@@ -67,6 +67,8 @@
         <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
         <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
       </div>
+
+      <p class="bottom-margin">Jobs c/o Hacker News Who's Hiring {{date | date:"MMM ''''yy"}}</p>
     </div>
 
   </div>
