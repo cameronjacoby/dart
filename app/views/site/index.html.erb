@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav navbar-right" ng-cloak>
         <li ng-if="!isAuthenticated()"><a href="/signup" class="btn btn-cta btn-nav">Sign Up</a></li>
         <li ng-if="!isAuthenticated()"><a href="/login" class="btn btn-secondary btn-nav">Log In</a></li>
-        <li ng-if="currentUser"><a href="/profile"><span class="fa fa-bookmark"></span>&nbsp;&nbsp;Bookmarks</a></li>
+        <li ng-if="currentUser"><a href="/profile">Bookmarks</a></li>
         <li ng-if="isAuthenticated()"><a href="#" ng-click="logout()">Log Out</a></li>
       </ul>
     </div>
