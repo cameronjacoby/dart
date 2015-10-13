@@ -49,14 +49,6 @@ AuthController.controller('AuthCtrl', [
 ]);
 
 AuthController.config(function($authProvider) {
-  $authProvider.facebook({
-    clientId: '857543190967093'
-  });
-
-  $authProvider.google({
-    clientId: '475741487933-5r46cke91ed84ukp1n7gbkrdio1btcft.apps.googleusercontent.com'
-  });
-
   $authProvider.linkedin({
     clientId: '75aoposx0c56tq'
   });

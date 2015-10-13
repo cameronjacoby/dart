@@ -28,7 +28,7 @@ class AuthController < ApplicationController
 
   def authenticate
     provider = params[:provider].titleize
-    @oauth = "Oauth::#{provider}".constantize.new(params)     
+    @oauth = "Oauth::#{provider}".constantize.new(params)
     if @oauth.authorized?
       @user = User.from_oauth(@oauth)
       if @user

@@ -6,23 +6,24 @@ module Oauth
     def get_data
       response = @client.get(DATA_URL, oauth2_access_token: @access_token)
       @data = JSON.parse(response.body).with_indifferent_access
+      @data["email"] = @data["emailAddress"]
       @uid = @data[:id] ||= @data[:sub]
       @data
     end
 
-    def formatted_user_data
-      {
-        provider:        "linkedin",
-        token:            @access_token,
-        linkedin_profile: @data["publicProfileUrl"],
-        email:            @data["emailAddress"],
-        image_url:        @data["pictureUrl"],
-        first_name:       @data["firstName"],
-        last_name:        @data["lastName"],
-        about:            @data["summary"],
-        uid:              @data["id"]
-      }
-    end
+    # def formatted_user_data
+    #   {
+    #     provider:        "linkedin",
+    #     token:            @access_token,
+    #     linkedin_profile: @data["publicProfileUrl"],
+    #     email:            @data["emailAddress"],
+    #     image_url:        @data["pictureUrl"],
+    #     first_name:       @data["firstName"],
+    #     last_name:        @data["lastName"],
+    #     about:            @data["summary"],
+    #     uid:              @data["id"]
+    #   }
+    # end
 
   end
 end
