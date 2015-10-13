@@ -5,27 +5,33 @@ JobsControllers.controller('JobsIndexCtrl', [
   function ($scope, $controller, Job, Role, Location) {
 
     $controller('MainCtrl', { $scope: $scope });
-    
-    $scope.jobs = Job.query();
+
+    var allJobs = [];
+    $scope.jobs = [];
+
+    Job.query(function (jobs) {
+      allJobs = jobs;
+      $scope.jobs = jobs;
+    });
+
     $scope.roles = Role.query();
     $scope.locations = Location.query();
 
-    $scope.filteredJobs = [];
-    $scope.searchedRoles = [];
-    $scope.searchedLocs = [];
+    var searchedRoles = [];
+    var searchedLocs = [];
     $scope.allSearches = [];
 
     $scope.addRoleToSearch = function (role) {
-      if ($scope.searchedRoles.indexOf(role) === -1) {
-        $scope.searchedRoles.push(role);
+      if (searchedRoles.indexOf(role.slug) === -1) {
+        searchedRoles.push(role.slug);
         $scope.allSearches.push(role);
         filter();
       }
     };
 
     $scope.addLocToSearch = function (loc) {
-      if ($scope.searchedLocs.indexOf(loc) === -1) {
-        $scope.searchedLocs.push(loc);
+      if (searchedLocs.indexOf(loc.slug) === -1) {
+        searchedLocs.push(loc.slug);
         $scope.allSearches.push(loc);
         filter();
       }
@@ -33,19 +39,22 @@ JobsControllers.controller('JobsIndexCtrl', [
 
     // helper function to filter jobs by searched roles and locations
     var filter = function() {
-      console.log($scope.searchedRoles);
-      console.log($scope.searchedLocs);
-      console.log($scope.allSearches);
+      console.log(searchedRoles);
+      console.log(searchedLocs);
       
-      $scope.filteredJobs = [];
+      var filteredJobs = [];
+      console.log('$scope.jobs', $scope.jobs.length);
+      console.log('filteredJobs', filteredJobs.length);
+
+      $scope.filtering = true;
         
-      angular.forEach($scope.jobs, function (job) {
+      angular.forEach(allJobs, function (job) {
         var roleMatch = false;
         var locMatch = false;
         
-        if ($scope.searchedRoles.length > 0) {
+        if (searchedRoles.length > 0) {
           angular.forEach(job.roles, function (role) {
-            if ($scope.searchedRoles.indexOf(role.slug) > -1) {
+            if (searchedRoles.indexOf(role.slug) > -1) {
               roleMatch = true;
             }
           });
@@ -53,9 +62,9 @@ JobsControllers.controller('JobsIndexCtrl', [
           roleMatch = true;
         }
 
-        if ($scope.searchedLocs.length > 0) {
+        if (searchedLocs.length > 0) {
           angular.forEach(job.locations, function (loc) {
-            if ($scope.searchedLocs.indexOf(loc.slug) > -1) {
+            if (searchedLocs.indexOf(loc.slug) > -1) {
               locMatch = true;
             }
           });
@@ -63,12 +72,15 @@ JobsControllers.controller('JobsIndexCtrl', [
           locMatch = true;
         }
         
-        if (roleMatch && locMatch && $scope.filteredJobs.indexOf(job) === -1) {
-          $scope.filteredJobs.push(job);
+        if (roleMatch && locMatch && filteredJobs.indexOf(job) === -1) {
+          filteredJobs.push(job);
         }
       });
 
-      console.log($scope.filteredJobs.length);
+      $scope.jobs = filteredJobs;
+
+      console.log('$scope.jobs', $scope.jobs.length);
+      console.log('filteredJobs', filteredJobs.length);
     };
   }
 ]);

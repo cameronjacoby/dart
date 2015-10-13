@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <div ng-if="roles.length > 0 && locations.length > 0 && jobs.length > 0" class="content">
+    <div ng-if="(roles.length > 0 && locations.length > 0) && (jobs.length > 0 || filtering)" class="content">
       <p>
         <i class="fa fa-search"></i>&nbsp;&nbsp;
         <span ng-hide="allSearches.length > 0" class="normal">Filter jobs</span>
         <!-- show selected searches -->
         <span ng-show="allSearches.length > 0">
-          <span ng-repeat="search in allSearches">{{search}}&nbsp;&nbsp;</span>
+          <span ng-repeat="search in allSearches">{{search.name || search.city || search.slug}}&nbsp;&nbsp;</span>
         </span>
       </p>
       <hr>
@@ -22,7 +22,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li ng-repeat="role in roles"><a href="#" ng-click="addRoleToSearch(role.slug)">{{role.name}}</a></li>
+              <li ng-repeat="role in roles"><a href="#" ng-click="addRoleToSearch(role)">{{role.name}}</a></li>
             </ul>
           </div>
         </div>
@@ -35,20 +35,20 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li ng-repeat="loc in locations"><a href="#" ng-click="addLocToSearch(loc.slug)">{{loc.city || loc.slug}}</a></li>
+              <li ng-repeat="loc in locations"><a href="#" ng-click="addLocToSearch(loc)">{{loc.city || loc.slug}}</a></li>
             </ul>
           </div>
         </div>
       </form>
     </div>
 
-    <div ng-hide="jobs.length > 0" class="text-center">
+    <div ng-hide="jobs.length > 0 || filtering" class="text-center">
       <h3>Finding your next job&#8230;</h3>
       <h3><i class="fa fa-hourglass-half"></i></h3>
     </div>
 
     <!-- show all jobs -->
-    <div ng-show="jobs.length > 0">
+    <div ng-show="jobs.length > 0 || filtering">
       <h4 class="text-center bottom-margin">{{jobs.length}} jobs</h4>
       
       <div ng-repeat="job in jobs" class="content">
@@ -67,9 +67,9 @@
         <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
         <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
       </div>
-
-      <p class="bottom-margin">Jobs c/o Hacker News Who's Hiring {{date | date:"MMM ''''yy"}}</p>
     </div>
+
+    <p ng-if="jobs.length > 0" class="bottom-margin">Jobs c/o Hacker News Who's Hiring {{date | date:"MMM ''''yy"}}</p>
 
   </div>
 </div>
