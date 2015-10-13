@@ -57,6 +57,10 @@ AuthController.config(function($authProvider) {
     clientId: '475741487933-5r46cke91ed84ukp1n7gbkrdio1btcft.apps.googleusercontent.com'
   });
 
+  $authProvider.linkedin({
+    clientId: '75aoposx0c56tq'
+  });
+
   $authProvider.github({
     clientId: '1416f3ece765ca3fd9e0'
   });

@@ -283,9 +283,19 @@ hr {
   background-color: #cb3927;
   color: $color-white;
 }
+.btn-linkedin,
+.btn-linkedin:focus {
+  background-color: #007bb6;
+  border: 1px solid #0073ae;
+  color: $color-white;
+}
+.btn-linkedin:hover {
+  background-color: #0069a4;
+  color: $color-white;
+}
 .btn-github,
 .btn-github:focus {
-  background-color: #444;
+  background-color: #444444;
   border: 1px solid #3b3b3b;
   color: $color-white;
 }
