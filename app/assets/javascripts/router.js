@@ -22,6 +22,10 @@ Router.config(['$routeProvider', '$locationProvider', function ($routeProvider, 
       templateUrl: 'auth/login.html',
       controller: 'AuthCtrl'
     })
+    .when('/profile', {
+      templateUrl: 'users/profile.html',
+      controller: 'MainCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });
