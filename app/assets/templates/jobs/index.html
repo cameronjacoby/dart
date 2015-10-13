@@ -2,14 +2,16 @@
   <div class="col-md-6 col-md-offset-3">
 
     <div ng-if="(roles.length > 0 && locations.length > 0) && (jobs.length > 0 || filtering)" class="content">
-      <p>
-        <i class="fa fa-search"></i>&nbsp;&nbsp;
-        <span ng-hide="allSearches.length > 0" class="normal">Filter jobs</span>
-        <!-- show selected searches -->
-        <span ng-show="allSearches.length > 0">
-          <span ng-repeat="search in allSearches">{{search.name || search.city || search.slug}}&nbsp;&nbsp;</span>
-        </span>
-      </p>
+      <div>
+        <div class="search-icon"><i class="fa fa-search"></i></div>
+        <div class="searches">
+          <span ng-hide="allSearches.length > 0" class="normal">Filter jobs</span>
+          <!-- show selected searches -->
+          <span ng-show="allSearches.length > 0">
+            <span ng-repeat="search in allSearches" class="btn btn-xs btn-reverse btn-flag">{{search.name || search.city || search.slug}}</span>
+          </span>
+        </div>
+      </div>
       <hr>
       
       <form class="form-inline">
@@ -63,9 +65,9 @@
         <hr>
         <div ng-bind-html="job.description | sanitizeLimit:500:job.guid"></div>
 
-        <hr>
+        <!-- <hr>
         <p><i class="fa fa-external-link"></i>&nbsp;&nbsp;www.website.com</p>
-        <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p>
+        <p class="no-margin"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;email@example.com</p> -->
       </div>
     </div>
 
