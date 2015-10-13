@@ -17,17 +17,17 @@ module Oauth
       @data
     end
 
-    # def formatted_user_data
-    #   {
-    #     provider:       "github",
-    #     token:          @access_token,
-    #     uid:            @data["id"],
-    #     first_name:     @data["login"],
-    #     email:          @data["email"],
-    #     image_url:      @data["avatar_url"],
-    #     github_profile: @data["html_url"]
-    #   }
-    # end
+    def formatted_user_data
+      {
+        provider:       "github",
+        token:          @access_token,
+        uid:            @data["id"],
+        first_name:     @data["login"],
+        email:          @data["email"],
+        image_url:      @data["avatar_url"],
+        github_profile: @data["html_url"]
+      }
+    end
 
     def get_email
       JSON.parse(@client.get(EMAIL_URL, access_token: @access_token).body)[0]["email"]

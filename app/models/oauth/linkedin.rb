@@ -11,19 +11,19 @@ module Oauth
       @data
     end
 
-    # def formatted_user_data
-    #   {
-    #     provider:        "linkedin",
-    #     token:            @access_token,
-    #     linkedin_profile: @data["publicProfileUrl"],
-    #     email:            @data["emailAddress"],
-    #     image_url:        @data["pictureUrl"],
-    #     first_name:       @data["firstName"],
-    #     last_name:        @data["lastName"],
-    #     about:            @data["summary"],
-    #     uid:              @data["id"]
-    #   }
-    # end
+    def formatted_user_data
+      {
+        provider:        "linkedin",
+        token:            @access_token,
+        linkedin_profile: @data["publicProfileUrl"],
+        email:            @data["emailAddress"],
+        image_url:        @data["pictureUrl"],
+        first_name:       @data["firstName"],
+        last_name:        @data["lastName"],
+        about:            @data["summary"],
+        uid:              @data["id"]
+      }
+    end
 
   end
 end
