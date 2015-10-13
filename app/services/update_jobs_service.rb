@@ -3,6 +3,19 @@ class UpdateJobsService
   include LocationsHelper
   include RolesHelper
 
+  def clean_data
+    Job.find_each do |job|
+      # destroy jobs older than 3 months
+      if job.created_at < 3.months.ago
+        job.destroy
+
+      # flag jobs older than 1 month as not active
+      elsif job.created_at < 1.month.ago
+        job.update_attributes(active: false)
+      end
+    end
+  end
+
   def process_doc html_doc
     html_doc.css(".athing").each do |comment|
       process_comment comment

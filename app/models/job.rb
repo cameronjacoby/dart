@@ -12,4 +12,6 @@ class Job < ActiveRecord::Base
   validates :guid,
     uniqueness: true
 
+  scope :active, proc { where active: true }
+
 end
