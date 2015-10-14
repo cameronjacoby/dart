@@ -5,7 +5,7 @@ task update_jobs: :environment do
   
   puts "Before update: #{Job.active.count} active jobs"
 
-  html = open("https://news.ycombinator.com/item?id=#{ENV['POST_ID']}")
+  html = open("https://news.ycombinator.com/item?id=#{ENV['HN_POST_ID']}")
   page = Nokogiri::HTML(html.read)
   page.encoding = "utf-8"
   update_jobs_service.process_doc page
