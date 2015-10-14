@@ -13,41 +13,6 @@ $color-grey-border: #e7e7e7;
 $color-red: #e84855;
 $color-white: #fefffe;
 
-$color-hover-1: #ef233c;
-$color-banner-1: #d90429;
-$color-primary-2: #0b3954;
-$color-accent-2: #ff6663;
-$color-link-2: #bfd7ea;
-$color-hover-2: #e0ff4f;
-$color-accent-3: #2d3047;
-$color-link-3: #fffd82;
-$color-hover-3: #ff9b71;
-
-.color {
-  border: 1px solid #cccccc;
-  height: 20px;
-  margin-bottom: 20px;
-  width: 50%;
-}
-
-.color-1 { background-color: $color-black }
-.color-2 { background-color: $color-grey }
-.color-3 { background-color: $color-grey-bg }
-.color-4 { background-color: $color-hover-1 }
-.color-5 { background-color: $color-banner-1 }
-
-.color-6 { background-color: $color-primary-2 }
-.color-7 { background-color: $color-accent-2 }
-.color-8 { background-color: $color-link-2 }
-.color-9 { background-color: $color-hover-2 }
-.color-10 { background-color: $color-white }
-
-.color-11 { background-color: $color-green }
-.color-12 { background-color: $color-accent-3 }
-.color-13 { background-color: $color-link-3 }
-.color-14 { background-color: $color-hover-3 }
-.color-15 { background-color: $color-red }
-
 [ng\:cloak], [ng-cloak], .ng-cloak { display: none; }
 
 // reset
