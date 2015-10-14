@@ -11,5 +11,6 @@ angular.module('dartApp', [
   'Services',
   'MainController',
   'AuthController',
+  'BookmarksController',
   'JobsControllers'
 ]);

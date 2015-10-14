@@ -24,7 +24,7 @@ Router.config(['$routeProvider', '$locationProvider', function ($routeProvider, 
     })
     .when('/bookmarks', {
       templateUrl: 'users/bookmarks.html',
-      controller: 'MainCtrl'
+      controller: 'BookmarksCtrl'
     })
     .otherwise({
       redirectTo: '/'
