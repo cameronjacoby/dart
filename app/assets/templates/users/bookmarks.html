@@ -3,13 +3,18 @@
     <div class="content profile-content">
       <h3 class="text-center">Your Bookmarks</h3>
       <br>
-      <div ng-if="currentUser && currentUser.jobs.length === 0" class="text-center">
+      <div ng-if="currentUser.jobs.length === 0" class="text-center">
         <p class="bottom-margin">You don't have any bookmarks yet!</p>
         <a href="/" class="btn btn-cta bottom-margin">Search Jobs</a>
       </div>
       <div ng-repeat="job in currentUser.jobs">
         <p>
-          <i class="fa fa-bookmark"></i>
+          <!-- show filled bookmark if currentUser saved this job -->
+          <a href="#" ng-show="job.bookmarked" ng-mouseenter="unfillBookmark = true" ng-mouseleave="unfillBookmark = false" class="bookmark-link"><i class="fa" ng-class="{'fa-bookmark': !unfillBookmark, 'fa-bookmark-o': unfillBookmark}"></i></a>
+          
+          <!-- show unfilled bookmark if currentUser did not save this job -->
+          <a href="#" ng-hide="job.bookmarked" ng-mouseenter="fillBookmark = true" ng-mouseleave="fillBookmark = false" class="bookmark-link"><i class="fa" ng-class="{'fa-bookmark-o': !fillBookmark, 'fa-bookmark': fillBookmark}"></i></i></a>
+          
           &nbsp;&nbsp;{{job.title}}
           &nbsp;&nbsp;<a href="/jobs/{{job.guid}}" class="normal">View details &raquo;</a>
         </p>

@@ -1,8 +1,8 @@
 var JobsControllers = angular.module('JobsControllers', []);
 
 JobsControllers.controller('JobsIndexCtrl', [
-  '$scope', '$controller', 'Job', 'Role', 'Location',
-  function ($scope, $controller, Job, Role, Location) {
+  '$scope', '$rootScope', '$controller', 'Job', 'Role', 'Location',
+  function ($scope, $rootScope, $controller, Job, Role, Location) {
 
     $controller('MainCtrl', { $scope: $scope });
 
@@ -11,6 +11,16 @@ JobsControllers.controller('JobsIndexCtrl', [
 
     Job.query(function (jobs) {
       allJobs = jobs;
+      if ($rootScope.currentUser) {
+        var savedJobs = $rootScope.currentUser.jobs;
+        for (var i = 0; i < allJobs.length; i += 1) {
+          for (var j = 0; j < savedJobs.length; j += 1) {
+            if (allJobs[i].guid === savedJobs[j].guid) {
+              allJobs[i].bookmarked = true;
+            }
+          }
+        }
+      }
       $scope.jobs = jobs;
     });
 
@@ -86,12 +96,23 @@ JobsControllers.controller('JobsIndexCtrl', [
 ]);
 
 JobsControllers.controller('JobsShowCtrl', [
-  '$scope', '$controller', '$routeParams', 'Job',
-  function ($scope, $controller, $routeParams, Job) {
+  '$scope', '$rootScope', '$controller', '$routeParams', 'Job',
+  function ($scope, $rootScope, $controller, $routeParams, Job) {
 
     $controller('MainCtrl', { $scope: $scope });
 
     var jobId = $routeParams.id;
-    $scope.job = Job.get({id: jobId});
+    
+    Job.get({id: jobId}, function (job) {
+      $scope.job = job;
+      if ($rootScope.currentUser) {
+        var savedJobs = $rootScope.currentUser.jobs;
+        for (var i = 0; i < savedJobs.length; i += 1) {
+          if ($scope.job.guid === savedJobs[i].guid) {
+            $scope.job.bookmarked = true;
+          }
+        }
+      }
+    });
   }
 ]);

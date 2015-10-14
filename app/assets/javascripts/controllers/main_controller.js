@@ -8,7 +8,11 @@ MainController.controller('MainCtrl', [
 
     User.currentUser()
       .then(function(response) {
-         $rootScope.currentUser = response.data;
+        $rootScope.currentUser = response.data;
+        var savedJobs = $rootScope.currentUser.jobs;
+        for (var i = 0; i < savedJobs.length; i += 1) {
+          savedJobs[i].bookmarked = true;
+        }
       });
     
     $rootScope.isAuthenticated = function() {

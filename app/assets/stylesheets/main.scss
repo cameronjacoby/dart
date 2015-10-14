@@ -349,13 +349,13 @@ hr {
   width: calc(100% - 30px);
   vertical-align: top;
 }
-.bookmark-icon {
+.bookmark-right {
   font-size: 18px;
   line-height: 1;
   margin: 0 0 10px 10px;
-  a:hover {
-    color: $color-green;
-  }
+}
+.bookmark-link:hover {
+  color: $color-green;
 }
 
 // signup / login
