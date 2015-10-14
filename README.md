@@ -1,19 +1,17 @@
 # Dart
 
-Dart allows job seekers to search and discover open positions in web and mobile development. Companies can create accounts to post current job openings.
+Dart allows tech job seekers to search open positions by role and location. Job posts are scraped from the monthly Hacker News Who's Hiring comment thread.
 
 ## Motivation
 
-The motivation for this project is to provide a platform to easily search and discover tech jobs by role and location.
+The motivation for this project is to transform the job posts on Hacker News to an easily searchable format.
 
 ## Built With:
 
 * AngularJS
-* CoffeeScript
 * Rails
 * PostgreSQL
-* CrunchBase API
-
-----------
+* satellizer (JWT auth)
+* Nokogiri (web scraping)
 
 ### <a href="http://dartjobs.herokuapp.com" target="_blank">dartjobs.herokuapp.com</a>
