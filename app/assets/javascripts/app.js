@@ -13,17 +13,4 @@ angular.module('dartApp', [
   'AuthController',
   'BookmarksController',
   'JobsControllers'
-], function (ngRoute,
-  ngResource,
-  ngMessages,
-  ngAnimate,
-  toastr,
-  satellizer,
-  templates,
-  Router,
-  Filters,
-  Services,
-  MainController,
-  AuthController,
-  BookmarksController,
-  JobsControllers) {});
+]);
