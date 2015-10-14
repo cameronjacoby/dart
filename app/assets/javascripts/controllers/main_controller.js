@@ -35,11 +35,13 @@ MainController.controller('MainCtrl', [
         $location.path('/signup');
         return;
       }
-      Bookmark.save({ bookmark: { job_guid: job.guid } },
-        function () {
-          job.bookmarked = true;
-        }
-      );
+      job.bookmarked = true;
+      Bookmark.save({ bookmark: { job_guid: job.guid } });
+    };
+
+    $rootScope.deleteBookmark = function (job) {
+      job.bookmarked = false;
+      Bookmark.remove({ bookmark: { job_guid: job.guid } });
     };
   }
 ]);

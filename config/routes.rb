@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :roles, only: [:index]
     resources :locations, only: [:index]
     resources :bookmarks, only: [:create]
+    delete "/bookmarks", to: "bookmarks#destroy"
     get "/users/current", to: "users#current"
   end
 
