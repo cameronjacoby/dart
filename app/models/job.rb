@@ -5,6 +5,8 @@ class Job < ActiveRecord::Base
   has_many :roles, through: :job_roles
   has_many :job_locations, dependent: :destroy
   has_many :locations, through: :job_locations
+  has_many :bookmarks, dependent: :destroy
+  has_many :users, through: :bookmarks
 
   validates :title, :description,
     presence: true

@@ -149,6 +149,11 @@ hr {
 }
 
 // forms
+.form-inline .form-group {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
 .form-control {
   background-color  : $color-white;
   border            : 1px solid $color-grey-border;
