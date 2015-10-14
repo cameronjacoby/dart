@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :jobs, only: [:index, :show]
     resources :roles, only: [:index]
     resources :locations, only: [:index]
+    resources :bookmarks, only: [:create]
     get "/users/current", to: "users#current"
   end
 

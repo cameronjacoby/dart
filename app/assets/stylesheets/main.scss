@@ -354,6 +354,9 @@ hr {
   line-height: 1;
   margin: 0 0 10px 10px;
 }
+.bookmark-link {
+  cursor: pointer;
+}
 .bookmark-link:hover {
   color: $color-green;
 }
