@@ -25,3 +25,10 @@ MainController.controller('MainCtrl', [
     };
   }
 ]);
+
+MainController.config(function(toastrConfig) {
+  angular.extend(toastrConfig, {
+    closeButton: true,
+    extendedTimeOut: 5000
+  });
+});

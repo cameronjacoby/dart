@@ -284,6 +284,53 @@ hr {
   color: $color-white;
 }
 
+// toastr flash messages
+.toast-top-right {
+  top: 10px;
+  right: 8px;
+}
+#toast-container > .toast-info,
+#toast-container > .toast-error {
+  background-image: none !important;
+}
+#toast-container > :hover {
+  box-shadow        : none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow   : none;
+  -ms-box-shadow    : none;
+  -o-box-shadow     : none;
+}
+#toast-container > div {
+  border-radius        : 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius   : 2px;
+  -ms-border-radius    : 2px;
+  -o-border-radius     : 2px;
+  box-shadow           : none;
+  -webkit-box-shadow   : none;
+  -moz-box-shadow      : none;
+  -ms-box-shadow       : none;
+  -o-box-shadow        : none;
+  margin               : 0;
+  opacity              : 1;
+  overflow             : inherit;
+  padding              : 15px;
+}
+.toast-info {
+  background-color: $color-green;
+}
+.toast-error {
+  background-color: $color-red;
+}
+.toast-close-button {
+  font-weight: normal;
+  line-height: 1;
+  margin-left: 5px;
+  right: -4px;
+  text-shadow: none;
+  top: -8px;
+}
+
 // jobs
 .search-icon {
   display: inline-block;
@@ -329,9 +376,19 @@ hr {
     padding-bottom: 17px;
   }
 }
+@media (max-width: 768px) and (min-width: 481px) {
+  #toast-container > div {
+    padding: 15px;
+  }
+}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav > li > a.btn-nav {
     display: inline-block;
     margin: 5px 15px;
+  }
+}
+@media (max-width: 480px) and (min-width: 241px) {
+  #toast-container > div {
+    padding: 15px;
   }
 }
