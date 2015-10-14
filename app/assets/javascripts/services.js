@@ -12,6 +12,10 @@ Services.factory('Location', ['$resource', function ($resource) {
   return $resource('/api/locations/:id', { id: '@id' });
 }]);
 
+Services.factory('Bookmark', ['$resource', function ($resource) {
+  return $resource('/api/bookmarks/:id', { id: '@id' });
+}]);
+
 Services.factory('User', ['$http', function ($http) {
   return {
     currentUser: function() {
