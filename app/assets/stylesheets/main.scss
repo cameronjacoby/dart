@@ -360,6 +360,16 @@ hr {
 .bookmark-link:hover {
   color: $color-green;
 }
+.bookmark-inline {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: top;
+}
+.bookmark-title {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 20px);
+}
 
 // signup / login
 .auth-content {

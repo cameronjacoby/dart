@@ -8,16 +8,19 @@
         <a href="/" class="btn btn-cta bottom-margin">Search Jobs</a>
       </div>
       <div ng-repeat="job in currentUser.jobs">
-        <p>
-          <!-- show filled bookmark if currentUser saved this job -->
-          <a href="#" ng-show="job.bookmarked" ng-mouseenter="unfillBookmark = true" ng-mouseleave="unfillBookmark = false" class="bookmark-link"><i class="fa" ng-class="{'fa-bookmark': !unfillBookmark, 'fa-bookmark-o': unfillBookmark}"></i></a>
-          
-          <!-- show unfilled bookmark if currentUser did not save this job -->
-          <a href="#" ng-hide="job.bookmarked" ng-mouseenter="fillBookmark = true" ng-mouseleave="fillBookmark = false" class="bookmark-link"><i class="fa" ng-class="{'fa-bookmark-o': !fillBookmark, 'fa-bookmark': fillBookmark}"></i></i></a>
-          
-          &nbsp;&nbsp;{{job.title}}
-          &nbsp;&nbsp;<a href="/jobs/{{job.guid}}" class="normal">View details &raquo;</a>
-        </p>
+        <div>
+          <div class="bookmark-inline">
+            <!-- show filled bookmark if currentUser saved this job -->
+            <a href="#" ng-show="job.bookmarked" ng-mouseenter="unfillBookmark = true" ng-mouseleave="unfillBookmark = false" class="bookmark-link"><i class="fa" ng-class="{'fa-bookmark': !unfillBookmark, 'fa-bookmark-o': unfillBookmark}"></i></a>
+            
+            <!-- show unfilled bookmark if currentUser did not save this job -->
+            <a href="#" ng-hide="job.bookmarked" ng-mouseenter="fillBookmark = true" ng-mouseleave="fillBookmark = false" class="bookmark-link"><i class="fa" ng-class="{'fa-bookmark-o': !fillBookmark, 'fa-bookmark': fillBookmark}"></i></i></a>
+          </div>
+
+          <div class="bookmark-title">
+            <p>{{job.title}}&nbsp;&nbsp;<a href="/jobs/{{job.guid}}" class="normal">View details &raquo;</a></p>
+          </div>
+        </div>
         <hr ng-show="!$last">
       </div>
     </div>
