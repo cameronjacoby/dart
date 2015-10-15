@@ -67,6 +67,12 @@ GEM
       railties (~> 4.0)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    ffaker (2.1.0)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
     geocoder (1.2.11)
@@ -191,6 +197,8 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   dotenv-rails
+  factory_girl_rails
+  ffaker
   font-awesome-sass
   geocoder
   httpclient
