@@ -42,6 +42,23 @@ RSpec.describe Api::BookmarksController, type: :controller do
         expect(response.body).to include("You must be logged in to do that")
       end
     end
+
+    context "silent failure: duplicate entry" do
+      before do
+        @current_user = FactoryGirl.create(:user)
+        @current_user.jobs << @job
+        request.headers["Authorization"] = Token.encode(@current_user.id)
+        post :create, bookmark: { job_guid: @job.guid }
+      end
+
+      it "should respond with 200 ok" do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "should render nothing" do
+        expect(response.body).to eq("")
+      end
+    end
   end
 
 end
