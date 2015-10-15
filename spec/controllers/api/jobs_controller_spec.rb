@@ -4,9 +4,8 @@ RSpec.describe Api::JobsController, type: :controller do
 
   describe "GET #index" do
     before do
-      FactoryGirl.create(:job)
+      @job = FactoryGirl.create(:job)
       @active_jobs = Job.active.order("created_at DESC")
-      @job = @active_jobs.first
       get :index
     end
 
@@ -25,7 +24,7 @@ RSpec.describe Api::JobsController, type: :controller do
     end
 
     it "should not include job id in response" do
-      expect(response.body).not_to include(@job.id.to_json)
+      expect(response.body).not_to include({ id: @job.id }.to_json)
     end
   end
 
@@ -50,7 +49,7 @@ RSpec.describe Api::JobsController, type: :controller do
     end
 
     it "should not include job id in response" do
-      expect(response.body).not_to include(@job.id.to_json)
+      expect(response.body).not_to include({ id: @job.id }.to_json)
     end
   end
 

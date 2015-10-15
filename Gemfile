@@ -31,7 +31,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 group :development, :test do
   gem "byebug"
   gem "dotenv-rails"
-  gem 'ffaker'
+  gem 'faker'
   gem 'factory_girl_rails'
   gem "rspec-rails"
   gem "spring"
