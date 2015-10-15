@@ -27,7 +27,7 @@ RSpec.describe Api::LocationsController, type: :controller do
     end
 
     it "should not include location id in response" do
-      expect(response.body).not_to include({ id: @location.id }.to_json)
+      expect(response.body).not_to include("id".to_json + ":" + @location.id.to_json)
     end
   end
 

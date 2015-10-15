@@ -24,7 +24,7 @@ RSpec.describe Api::JobsController, type: :controller do
     end
 
     it "should not include job id in response" do
-      expect(response.body).not_to include({ id: @job.id }.to_json)
+      expect(response.body).not_to include("id".to_json + ":" + @job.id.to_json)
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe Api::JobsController, type: :controller do
     end
 
     it "should not include job id in response" do
-      expect(response.body).not_to include({ id: @job.id }.to_json)
+      expect(response.body).not_to include("id".to_json + ":" + @job.id.to_json)
     end
   end
 

@@ -23,7 +23,7 @@ RSpec.describe Api::RolesController, type: :controller do
     end
 
     it "should not include role id in response" do
-      expect(response.body).not_to include({ id: @role.id }.to_json)
+      expect(response.body).not_to include("id".to_json + ":" + @role.id.to_json)
     end
   end
 
