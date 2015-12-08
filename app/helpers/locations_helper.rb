@@ -3,11 +3,13 @@ module LocationsHelper
   def location_matches
     {
       "austin" => /austin/i,
+      "berkeley" => /berkeley/i,
       "boston" => /boston/i,
       "chicago" => /chicago/i,
       "denver" => /denver/i,
       "los-angeles" => /los angeles|\bla\b/i,
       "new-york" => /new york|\bny\b|\bnyc\b/i,
+      "oakland" => /oakland/i,
       "palo-alto" => /palo alto/i,
       "philadelphia" => /philadelphia|philly/i,
       "portland" => /portland/i,
