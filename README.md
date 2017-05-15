@@ -13,5 +13,3 @@ The motivation for this project is to transform the job posts on Hacker News to 
 * PostgreSQL
 * satellizer (JWT auth)
 * Nokogiri (web scraping)
-
-### <a href="http://dartjobs.herokuapp.com" target="_blank">dartjobs.herokuapp.com</a>
